@@ -1,4 +1,7 @@
 import { Routes, Route, NavLink } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+// import { v4 as uuid } from "uuid";
 
 import "./App.css";
 import {
@@ -14,6 +17,14 @@ import {
 function App() {
   return (
     <div className="App">
+      <Toaster
+        position="bottom-right"
+        reverseOrder={false}
+        containerStyle={{
+          bottom: "3rem",
+          right: "3rem",
+        }}
+      />
       <NavLink to="/">Home</NavLink> ||
       <NavLink to="/bookmarks">bookmarks</NavLink> ||
       <NavLink to="/explore">explore</NavLink> ||
