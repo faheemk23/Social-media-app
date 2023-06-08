@@ -6,6 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import { makeServer } from "./server";
+import { DataProvider } from "./contexts/DataContext";
 
 // Call make Server
 makeServer();
@@ -14,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <DataProvider>
+        <App />
+      </DataProvider>
     </Router>
   </React.StrictMode>
 );
