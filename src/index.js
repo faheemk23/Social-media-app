@@ -7,19 +7,22 @@ import reportWebVitals from "./reportWebVitals";
 
 import { makeServer } from "./server";
 import { DataProvider } from "./contexts/DataContext";
+import { AuthProvider } from "./contexts/AuthContext";
 
 // Call make Server
 makeServer();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Router>
+  // <React.StrictMode>
+  <Router>
+    <AuthProvider>
       <DataProvider>
         <App />
       </DataProvider>
-    </Router>
-  </React.StrictMode>
+    </AuthProvider>
+  </Router>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -1,3 +1,8 @@
-li {
-  margin: 2rem;
+article {
+  margin: 1rem 0;
+}
+
+h2,
+h3 {
+  margin: 0;
 }
