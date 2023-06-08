@@ -1,5 +1,10 @@
+import { LoginCard } from "../../components/cards/LoginCard/LoginCard";
 import "./Login.css";
 
 export function Login() {
-  return <div>Login</div>;
+  return (
+    <div>
+      <LoginCard />
+    </div>
+  );
 }
