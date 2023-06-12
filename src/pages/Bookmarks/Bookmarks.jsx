@@ -3,12 +3,15 @@ import "./Bookmarks.css";
 import { getAllBookmarks } from "../../utilities/bookmarkUtilities";
 import { DataContext } from "../../contexts/DataContext";
 import PostCard from "../../components/cards/PostCard/PostCard";
+import { PrivateDataContext } from "../../contexts/PrivateDataContext";
 
 export function Bookmarks() {
   const { dataState, dataDispatch } = useContext(DataContext);
+  const { privateDataState, privateDataDispatch } =
+    useContext(PrivateDataContext);
 
   useEffect(() => {
-    getAllBookmarks(dataDispatch);
+    getAllBookmarks(privateDataDispatch);
   }, []);
 
   const getBookmarkPost = (postId) =>
@@ -17,7 +20,7 @@ export function Bookmarks() {
   return (
     <div>
       <h1>Bookmarks</h1>
-      {dataState.bookmarks.map((postId) => (
+      {privateDataState.bookmarks.map((postId) => (
         <PostCard key={postId} post={getBookmarkPost(postId)} inBookmark />
       ))}
     </div>
