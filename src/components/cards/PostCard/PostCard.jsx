@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./PostCard.css";
 import {
   deletePost,
@@ -10,51 +10,140 @@ import {
   addToBookmark,
   removeFromBookmark,
 } from "../../../utilities/bookmarkUtilities";
+import dayjs from "dayjs";
+import { followUser, unfollowUser } from "../../../utilities/userUtilities";
+import { PrivateDataContext } from "../../../contexts/PrivateDataContext";
 
 export default function PostCard({ post }) {
+  const [showEllipsisContent, setShowEllipsisContent] = useState(false);
+
   const { dataState, dataDispatch } = useContext(DataContext);
-  const { _id, content, firstName, lastName, username, likes } = post;
-  // const userData = JSON.parse(localStorage.getItem("userData"));
+  const { privateDataState, privateDataDispatch } =
+    useContext(PrivateDataContext);
+
+  const { _id, content, name, username, likes, createdAt, comments } = post;
+
+  const { bookmarks } = privateDataState;
+
+  const { users } = dataState;
 
   const { likeCount, likedBy, dislikedBy } = likes;
 
   const isLiked = () =>
     likedBy.some(({ username }) => username === "faheemk237");
 
-  const isBookmarked = (postId) =>
-    dataState.bookmarks.some((_id) => _id === postId);
+  const isBookmarked = (postId) => bookmarks.some((_id) => _id === postId);
+
+  const postUser = users.find(
+    ({ username: currUser }) => currUser === username
+  );
+
+  const { avatar } = postUser ?? {};
+
+  const getTimeStamp = () => {
+    const currentTime = dayjs();
+    const difference = currentTime.diff(createdAt, "hours");
+    return difference >= 24
+      ? dayjs(createdAt).format("D MMM")
+      : dayjs(createdAt).fromNow();
+  };
+
+  const hideEllipsisContentToggle = (e) => {
+    e.stopPropagation();
+    setShowEllipsisContent(true);
+  };
+  const isFollowed = () =>
+    postUser.followers.some(({ username }) => username === "faheemk237");
+
+  useEffect(() => {
+    document.addEventListener(
+      "mousedown",
+      () => {
+        setShowEllipsisContent(false);
+      },
+      []
+    );
+  });
 
   return (
-    <article className="post-card">
-      <h2>
-        {firstName} {lastName}
-      </h2>
-      <h3>@{username}</h3>
-      <p>{content}</p>
-      <div>Likes :{likeCount}</div>
-      <div>Dislikes : {dislikedBy.length}</div>
-      {isLiked() ? (
-        <button onClick={() => dislikePost(_id, dataDispatch)}>Dislike</button>
-      ) : (
-        <button onClick={() => likePost(_id, dataDispatch)}>Like</button>
-      )}
+    <article
+      className="post-card"
+      onClick={() => setShowEllipsisContent(false)}
+    >
+      <img
+        src={avatar}
+        alt="user-image"
+        className="post-user-avatar"
+        height="40px"
+        width="40px"
+      />
+      <section className="post-text">
+        <span className="post-name">{name}</span>
+        <span className="post-username">@{username}</span>
+        <span className="post-timestamp"> · {getTimeStamp()}</span>
+        <p className="post-content">{content}</p>
+        <div className="post-icons">
+          {isLiked() ? (
+            <div onClick={() => dislikePost(_id, dataDispatch)}>
+              <i className="fa-solid fa-heart"></i>
+              <span className="post-icon-text">{likeCount}</span>
+            </div>
+          ) : (
+            <div onClick={() => likePost(_id, dataDispatch)}>
+              <i className="fa-regular fa-heart"></i>
+              <span className="post-icon-text">{likeCount}</span>
+            </div>
+          )}
 
-      <button>Comment</button>
-      {isBookmarked(_id) ? (
-        <button onClick={() => removeFromBookmark(_id, dataDispatch)}>
-          Remove from bookmark
-        </button>
-      ) : (
-        <button onClick={() => addToBookmark(_id, dataDispatch)}>
-          Add to Bookmark
-        </button>
-      )}
-      {"faheemk237" === username && (
-        <div>
-          <button>Edit</button>
-          <button onClick={() => deletePost(_id, dataDispatch)}>Delete</button>
+          <div>
+            <i className="fa-regular fa-comment"></i>
+            <span className="post-icon-text">{comments.length}</span>
+          </div>
+
+          {isBookmarked(_id) ? (
+            <div onClick={() => removeFromBookmark(_id, privateDataDispatch)}>
+              <i className="fa-solid fa-bookmark"></i>
+            </div>
+          ) : (
+            <div onClick={() => addToBookmark(_id, privateDataDispatch)}>
+              <i className="fa-regular fa-bookmark"></i>
+            </div>
+          )}
         </div>
-      )}
+        <div
+          className="post-ellipsis-container"
+          onClick={hideEllipsisContentToggle}
+        >
+          {!showEllipsisContent && <i className="fa-solid fa-ellipsis"></i>}
+          {showEllipsisContent && (
+            <div className="post-ellipsis-content">
+              {"faheemk237" === username ? (
+                <div>
+                  <div>
+                    {" "}
+                    <i className="fa-regular fa-pen-to-square"></i> Edit
+                  </div>
+                  <div onMouseDown={() => deletePost(_id, dataDispatch)}>
+                    <i className="fa-solid fa-trash"></i> Delete
+                  </div>
+                </div>
+              ) : isFollowed() ? (
+                <div
+                  onMouseDown={() => unfollowUser(postUser._id, dataDispatch)}
+                >
+                  <i className="fa-solid fa-user-minus"></i> Unfollow{" "}
+                  <span>@{postUser.username}</span>
+                </div>
+              ) : (
+                <div onMouseDown={() => followUser(postUser._id, dataDispatch)}>
+                  <i className="fa-solid fa-user-plus"></i> Follow{" "}
+                  <span>@{postUser.username}</span>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      </section>
     </article>
   );
 }
