@@ -1,8 +1,94 @@
-article {
-  margin: 1rem 0;
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
+:root {
+  --primary-color: #ff3b30;
 }
 
-h2,
-h3 {
-  margin: 0;
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: "Roboto", sans-serif;
+}
+
+.color-primary {
+  color: var(--primary-color);
+}
+
+.links {
+  position: fixed;
+  bottom: 90px;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 1.2fr;
+  grid-template-areas: "left middle right";
+}
+
+.left {
+  grid-area: left;
+  position: sticky;
+  top: 0;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  /* position: fixed; */
+  /* background-color: red; */
+  /* width: 200px; */
+  height: 600px;
+}
+
+.middle {
+  grid-area: middle;
+  min-width: 200px;
+}
+
+.right {
+  grid-area: right;
+  position: sticky;
+  top: 0;
+  /* position: fixed; */
+  background-color: green;
+  /* width: 200px; */
+  height: 600px;
+}
+
+.bottom {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  /* height: 100px; */
+}
+
+@media screen and (max-width: 995px) {
+  .app-container {
+    grid-template-columns: 0.2fr 1fr;
+    grid-template-areas: "left middle";
+  }
+  .right {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    /* grid-template-rows: 1fr; */
+    grid-template-areas: " middle ";
+  }
+
+  .left {
+    display: none;
+  }
+
+  .right {
+    display: none;
+  }
+  .bottom {
+    display: block;
+  }
 }
