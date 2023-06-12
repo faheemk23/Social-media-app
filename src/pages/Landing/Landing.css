@@ -1,0 +1,18 @@
+.landing-container {
+  border: solid;
+  display: flex;
+  min-height: 80vh;
+}
+
+.landing-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70vh;
+}
+
+.image-placeholder {
+  background-color: gray;
+  width: 300px;
+  height: 70vh;
+}
