@@ -1,19 +1,26 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-export async function loginHandler(userData, navigate) {
+export async function loginHandler(userDetail, navigate) {
   try {
-    const { username: inputUsername, password } = userData;
-    const res = await axios.post("/api/auth/login", {
-      username: inputUsername,
-      password,
-    });
+    const res = await axios.post("/api/auth/login", userDetail);
     localStorage.setItem("token", res.data.encodedToken);
-    const { username, firstName, lastName } = res.data.foundUser;
-    localStorage.setItem(
-      "userData",
-      JSON.stringify({ username, firstName, lastName })
-    );
+    const { username, name } = res.data.foundUser;
+    localStorage.setItem("userData", JSON.stringify({ username, name }));
+    navigate("/");
+    toast.success("Logged in");
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+export async function signupHandler(userDetail, navigate) {
+  try {
+    const res = await axios.post("/api/auth/signup", userDetail);
+    console.log({ res });
+    localStorage.setItem("token", res.data.encodedToken);
+    const { username, name } = res.data.createdUser;
+    localStorage.setItem("userData", JSON.stringify({ username, name }));
     navigate("/");
     toast.success("Logged in");
   } catch (e) {
