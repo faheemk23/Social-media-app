@@ -7,20 +7,80 @@ import { formatDate } from "../utils/authUtils";
 
 export const users = [
   {
-    _id: "37f2383f-8b8a-44c9-b02d-982ce37aa8ca",
-    firstName: "Faheem",
-    lastName: "Khan",
+    _id: "37f2383f-8b8a-44c9-b02d-982ce37aa",
+    name: "Faheem Khan",
     username: "faheemk237",
     password: "faheemKhan123",
+    followers: [
+      {
+        _id: "37f2383f-8b8a-44c9-b02d-982ce37aa3fx",
+        name: "Faisal Khan",
+        username: "faisalk41",
+        avatar:
+          "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      },
+    ],
+    following: [
+      {
+        _id: "37f2383f-8b8a-44c9-b02d-982ce37aa3fx",
+        name: "Faisal Khan",
+        username: "faisalk41",
+        password: "faisal",
+        avatar:
+          "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      },
+    ],
+    avatar:
+      "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "37f2383f-8b8a-44c9-b02d-982ce37aa3fx",
+    name: "Faisal Khan",
+    username: "faisalk41",
+    password: "faisal",
+    followers: [
+      {
+        _id: "37f2383f-8b8a-44c9-b02d-982ce37aa",
+        name: "Faheem Khan",
+        username: "faheemk237",
+        avatar:
+          "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      },
+    ],
+    following: [
+      {
+        _id: "37f2383f-8b8a-44c9-b02d-982ce37aa",
+        name: "Faheem Khan",
+        username: "faheemk237",
+        avatar:
+          "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      },
+    ],
+    avatar:
+      "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "37f2383f-8b8a-44c9-b02d",
+    name: "Divya Saxena",
+    username: "divya19",
+    password: "divya",
+    followers: [],
+    following: [],
+    avatar: "https://source.unsplash.com/random/50x50/?indiangirl",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
   {
     _id: "054c1f2b-dcf8-439b-86e7-820d4ac416fc",
-    firstName: "Adarsh",
-    lastName: "Balak",
+    name: "Adarsh Balak",
     username: "adarshbalak",
     password: "adarshBalaki123",
+    followers: [],
+    following: [],
     bio: "Aspring FullStack Developer",
     website: "https://adarshbalak.netlify.app",
     avatar:
@@ -30,10 +90,11 @@ export const users = [
   },
   {
     _id: "054c1f2b-dcf8-44ui44-5555-820d4afc",
-    firstName: "Anuj",
-    lastName: "Kumar",
+    name: "Anuj Kumar",
     username: "anujkumar",
     password: "anujy05",
+    followers: [],
+    following: [],
     bio: "Aspring FrontEnd Developer",
     website: "https://anujkumar.netlify.app/",
     avatar:
@@ -43,10 +104,11 @@ export const users = [
   },
   {
     _id: "58sfd1dfd8f-dcf8-44ui44-5555-820d4afc",
-    firstName: "Hrishi",
-    lastName: "Bar",
+    name: "Hrishi Bar",
     username: "hrishi11",
     password: "hrishi112",
+    followers: [],
+    following: [],
     bio: "Something",
     website: "https://hrishib.netlify.app/",
     avatar:
@@ -56,10 +118,11 @@ export const users = [
   },
   {
     _id: "478kiout-dcf8-541bghv-7777-820d4afc",
-    firstName: "Rohan",
-    lastName: "Bond",
+    name: "Rohan Bond",
     username: "rohanB",
     password: "rohanBB",
+    followers: [],
+    following: [],
     bio: "I am open to marry please DM me",
     website: "https://rohanspage.netlify.app/",
     avatar:
@@ -69,10 +132,11 @@ export const users = [
   },
   {
     _id: "58s74jhdfd8f-dcf8-44ui44-5555-828jhyuafc",
-    firstName: "John",
-    lastName: "Doe",
+    name: "John Doe",
     username: "johndoe",
     password: "john05",
+    followers: [],
+    following: [],
     bio: "Something",
     website: "https://johndoe.netlify.app/",
     avatar:
