@@ -1,0 +1,10 @@
+.signup-container {
+  max-width: 400px;
+  border: solid;
+  padding: 1rem 2rem;
+}
+
+.signup-content {
+  display: flex;
+  flex-direction: column;
+}
