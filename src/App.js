@@ -16,13 +16,19 @@ import {
   Signup,
 } from "./pages/Pages";
 import NavBar from "./components/NavBar/NavBar";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import dayjs from "dayjs";
+import { AuthContext } from "./contexts/AuthContext";
+import BottomAuthBar from "./components/BottomAuthBar/BottomAuthBar";
+import SearchBar from "./components/SearchBar/SearchBar";
+import WhoToFollow from "./components/WhoToFollow/WhoToFollow";
+import SuggestedSignup from "./components/SuggestedSignup/SuggestedSignup";
 
 function App() {
-  dayjs.extend(relative);
+  const { loggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
+    dayjs.extend(relative);
     navigate("/explore");
   }, []);
   return (
@@ -60,12 +66,24 @@ function App() {
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>
-          <section className="bottom">
-            <NavBar inBottom />
-          </section>
+          {loggedIn && (
+            <section className="bottom">
+              <NavBar inBottom />
+            </section>
+          )}
         </section>
-        <section className="right"></section>
+        <section className="right">
+          {loggedIn ? (
+            <>
+              <SearchBar />
+              <WhoToFollow />
+            </>
+          ) : (
+            <SuggestedSignup />
+          )}
+        </section>
       </section>
+      {!loggedIn && <BottomAuthBar />}
     </div>
   );
 }
