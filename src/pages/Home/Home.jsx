@@ -1,12 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./Home.css";
-import { getAllPosts, likePost } from "../../utilities/postsUtilities";
 import { DataContext } from "../../contexts/DataContext";
 import PostCard from "../../components/cards/PostCard/PostCard";
-import { addToBookmark } from "../../utilities/bookmarkUtilities";
-import { AuthContext } from "../../contexts/AuthContext";
-import { NavLink } from "react-router-dom";
-import NavBar from "../../components/NavBar/NavBar";
+
+import HomeHeader from "../../components/headers/HomeHeader";
 
 export function Home() {
   const { dataState } = useContext(DataContext);
@@ -26,10 +23,7 @@ export function Home() {
 
   return (
     <section>
-      Home
-      <h1>User</h1>
-      <div>Name: {user.name}</div>
-      <h1>Posts</h1>
+      <HomeHeader />
       {postsOfFollowed.map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
