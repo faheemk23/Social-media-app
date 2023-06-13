@@ -9,28 +9,147 @@ import { formatDate } from "../utils/authUtils";
 export const posts = [
   {
     _id: "4a200ad0-8487-47c8-9595-0b70043eecda",
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    content: "lorem ipsum daisy. ",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "adarshbalika",
+    comments: [],
+    username: "divya19",
+    name: "Divya Saxena",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
   {
     _id: "afbfa61a-dc28-4199-a4cb-f73b880c0f80",
-    content:
-      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    content: "ye Error jata kyu nahi hai",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
-    username: "shubhamsoni",
+    comments: [],
+    username: "faisalk41",
+    name: "Faisal Khan",
     createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "afbfa61a-dc28-4199-a4cb-g23b110c0f31",
+    content: "Hola Amigos ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "faheemk237",
+    name: "Faheem Khan",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "406acf0d-a683-4c80-a42d-92f0c6544dca",
+    content:
+      "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident",
+    likes: {
+      likeCount: 2,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "adarshbalak",
+    name: "Adarsh Balak",
+    createdAt: "2023-06-11T12:00:28+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "b8574c86-df7a-46ed-8bc2-69dd4f99307b",
+    content: 'Hey what"s app guy"s what"s going on?',
+    likes: {
+      likeCount: 4,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "anujkumar",
+    name: "Anuj Kumar",
+    createdAt: "2023-06-10T10:55:06+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "c789564c86-df7a-46ed-8bc2-69dd4f99307b",
+    content:
+      "I am done with the social media project can please provide some valuable feebback",
+    likes: {
+      likeCount: 3,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "adarshbalak",
+    name: "Adarsh Balak",
+    createdAt: "2023-06-09T10:55:06+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "r8fg5659641-d787a-46ed-8bc2-69dd4307b",
+    content:
+      "Spread love everywhere you go. Let no one ever come to you without leaving happier. -Mother Teresa",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "hrishi11",
+    name: "Hrishi Bar",
+    createdAt: "2023-06-08T10:55:06+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "99874gyu-4545-89-8bc2-69dd4307b",
+    content:
+      "awake at 3AM | tweeting stuff mostly related to code | learning @neogcamp🚀",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "hrishi11",
+    name: "Hrishi Bar",
+    createdAt: "2023-06-05T10:55:06+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "7845hyuff-8888-45ki-8bc2-69dd4307b",
+    content:
+      "Presenting my new React Project Socially, A social Media app made using React, JavaScript, Redux, Tailwind CSS",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "rohanB",
+    name: "Rohan Bond",
+    createdAt: "2023-06-01T10:55:06+05:30",
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "eee4456-666-788vfghg-8bc2-69dd4307b",
+    content: "Wrote 2 blogs for NeoBlogging Marathon at @neogcamp ",
+    likes: {
+      likeCount: 1,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    username: "rohanB",
+    name: "Rohan Bond",
+    createdAt: "2023-05-21T10:55:06+05:30",
     updatedAt: formatDate(),
   },
 ];

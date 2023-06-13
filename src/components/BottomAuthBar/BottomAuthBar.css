@@ -1,0 +1,99 @@
+.bottom-auth-bar {
+  background-color: var(--primary-color);
+  color: white;
+  right: 0;
+  left: 0;
+  height: 72px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+}
+
+.bottom-auth-bar-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+  margin-left: 15vw;
+}
+
+.larger {
+  font-size: x-large;
+}
+
+.bolder {
+  font-weight: bolder;
+}
+
+.smaller {
+  font-size: medium;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  border: none;
+  margin: 0.5rem;
+  background-color: white;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+}
+
+.btn-login {
+  color: white;
+  background-color: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.393);
+}
+
+.bottom-auth-bar-buttons {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.btn-signup {
+  margin-right: 10vw;
+}
+
+@media screen and (max-width: 690px) {
+  .bottom-auth-bar-text {
+    display: none;
+  }
+
+  .btn {
+    flex-grow: 1;
+  }
+
+  .btn-login {
+    border: 1px solid white;
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .btn-signup {
+    color: black;
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .bottom-auth-bar {
+    background-color: white;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    height: 60px;
+  }
+
+  .btn-login {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    background-color: white;
+    color: var(--primary-color);
+  }
+
+  .btn-signup {
+    background-color: var(--primary-color);
+    color: white;
+  }
+}

@@ -1,0 +1,16 @@
+.header-container {
+  min-height: 100px;
+  width: 100%;
+  opacity: 0.96;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header-heading {
+  font-size: 1.3rem;
+  font-weight: 900;
+  padding: 1rem;
+}

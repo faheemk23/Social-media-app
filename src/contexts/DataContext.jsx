@@ -1,13 +1,24 @@
-import { createContext, useReducer } from "react";
-import { postsReducer } from "../reducers/postsReducer";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { dataReducer } from "../reducers/dataReducer";
+import { getAllUsers } from "../utilities/userUtilities";
+import { getAllPosts } from "../utilities/postsUtilities";
 
 export const DataContext = createContext();
 
 export function DataProvider({ children }) {
-  const [postsState, postsDispatch] = useReducer(postsReducer, { posts: [] });
+  const [dataState, dataDispatch] = useReducer(dataReducer, {
+    posts: [],
+    users: [],
+  });
+
+  useEffect(() => {
+    console.log("render public");
+    getAllPosts(dataDispatch);
+    getAllUsers(dataDispatch);
+  }, []);
 
   return (
-    <DataContext.Provider value={{ postsState, postsDispatch }}>
+    <DataContext.Provider value={{ dataState, dataDispatch }}>
       {children}
     </DataContext.Provider>
   );

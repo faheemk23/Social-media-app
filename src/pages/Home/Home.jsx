@@ -1,29 +1,32 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import "./Home.css";
-import { getAllPosts } from "../../utilities/postsUtilities";
 import { DataContext } from "../../contexts/DataContext";
+import PostCard from "../../components/cards/PostCard/PostCard";
+
+import HomeHeader from "../../components/headers/HomeHeader";
 
 export function Home() {
-  const { postsState, postsDispatch } = useContext(DataContext);
-  const userData = JSON.parse(localStorage.getItem("userData")) ?? {};
+  const { dataState } = useContext(DataContext);
 
-  useEffect(() => {
-    getAllPosts(postsDispatch);
-  }, []);
-  console.log(postsState);
+  const getUser = localStorage.getItem("userData");
+
+  const user = getUser ? JSON.parse(getUser) : {};
+
+  const currentUser = dataState.users.find(
+    ({ username }) => username === user.username
+  );
+
+  const postsOfFollowed = dataState.posts.filter(
+    ({ username: checkUserName }) =>
+      currentUser?.following.some(({ username }) => username === checkUserName)
+  );
+
   return (
-    <div>
-      Home
-      <h1>User</h1>
-      <div>
-        Name: {userData.firstName} {userData.lastName}{" "}
-      </div>
-      <h1>Posts</h1>
-      {postsState.posts.map(({ _id, content, username }) => (
-        <li key={_id}>
-          {username} : {content}
-        </li>
+    <section>
+      <HomeHeader />
+      {postsOfFollowed.map((post) => (
+        <PostCard key={post._id} post={post} />
       ))}
-    </div>
+    </section>
   );
 }

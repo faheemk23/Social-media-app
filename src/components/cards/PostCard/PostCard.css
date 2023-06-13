@@ -1,0 +1,77 @@
+.post-card {
+  /* border: solid; */
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 0.7rem;
+}
+
+.post-card:hover {
+  background-color: rgba(0, 0, 0, 0.022);
+}
+
+.user-avatar {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.post-content {
+  margin: 0.5rem 0;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.post-text {
+  margin-left: 0.5rem;
+  /* align-self: flex-end; */
+  width: 100%;
+  position: relative;
+}
+
+.post-name {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.post-username {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.post-timestamp {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.post-icons {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 7rem;
+  margin-right: 2rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.post-icon-text {
+  margin-left: 0.7rem;
+}
+
+.post-icons:hover {
+  cursor: pointer;
+}
+
+.post-ellipsis-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 0.5rem;
+}
+
+.post-ellipsis-content {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  min-width: 160px;
+  background-color: white;
+  display: flex;
+}
