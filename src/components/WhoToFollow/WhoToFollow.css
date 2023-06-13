@@ -1,0 +1,47 @@
+.who-to-follow {
+  margin: 1rem;
+  /* width: 100%; */
+  max-width: 350px;
+  padding: 0 1rem;
+  min-height: 300px;
+  /* border: solid; */
+  background-color: #f7f9f9;
+  border-radius: 0.5rem;
+}
+
+.who-to-follow-item {
+  display: flex;
+  margin: 1rem 0;
+  justify-content: space-between;
+}
+
+.btn-who-to-follow {
+  border-radius: 1rem;
+  padding: 0 1rem;
+  border: none;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  background-color: black;
+  color: white;
+}
+
+.btn-following {
+  background-color: inherit;
+  color: black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.btn-following:hover {
+  background-color: black;
+  color: white;
+}
+
+.who-to-follow-username {
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 0.1rem;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5rem;
+}
