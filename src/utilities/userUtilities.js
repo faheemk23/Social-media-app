@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const encodedToken = localStorage.getItem("token");
+import { toast } from "react-hot-toast";
 
 export async function getAllUsers(dataDispatch) {
   try {
@@ -12,6 +11,8 @@ export async function getAllUsers(dataDispatch) {
 }
 
 export async function followUser(userId, dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const res = await axios.post(
       `/api/users/follow/${userId}`,
@@ -20,6 +21,7 @@ export async function followUser(userId, dataDispatch) {
     );
     const { user, followUser } = res.data;
 
+    toast.success(`Followed @${followUser.username}`);
     dataDispatch({ type: "update-user", payload: followUser });
 
     dataDispatch({ type: "update-user", payload: user });
@@ -29,6 +31,8 @@ export async function followUser(userId, dataDispatch) {
 }
 
 export async function unfollowUser(userId, dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
+
   try {
     const res = await axios.post(
       `/api/users/unfollow/${userId}`,
@@ -36,6 +40,7 @@ export async function unfollowUser(userId, dataDispatch) {
       { headers: { authorization: encodedToken } }
     );
     const { user, followUser } = res.data;
+    toast.success(`Unfollowed @${followUser.username}`);
 
     dataDispatch({ type: "update-user", payload: followUser });
 
