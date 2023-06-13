@@ -7,7 +7,6 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
-  const { users } = useContext(DataContext);
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("userData"));
