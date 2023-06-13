@@ -1,0 +1,28 @@
+.search-bar-container {
+  margin: 1rem;
+  padding: 0.7rem 0.5rem;
+  background-color: #eff3f4fb;
+  border-radius: 2rem;
+  max-width: 350px;
+  position: relative;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.search-bar {
+  background-color: #eff3f4fb;
+  border: none;
+  margin-left: 2.5rem;
+}
+
+.search-bar::placeholder {
+  font-size: medium;
+}
+
+.search-bar:focus {
+  outline: none;
+}
+
+.search-bar-icon {
+  position: absolute;
+  left: 1rem;
+}
