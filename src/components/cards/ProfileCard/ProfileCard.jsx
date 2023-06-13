@@ -18,7 +18,7 @@ export default function ProfileCard({ user }) {
       <h3>@{username}</h3>
       <p>Followers: {followers.length}</p>
       <p>Following : {following.length}</p>
-      {username !== "faheemk237" &&
+      {username !== currentUser.username &&
         (isFollowed() ? (
           <button onClick={() => unfollowUser(_id, dataDispatch)}>
             Unfollow
