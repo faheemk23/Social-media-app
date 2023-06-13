@@ -13,6 +13,7 @@ import {
 import dayjs from "dayjs";
 import { followUser, unfollowUser } from "../../../utilities/userUtilities";
 import { PrivateDataContext } from "../../../contexts/PrivateDataContext";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ post }) {
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
@@ -21,13 +22,15 @@ export default function PostCard({ post }) {
   const { privateDataState, privateDataDispatch } =
     useContext(PrivateDataContext);
 
+  const navigate = useNavigate();
+
   const { _id, content, name, username, likes, createdAt, comments } = post;
 
   const { bookmarks } = privateDataState;
 
   const { users } = dataState;
 
-  const { likeCount, likedBy, dislikedBy } = likes;
+  const { likeCount, likedBy } = likes;
 
   const isLiked = () =>
     likedBy.some(({ username }) => username === "faheemk237");
@@ -37,6 +40,8 @@ export default function PostCard({ post }) {
   const postUser = users.find(
     ({ username: currUser }) => currUser === username
   );
+
+  const currentUser = JSON.parse(localStorage.getItem("userData"));
 
   const { avatar } = postUser ?? {};
 
@@ -53,7 +58,9 @@ export default function PostCard({ post }) {
     setShowEllipsisContent(true);
   };
   const isFollowed = () =>
-    postUser.followers.some(({ username }) => username === "faheemk237");
+    postUser.followers.some(
+      ({ username }) => username === currentUser.username
+    );
 
   useEffect(() => {
     document.addEventListener(
@@ -73,7 +80,7 @@ export default function PostCard({ post }) {
       <img
         src={avatar}
         alt="user-image"
-        className="post-user-avatar"
+        className="user-avatar"
         height="40px"
         width="40px"
       />
@@ -111,33 +118,45 @@ export default function PostCard({ post }) {
           )}
         </div>
         <div
-          className="post-ellipsis-container"
+          className="post-ellipsis-container pointer"
           onClick={hideEllipsisContentToggle}
         >
           {!showEllipsisContent && <i className="fa-solid fa-ellipsis"></i>}
           {showEllipsisContent && (
             <div className="post-ellipsis-content">
-              {"faheemk237" === username ? (
-                <div>
-                  <div>
-                    {" "}
-                    <i className="fa-regular fa-pen-to-square"></i> Edit
-                  </div>
-                  <div onMouseDown={() => deletePost(_id, dataDispatch)}>
-                    <i className="fa-solid fa-trash"></i> Delete
-                  </div>
-                </div>
-              ) : isFollowed() ? (
-                <div
-                  onMouseDown={() => unfollowUser(postUser._id, dataDispatch)}
-                >
-                  <i className="fa-solid fa-user-minus"></i> Unfollow{" "}
-                  <span>@{postUser.username}</span>
-                </div>
+              {currentUser ? (
+                <>
+                  {currentUser.username === username ? (
+                    <div>
+                      <div>
+                        {" "}
+                        <i className="fa-regular fa-pen-to-square"></i> Edit
+                      </div>
+                      <div onMouseDown={() => deletePost(_id, dataDispatch)}>
+                        <i className="fa-solid fa-trash"></i> Delete
+                      </div>
+                    </div>
+                  ) : isFollowed() ? (
+                    <div
+                      onMouseDown={() =>
+                        unfollowUser(postUser._id, dataDispatch)
+                      }
+                    >
+                      <i className="fa-solid fa-user-minus"></i> Unfollow{" "}
+                      <span>@{postUser.username}</span>
+                    </div>
+                  ) : (
+                    <div
+                      onMouseDown={() => followUser(postUser._id, dataDispatch)}
+                    >
+                      <i className="fa-solid fa-user-plus"></i> Follow{" "}
+                      <span>@{postUser.username}</span>
+                    </div>
+                  )}
+                </>
               ) : (
-                <div onMouseDown={() => followUser(postUser._id, dataDispatch)}>
-                  <i className="fa-solid fa-user-plus"></i> Follow{" "}
-                  <span>@{postUser.username}</span>
+                <div onMouseDown={() => navigate("/login")}>
+                  Login for more options
                 </div>
               )}
             </div>
