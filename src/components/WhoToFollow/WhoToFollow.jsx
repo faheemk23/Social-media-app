@@ -33,8 +33,14 @@ export default function WhoToFollow() {
     }
   };
 
+  // useEffect(() => {
+  //   // setTimeout(() => setWhoToFollow(getWhoToFollowArray()), 2000);
+  //   setWhoToFollow(getWhoToFollowArray());
+  // }, [location]);
+
   useEffect(() => {
-    setWhoToFollow(getWhoToFollowArray());
+    // setTimeout(() => console.log({ arr: getWhoToFollowArray() }), 2000);
+    setTimeout(() => setWhoToFollow(() => getWhoToFollowArray()), 1000);
   }, [location]);
 
   const isFollowed = (givenUsername) =>
