@@ -74,13 +74,13 @@
 
 @media screen and (max-width: 1200px) {
   .app-container {
-    grid-template-columns: 0.2fr 2.2fr 1.2fr;
+    grid-template-columns: 0.3fr 2.2fr 1.2fr;
   }
 }
 
 @media screen and (max-width: 995px) {
   .app-container {
-    grid-template-columns: 0.1fr 1fr;
+    grid-template-columns: 0.17fr 1fr;
     grid-template-areas: "left middle";
   }
   .right {
