@@ -75,3 +75,9 @@
   background-color: white;
   display: flex;
 }
+
+@media screen and (max-width: 450px) {
+  .post-icons {
+    gap: 4rem;
+  }
+}
