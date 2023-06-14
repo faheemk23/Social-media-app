@@ -78,6 +78,7 @@
 
 @media screen and (max-width: 450px) {
   .post-icons {
-    gap: 4rem;
+    gap: 0rem;
+    justify-content: space-between;
   }
 }
