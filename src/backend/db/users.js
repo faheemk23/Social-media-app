@@ -140,7 +140,7 @@ export const users = [
     bio: "Something",
     website: "https://johndoe.netlify.app/",
     avatar:
-      "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687130294/604107_hagbnz.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
