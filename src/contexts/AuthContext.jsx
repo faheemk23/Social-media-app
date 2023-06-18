@@ -18,7 +18,7 @@ export function AuthProvider({ children }) {
         );
         if (userInDatabase) {
           setLoggedIn(true);
-          setUser(currentUser);
+          setUser(() => currentUser);
         }
       } catch (e) {
         console.error(e.message);
