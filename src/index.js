@@ -8,7 +8,6 @@ import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
 import { DataProvider } from "./contexts/DataContext";
 import { AuthProvider } from "./contexts/AuthContext";
-import { PrivateDataProvider } from "./contexts/PrivateDataContext";
 
 // Call make Server
 makeServer();
@@ -17,13 +16,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <Router>
-    <DataProvider>
-      <AuthProvider>
-        <PrivateDataProvider>
-          <App />
-        </PrivateDataProvider>
-      </AuthProvider>
-    </DataProvider>
+    <AuthProvider>
+      <DataProvider>
+        <App />
+      </DataProvider>
+    </AuthProvider>
   </Router>
   // </React.StrictMode>
 );
