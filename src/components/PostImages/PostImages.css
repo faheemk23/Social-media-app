@@ -1,0 +1,17 @@
+.post-images-container {
+  display: flex;
+  gap: 0.4rem;
+  border-radius: 1rem;
+}
+
+.post-image {
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  /* margin-top: 1rem; */
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+.image-container {
+  position: relative;
+}
