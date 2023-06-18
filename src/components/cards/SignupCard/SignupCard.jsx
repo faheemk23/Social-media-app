@@ -13,7 +13,7 @@ export default function SignupCard() {
     confirmPassword: "",
   });
 
-  const { setLoggedIn } = useContext(AuthContext);
+  const { setUser, setLoggedIn } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ export default function SignupCard() {
 
   const handleBtnSignup = () => {
     if (valiateDetails(userDetail, setErrorMessage)) {
-      signupHandler(userDetail, navigate, setLoggedIn);
+      signupHandler(userDetail, navigate, setLoggedIn, setUser);
     }
   };
 
