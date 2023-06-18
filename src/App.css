@@ -72,6 +72,22 @@
   cursor: pointer;
 }
 
+.pink {
+  color: #f91880;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.hover-pink:hover {
+  color: #f91880;
+}
+
+.hover-primary-color:hover {
+  color: var(--primary-color);
+}
+
 @media screen and (max-width: 1200px) {
   .app-container {
     grid-template-columns: 0.3fr 2.2fr 1.2fr;
