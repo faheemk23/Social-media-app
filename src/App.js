@@ -23,6 +23,7 @@ import BottomAuthBar from "./components/BottomAuthBar/BottomAuthBar";
 import SearchBar from "./components/SearchBar/SearchBar";
 import WhoToFollow from "./components/WhoToFollow/WhoToFollow";
 import SuggestedSignup from "./components/SuggestedSignup/SuggestedSignup";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 function App() {
   const { loggedIn } = useContext(AuthContext);
@@ -33,6 +34,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <ScrollToTop />
       <Toaster
         position="bottom-right"
         reverseOrder={false}
