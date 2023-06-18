@@ -12,28 +12,41 @@ import {
 } from "../../../utilities/bookmarkUtilities";
 import dayjs from "dayjs";
 import { followUser, unfollowUser } from "../../../utilities/userUtilities";
-import { PrivateDataContext } from "../../../contexts/PrivateDataContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import PostImages from "../../PostImages/PostImages";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function PostCard({ post }) {
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
 
   const { dataState, dataDispatch } = useContext(DataContext);
-  const { privateDataState, privateDataDispatch } =
-    useContext(PrivateDataContext);
+  const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const { _id, content, name, username, likes, createdAt, comments } = post;
+  const {
+    _id,
+    content,
+    name,
+    username,
+    likes,
+    createdAt,
+    comments,
+    images,
+    video,
+    links,
+  } = post;
 
-  const { bookmarks } = privateDataState;
+  const { bookmarks } = dataState;
 
   const { users } = dataState;
 
-  const { likeCount, likedBy } = likes;
+  const { likeCount, likedBy } = likes ?? {};
+
+  console.log(likedBy);
 
   const isLiked = () =>
-    likedBy.some(({ username }) => username === "faheemk237");
+    likedBy.some(({ username }) => username === user.username);
 
   const isBookmarked = (postId) => bookmarks.some((_id) => _id === postId);
 
@@ -63,14 +76,12 @@ export default function PostCard({ post }) {
     );
 
   useEffect(() => {
-    document.addEventListener(
-      "mousedown",
-      () => {
-        setShowEllipsisContent(false);
-      },
-      []
-    );
-  });
+    const handleOutsideClick = () => {
+      setShowEllipsisContent(false);
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
 
   return (
     <article
@@ -88,16 +99,41 @@ export default function PostCard({ post }) {
         <span className="post-name">{name}</span>
         <span className="post-username">@{username}</span>
         <span className="post-timestamp"> · {getTimeStamp()}</span>
-        <p className="post-content">{content}</p>
+        <div className="post-content">{content}</div>
+        {links &&
+          Object?.entries(links)?.map(([label, link]) => (
+            <div>
+              <Link to={link}>{label}</Link>
+            </div>
+          ))}
+        {!video && <PostImages images={images} />}
+        {video && (
+          <div className="relative ">
+            <video
+              className="post-video"
+              src={video}
+              controls
+              autoPlay
+              height={"100%"}
+              width={"100%"}
+            />
+          </div>
+        )}
         <div className="post-icons">
           {isLiked() ? (
-            <div onClick={() => dislikePost(_id, dataDispatch)}>
-              <i className="fa-solid fa-heart"></i>
-              <span className="post-icon-text">{likeCount}</span>
+            <div
+              className="pink"
+              onClick={() => dislikePost(_id, dataDispatch)}
+            >
+              <i className="fa-solid fa-heart "></i>
+              <span className="post-icon-text ">{likeCount}</span>
             </div>
           ) : (
-            <div onClick={() => likePost(_id, dataDispatch)}>
-              <i className="fa-regular fa-heart"></i>
+            <div
+              className="hover-pink"
+              onClick={() => likePost(_id, dataDispatch)}
+            >
+              <i className="fa-regular fa-heart "></i>
               <span className="post-icon-text">{likeCount}</span>
             </div>
           )}
@@ -108,12 +144,12 @@ export default function PostCard({ post }) {
           </div>
 
           {isBookmarked(_id) ? (
-            <div onClick={() => removeFromBookmark(_id, privateDataDispatch)}>
-              <i className="fa-solid fa-bookmark"></i>
+            <div onClick={() => removeFromBookmark(_id, dataDispatch)}>
+              <i className="fa-solid fa-bookmark primary-color"></i>
             </div>
           ) : (
-            <div onClick={() => addToBookmark(_id, privateDataDispatch)}>
-              <i className="fa-regular fa-bookmark"></i>
+            <div onClick={() => addToBookmark(_id, dataDispatch)}>
+              <i className="fa-regular fa-bookmark hover-primary-color"></i>
             </div>
           )}
         </div>

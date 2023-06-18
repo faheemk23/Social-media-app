@@ -43,8 +43,9 @@
 .post-icons {
   display: flex;
   /* justify-content: space-between; */
-  gap: 7rem;
-  margin-right: 2rem;
+  gap: 8rem;
+  padding-right: 2rem;
+  padding-left: 1rem;
   color: rgba(0, 0, 0, 0.65);
 }
 
@@ -74,6 +75,14 @@
   min-width: 160px;
   background-color: white;
   display: flex;
+}
+
+.post-video {
+  border-radius: 0.7rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-height: 500px;
+  margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 450px) {
