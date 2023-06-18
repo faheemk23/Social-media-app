@@ -1,8 +1,7 @@
 import axios from "axios";
 
-const encodedToken = localStorage.getItem("token");
-
 export async function getAllBookmarks(dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
   try {
     const res = await axios.get("/api/users/bookmark", {
       headers: { authorization: encodedToken },
@@ -14,6 +13,7 @@ export async function getAllBookmarks(dataDispatch) {
 }
 
 export async function addToBookmark(postId, dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
   try {
     const res = await axios.post(
       `/api/users/bookmark/${postId}`,
@@ -29,6 +29,7 @@ export async function addToBookmark(postId, dataDispatch) {
 }
 
 export async function removeFromBookmark(postId, dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
   try {
     const res = await axios.post(
       `/api/users/remove-bookmark/${postId}`,
