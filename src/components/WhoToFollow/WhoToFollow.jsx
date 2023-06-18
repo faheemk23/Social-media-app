@@ -3,26 +3,24 @@ import "./WhoToFollow.css";
 import { DataContext } from "../../contexts/DataContext";
 import { useLocation } from "react-router-dom";
 import { followUser, unfollowUser } from "../../utilities/userUtilities";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function WhoToFollow() {
-  const { dataState, dataDispatch } = useContext(DataContext);
   const [whoToFollow, setWhoToFollow] = useState([]);
+  const { user } = useContext(AuthContext);
+  const { dataState, dataDispatch } = useContext(DataContext);
 
   const location = useLocation();
-
-  const currentUser = JSON.parse(localStorage.getItem("userData"));
 
   const getWhoToFollowArray = () => {
     const usersNotFollowedByCurrent = dataState.users.filter(
       ({ username, followers }) => {
-        if (username === currentUser?.username) {
+        if (username === user?.username) {
           return false;
         } else if (followers.length === 0) {
           return true;
         } else {
-          return followers.some(
-            ({ username }) => username !== currentUser?.username
-          );
+          return followers.some(({ username }) => username !== user?.username);
         }
       }
     );
@@ -33,20 +31,16 @@ export default function WhoToFollow() {
     }
   };
 
-  // useEffect(() => {
-  //   // setTimeout(() => setWhoToFollow(getWhoToFollowArray()), 2000);
-  //   setWhoToFollow(getWhoToFollowArray());
-  // }, [location]);
-
   useEffect(() => {
-    // setTimeout(() => console.log({ arr: getWhoToFollowArray() }), 2000);
+    console.log(getWhoToFollowArray());
     setTimeout(() => setWhoToFollow(() => getWhoToFollowArray()), 1000);
   }, [location]);
 
   const isFollowed = (givenUsername) =>
     dataState.users
       .find(({ username }) => username === givenUsername)
-      .followers.some(({ username }) => username === currentUser?.username);
+      .followers.some(({ username }) => username === user?.username);
+
   return (
     <div className="who-to-follow">
       <h1>Who to follow </h1>
