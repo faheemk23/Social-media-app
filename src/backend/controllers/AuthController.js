@@ -37,6 +37,8 @@ export const signupHandler = function (schema, request) {
       username,
       password,
       ...rest,
+      avatar:
+        "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687130294/604107_hagbnz.jpg",
       followers: [],
       following: [],
       bookmarks: [],
