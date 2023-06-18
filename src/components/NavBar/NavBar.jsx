@@ -59,7 +59,7 @@ export default function NavBar({ inBottom }) {
             <i className="fa-regular fa-user navlink-icon"></i>
             <span className="navlink-text">Profile</span>
           </NavLink>
-          {!inBottom && <button>Tweet</button>}
+          {!inBottom && <button className="btn-tweet navlink">Tweet</button>}
         </>
       )}
       {loggedIn ? (

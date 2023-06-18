@@ -52,6 +52,15 @@ div.logo:hover {
   margin-left: 1.2rem;
 }
 
+button.btn-tweet {
+  border-radius: 2rem;
+  color: white;
+  font-size: larger;
+  background-color: var(--primary-color);
+  border: none;
+  margin-bottom: 10rem;
+}
+
 @media screen and (max-width: 1200px) {
   .nav {
     gap: 0rem;
