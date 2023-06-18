@@ -16,6 +16,8 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    video:
+      "https://res.cloudinary.com/dlzwbrjjs/video/upload/v1686958432/videos/sgumlgm6tgkiiesiqlq0.mp4",
     username: "divya19",
     name: "Divya Saxena",
     createdAt: formatDate(),
@@ -23,13 +25,17 @@ export const posts = [
   },
   {
     _id: "afbfa61a-dc28-4199-a4cb-f73b880c0f80",
-    content: "ye Error jata kyu nahi hai",
+    content: "ye Error jata kyu nahi hai ",
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "faisalk41",
     name: "Faisal Khan",
     createdAt: formatDate(),
@@ -37,13 +43,23 @@ export const posts = [
   },
   {
     _id: "afbfa61a-dc28-4199-a4cb-g23b110c0f31",
-    content: "Hola Amigos ",
+    content:
+      "Made my first major 𝐑𝐞𝐚𝐜𝐭 project ( an 𝐄𝐜𝐨𝐦𝐦𝐞𝐫𝐜𝐞 𝐀𝐩𝐩 to buy groceries online ). Had the most fun time building this from scratch. Realized that more than writing code it's about understanding how the data is flowing and how the pieces are interacting with each other. Do check it out. Feedback are most welcome ",
+    links: {
+      "𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐋𝐢𝐧𝐤": "https://lnkd.in/dSiZpbBf",
+      "𝐆𝐢𝐭𝐡𝐮𝐛 𝐫𝐞𝐩𝐨": "https://lnkd.in/dc8bqhS5",
+    },
     likes: {
       likeCount: 0,
       likedBy: [],
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
+    video:
+      "https://res.cloudinary.com/dlzwbrjjs/video/upload/v1686958432/videos/sgumlgm6tgkiiesiqlq0.mp4",
     username: "faheemk237",
     name: "Faheem Khan",
     createdAt: formatDate(),
@@ -59,6 +75,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "adarshbalak",
     name: "Adarsh Balak",
     createdAt: "2023-06-11T12:00:28+05:30",
@@ -73,6 +92,10 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "anujkumar",
     name: "Anuj Kumar",
     createdAt: "2023-06-10T10:55:06+05:30",
@@ -88,6 +111,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "adarshbalak",
     name: "Adarsh Balak",
     createdAt: "2023-06-09T10:55:06+05:30",
@@ -103,6 +129,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "hrishi11",
     name: "Hrishi Bar",
     createdAt: "2023-06-08T10:55:06+05:30",
@@ -118,6 +147,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "hrishi11",
     name: "Hrishi Bar",
     createdAt: "2023-06-05T10:55:06+05:30",
@@ -133,6 +165,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "rohanB",
     name: "Rohan Bond",
     createdAt: "2023-06-01T10:55:06+05:30",
@@ -147,6 +182,9 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
     username: "rohanB",
     name: "Rohan Bond",
     createdAt: "2023-05-21T10:55:06+05:30",

@@ -31,7 +31,7 @@ export const users = [
       },
     ],
     avatar:
-      "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686961152/IMG_20230131_114212_qkvum8.jpg",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -64,7 +64,7 @@ export const users = [
     updatedAt: formatDate(),
   },
   {
-    _id: "37f2383f-8b8a-44c9-b02d",
+    _id: "44c9-b02d-37f2383f-8b8a-bshghsgds",
     name: "Divya Saxena",
     username: "divya19",
     password: "divya",
