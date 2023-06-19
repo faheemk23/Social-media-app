@@ -75,6 +75,8 @@ export default function PostCard({ post }) {
       ({ username }) => username === currentUser.username
     );
 
+  const contentLines = content.split("\n");
+
   useEffect(() => {
     const handleOutsideClick = () => {
       setShowEllipsisContent(false);
@@ -99,7 +101,13 @@ export default function PostCard({ post }) {
         <span className="post-name">{name}</span>
         <span className="post-username">@{username}</span>
         <span className="post-timestamp"> · {getTimeStamp()}</span>
-        <div className="post-content">{content}</div>
+        <div className="post-content">
+          {contentLines.map((line, index) => (
+            <div key={index} className={line === "" ? "empty-line" : ""}>
+              {line}
+            </div>
+          ))}
+        </div>
         {links &&
           Object?.entries(links)?.map(([label, link]) => (
             <div>

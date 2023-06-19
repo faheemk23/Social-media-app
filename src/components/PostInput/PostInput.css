@@ -150,7 +150,3 @@ button:disabled {
 button:disabled:hover {
   cursor: not-allowed;
 }
-
-div:focus {
-  border: solid;
-}

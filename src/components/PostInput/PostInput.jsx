@@ -54,7 +54,7 @@ export default function PostInput() {
     postInputDispatch({ type: "remove-image", payload: imageToRemove });
   };
 
-  const isEmpty = () => images.length === 0 && text.length <= 1 && !video;
+  const isEmpty = () => images.length === 0 && text.length < 1 && !video;
 
   const handleBtnTweet = async (e) => {
     // clear content
