@@ -20,7 +20,7 @@ export default function WhoToFollow() {
         } else if (followers.length === 0) {
           return true;
         } else {
-          return followers.some(({ username }) => username !== user?.username);
+          return !followers.some(({ username }) => username === user?.username);
         }
       }
     );
@@ -32,8 +32,7 @@ export default function WhoToFollow() {
   };
 
   useEffect(() => {
-    console.log(getWhoToFollowArray());
-    setTimeout(() => setWhoToFollow(() => getWhoToFollowArray()), 1000);
+    setTimeout(() => setWhoToFollow(() => getWhoToFollowArray()), 1500);
   }, [location]);
 
   const isFollowed = (givenUsername) =>
