@@ -7,4 +7,4 @@ import { Post } from "./Post/Post";
 import { Profile } from "./Profile/Profile";
 import { Signup } from "./Signup/Signup";
 
-export { Bookmarks, Explore, Home, Login, Post, Profile, Signup, Landing };
+export { Bookmarks, Explore, Home, Landing, Login, Post, Profile, Signup };

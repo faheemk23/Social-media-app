@@ -1,11 +1,12 @@
 import { useContext } from "react";
+
+import { PostCard } from "../../components/cards/PostCard/PostCard";
+import { BookmarksHeader } from "../../components/headers/BookmarksHeader";
 import { DataContext } from "../../contexts/DataContext";
-import PostCard from "../../components/cards/PostCard/PostCard";
-import BookmarksHeader from "../../components/headers/BookmarksHeader";
 
 import "./Bookmarks.css";
 
-export function Bookmarks() {
+export function Bookmarks({}) {
   const { dataState } = useContext(DataContext);
 
   const getBookmarkPost = (postId) =>
