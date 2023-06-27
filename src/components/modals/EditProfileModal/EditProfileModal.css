@@ -1,0 +1,51 @@
+.edit-profile-modal {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 600px;
+  overflow-y: scroll;
+  position: relative;
+}
+
+.label-container {
+  position: relative;
+  /* opacity: 0.5; */
+  width: fit-content;
+}
+
+.edit-profile-avatar {
+  position: absolute;
+  border: 6px solid white;
+  top: 170px;
+  left: 10px;
+  border-radius: 50%;
+}
+
+.cover-container > img {
+  opacity: 0.6;
+  object-fit: cover;
+}
+
+.camera-icon {
+  position: absolute;
+  font-size: x-large;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: #56595c;
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.edit-profile-info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+
+.cover-container {
+  width: 100%;
+}
