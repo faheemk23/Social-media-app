@@ -10,10 +10,16 @@
   border-radius: 1rem;
 } */
 
+.navlink {
+  max-width: fit-content;
+}
+
 .nav-left {
   flex-direction: column;
   max-width: 220px;
   margin-left: auto;
+  margin-right: 2rem;
+  height: 100vh;
 }
 
 .nav-bottom {
@@ -44,21 +50,48 @@ div.logo:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+.hover-light-black-bg:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 .navlink-icon {
   font-size: x-large;
 }
 .navlink-text {
   font-size: larger;
-  margin-left: 1.2rem;
+  margin: 0 1.2rem;
 }
 
-button.btn-tweet {
+.btn-tweet {
   border-radius: 2rem;
   color: white;
   font-size: larger;
   background-color: var(--primary-color);
   border: none;
-  margin-bottom: 10rem;
+  margin-top: 1rem;
+  /* margin-bottom: 10rem; */
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
+}
+
+.btn-tweet:hover {
+  opacity: 0.8;
+}
+
+.below-1200 {
+  display: none;
+}
+
+.navbar-profile {
+  margin-top: auto;
+  margin-bottom: 3rem;
+  padding: 1rem 1rem 1rem 0.5rem;
+  border-radius: 5rem;
+}
+
+.navbar-profile-ellipse {
+  align-self: center;
+  margin-left: auto;
 }
 
 @media screen and (max-width: 1200px) {
@@ -76,11 +109,34 @@ button.btn-tweet {
   }
   .nav-left {
     align-items: center;
+    margin-right: 0;
+  }
+
+  .btn-tweet {
+    border-radius: 50%;
+    padding: 0.7rem;
+    aspect-ratio: 1;
+  }
+
+  .below-1200 {
+    display: block;
+  }
+  .above-1200 {
+    display: none;
+  }
+
+  .navbar-profile {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    padding: 0.5rem 0.3rem 0.3rem 0.5rem;
   }
 }
 
 @media screen and (max-width: 550px) {
   .navlink-icon {
     font-size: large;
+  }
+  .navbar-profile {
+    margin-bottom: 0;
   }
 }
