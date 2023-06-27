@@ -8,40 +8,6 @@ import { formatDate } from "../utils/authUtils";
 
 export const posts = [
   {
-    _id: "4a200ad0-8487-47c8-9595-0b70043eecda",
-    content: "lorem ipsum daisy. ",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    comments: [],
-    video:
-      "https://res.cloudinary.com/dlzwbrjjs/video/upload/v1686958432/videos/sgumlgm6tgkiiesiqlq0.mp4",
-    username: "divya19",
-    name: "Divya Saxena",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
-  {
-    _id: "afbfa61a-dc28-4199-a4cb-f73b880c0f80",
-    content: "ye Error jata kyu nahi hai ",
-    likes: {
-      likeCount: 0,
-      likedBy: [],
-      dislikedBy: [],
-    },
-    comments: [],
-    images: [
-      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
-      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
-    ],
-    username: "faisalk41",
-    name: "Faisal Khan",
-    createdAt: formatDate(),
-    updatedAt: formatDate(),
-  },
-  {
     _id: "afbfa61a-dc28-4199-a4cb-g23b110c0f31",
     content:
       "Made my first major 𝐑𝐞𝐚𝐜𝐭 project ( an 𝐄𝐜𝐨𝐦𝐦𝐞𝐫𝐜𝐞 𝐀𝐩𝐩 to buy groceries online ). Had the most fun time building this from scratch. Realized that more than writing code it's about understanding how the data is flowing and how the pieces are interacting with each other. Do check it out. Feedback are most welcome ",
@@ -65,6 +31,43 @@ export const posts = [
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
+  {
+    _id: "4a200ad0-8487-47c8-9595-0b70043eecda",
+    content: "lorem ipsum daisy. ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
+    username: "divya19",
+    name: "Divya Saxena",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+  {
+    _id: "afbfa61a-dc28-4199-a4cb-f73b880c0f80",
+    content: "ye Error jata kyu nahi hai ",
+    likes: {
+      likeCount: 0,
+      likedBy: [],
+      dislikedBy: [],
+    },
+    comments: [],
+    images: [
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
+    ],
+    username: "faisalk41",
+    name: "Faisal Khan",
+    createdAt: formatDate(),
+    updatedAt: formatDate(),
+  },
+
   {
     _id: "406acf0d-a683-4c80-a42d-92f0c6544dca",
     content:

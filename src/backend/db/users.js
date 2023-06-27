@@ -32,6 +32,11 @@ export const users = [
     ],
     avatar:
       "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686961152/IMG_20230131_114212_qkvum8.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687813222/a_bcefs0.webp",
+    bio: "Add the bio",
+    location: "Add the location",
+    website: "https://faheemk.netlify.app/",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -60,6 +65,11 @@ export const users = [
     ],
     avatar:
       "https://res.cloudinary.com/anujy0510/image/upload/v1652872171/pexels-photo-1516680_xtfewh.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    bio: "Add the bio",
+    location: "Add the location",
+    website: "https://www.google.com",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -70,7 +80,13 @@ export const users = [
     password: "divya",
     followers: [],
     following: [],
-    avatar: "https://source.unsplash.com/random/50x50/?indiangirl",
+    avatar:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686878380/samples/people/boy-snow-hoodie.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    bio: "Add the bio",
+    location: "Add the location",
+    website: "https://www.google.com",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -85,6 +101,9 @@ export const users = [
     website: "https://adarshbalak.netlify.app",
     avatar:
       "https://res.cloudinary.com/anujy0510/image/upload/v1652788469/portrait-young-indian-top-manager-t-shirt-tie-crossed-arms-smiling-white-isolated-wall_496169-1513_ac8h4f.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    location: "Add the location",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -99,6 +118,9 @@ export const users = [
     website: "https://anujkumar.netlify.app/",
     avatar:
       "https://res.cloudinary.com/anujy0510/image/upload/v1652788722/Profile-pic_tuz4io.png",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    location: "Add the location",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -113,6 +135,9 @@ export const users = [
     website: "https://hrishib.netlify.app/",
     avatar:
       "https://res.cloudinary.com/anujy0510/image/upload/v1653386642/151260930_420560685681454_256005377522807930_n.jpg_s4tt5l.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    location: "Add the location",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -127,6 +152,9 @@ export const users = [
     website: "https://rohanspage.netlify.app/",
     avatar:
       "https://res.cloudinary.com/anujy0510/image/upload/v1653386885/125404086_664416567582674_1469284624591573101_n.jpg_g0nqyn.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    location: "Add the location",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
@@ -140,7 +168,10 @@ export const users = [
     bio: "Something",
     website: "https://johndoe.netlify.app/",
     avatar:
-      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687130294/604107_hagbnz.jpg",
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687240659/604107_hagbnz.jpg",
+    cover:
+      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+    location: "Add the location",
     createdAt: formatDate(),
     updatedAt: formatDate(),
   },
