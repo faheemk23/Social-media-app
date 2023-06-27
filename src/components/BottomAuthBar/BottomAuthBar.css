@@ -29,7 +29,7 @@
   font-size: medium;
 }
 
-.btn {
+.btn-bottom-auth {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 2rem;
@@ -63,7 +63,7 @@
     display: none;
   }
 
-  .btn {
+  .btn-bottom-auth {
     flex-grow: 1;
   }
 

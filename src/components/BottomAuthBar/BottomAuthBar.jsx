@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import "./BottomAuthBar.css";
 
 export default function BottomAuthBar() {
@@ -9,10 +10,10 @@ export default function BottomAuthBar() {
         <div className="smaller">People on Twitter are the first to know.</div>
       </section>
       <section className="bottom-auth-bar-buttons">
-        <Link className="btn btn-login" to="/login">
+        <Link className="btn-bottom-auth btn-login" to="/login">
           Log in
         </Link>
-        <Link className="btn btn-signup" to="/signup">
+        <Link className="btn-bottom-auth btn-signup" to="/signup">
           Sign up
         </Link>
       </section>
