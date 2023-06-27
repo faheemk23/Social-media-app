@@ -1,23 +1,25 @@
+import dayjs from "dayjs";
 import { useContext, useEffect, useState } from "react";
-import "./PostCard.css";
-import {
-  deletePost,
-  dislikePost,
-  likePost,
-} from "../../../utilities/postsUtilities";
+import { Link, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../../../contexts/AuthContext";
 import { DataContext } from "../../../contexts/DataContext";
 import {
   addToBookmark,
   removeFromBookmark,
 } from "../../../utilities/bookmarkUtilities";
-import dayjs from "dayjs";
+import {
+  deletePost,
+  dislikePost,
+  likePost,
+} from "../../../utilities/postsUtilities";
 import { followUser, unfollowUser } from "../../../utilities/userUtilities";
-import { Link, useNavigate } from "react-router-dom";
 import PostImages from "../../PostImages/PostImages";
-import { AuthContext } from "../../../contexts/AuthContext";
+import "./PostCard.css";
 
-export default function PostCard({ post }) {
+export function PostCard({ post }) {
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
+  const [showEditPost, setShowEditPost] = useState(false);
 
   const { dataState, dataDispatch } = useContext(DataContext);
   const { user } = useContext(AuthContext);
@@ -43,8 +45,6 @@ export default function PostCard({ post }) {
 
   const { likeCount, likedBy } = likes ?? {};
 
-  console.log(likedBy);
-
   const isLiked = () =>
     likedBy.some(({ username }) => username === user.username);
 
@@ -53,6 +53,8 @@ export default function PostCard({ post }) {
   const postUser = users.find(
     ({ username: currUser }) => currUser === username
   );
+
+  console.log({ postUser });
 
   const currentUser = JSON.parse(localStorage.getItem("userData"));
 
@@ -75,31 +77,42 @@ export default function PostCard({ post }) {
       ({ username }) => username === currentUser.username
     );
 
+  const navigateToProfile = (e) => {
+    e.stopPropagation();
+    navigate(`/profile/${username}`);
+  };
+
   const contentLines = content.split("\n");
 
   useEffect(() => {
     const handleOutsideClick = () => {
       setShowEllipsisContent(false);
     };
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
 
   return (
     <article
-      className="post-card"
-      onClick={() => setShowEllipsisContent(false)}
+      className="post-card pointer"
+      // onClick={() => setShowEllipsisContent(false)}
+      onClick={() => navigate(`/post/${_id}`)}
     >
       <img
         src={avatar}
         alt="user-image"
-        className="user-avatar"
+        className="user-avatar pointer"
         height="40px"
         width="40px"
+        onClick={navigateToProfile}
       />
       <section className="post-text">
-        <span className="post-name">{name}</span>
-        <span className="post-username">@{username}</span>
+        <span className="post-name pointer" onClick={navigateToProfile}>
+          {postUser.name}
+        </span>
+        <span className="post-username pointer" onClick={navigateToProfile}>
+          @{username}
+        </span>
         <span className="post-timestamp"> · {getTimeStamp()}</span>
         <div className="post-content">
           {contentLines.map((line, index) => (
@@ -111,7 +124,10 @@ export default function PostCard({ post }) {
         {links &&
           Object?.entries(links)?.map(([label, link]) => (
             <div>
-              <Link to={link}>{label}</Link>
+              {label} -
+              <Link className="link" to={link}>
+                {link}
+              </Link>
             </div>
           ))}
         {!video && <PostImages images={images} />}
@@ -131,7 +147,10 @@ export default function PostCard({ post }) {
           {isLiked() ? (
             <div
               className="pink"
-              onClick={() => dislikePost(_id, dataDispatch)}
+              onClick={(e) => {
+                e.stopPropagation();
+                dislikePost(_id, dataDispatch);
+              }}
             >
               <i className="fa-solid fa-heart "></i>
               <span className="post-icon-text ">{likeCount}</span>
@@ -139,7 +158,10 @@ export default function PostCard({ post }) {
           ) : (
             <div
               className="hover-pink"
-              onClick={() => likePost(_id, dataDispatch)}
+              onClick={(e) => {
+                e.stopPropagation();
+                likePost(_id, dataDispatch);
+              }}
             >
               <i className="fa-regular fa-heart "></i>
               <span className="post-icon-text">{likeCount}</span>
@@ -152,11 +174,21 @@ export default function PostCard({ post }) {
           </div>
 
           {isBookmarked(_id) ? (
-            <div onClick={() => removeFromBookmark(_id, dataDispatch)}>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                removeFromBookmark(_id, dataDispatch);
+              }}
+            >
               <i className="fa-solid fa-bookmark primary-color"></i>
             </div>
           ) : (
-            <div onClick={() => addToBookmark(_id, dataDispatch)}>
+            <div
+              onClick={(e) => {
+                e.stopPropagation();
+                addToBookmark(_id, dataDispatch);
+              }}
+            >
               <i className="fa-regular fa-bookmark hover-primary-color"></i>
             </div>
           )}
@@ -172,7 +204,7 @@ export default function PostCard({ post }) {
                 <>
                   {currentUser.username === username ? (
                     <div>
-                      <div>
+                      <div onClick={() => setShowEditPost(true)}>
                         {" "}
                         <i className="fa-regular fa-pen-to-square"></i> Edit
                       </div>
