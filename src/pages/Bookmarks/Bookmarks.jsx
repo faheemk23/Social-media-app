@@ -1,19 +1,13 @@
-import { useContext, useEffect } from "react";
-import "./Bookmarks.css";
-import { getAllBookmarks } from "../../utilities/bookmarkUtilities";
+import { useContext } from "react";
+
+import { PostCard } from "../../components/cards/PostCard/PostCard";
+import { BookmarksHeader } from "../../components/headers/BookmarksHeader";
 import { DataContext } from "../../contexts/DataContext";
-import PostCard from "../../components/cards/PostCard/PostCard";
-import { PrivateDataContext } from "../../contexts/PrivateDataContext";
-import BookmarksHeader from "../../components/headers/BookmarksHeader";
 
-export function Bookmarks() {
-  const { dataState, dataDispatch } = useContext(DataContext);
-  const { privateDataState, privateDataDispatch } =
-    useContext(PrivateDataContext);
+import "./Bookmarks.css";
 
-  useEffect(() => {
-    getAllBookmarks(privateDataDispatch);
-  }, []);
+export function Bookmarks({}) {
+  const { dataState } = useContext(DataContext);
 
   const getBookmarkPost = (postId) =>
     dataState.posts.find(({ _id }) => _id === postId);
@@ -21,7 +15,7 @@ export function Bookmarks() {
   return (
     <div>
       <BookmarksHeader />
-      {privateDataState.bookmarks.map((postId) => (
+      {dataState.bookmarks.map((postId) => (
         <PostCard key={postId} post={getBookmarkPost(postId)} inBookmark />
       ))}
     </div>

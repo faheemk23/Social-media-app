@@ -1,0 +1,17 @@
+.profile-avatar {
+  border: 6px solid white;
+  /* transform: translateY(-52%) translateX(15px); */
+  position: absolute;
+  top: 130px;
+  left: 10px;
+}
+
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
+
+.profile-info {
+  padding: 65px 20px 20px;
+}

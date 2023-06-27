@@ -1,10 +1,12 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
-import "./NavBar.css";
 import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
-export default function NavBar({ inBottom }) {
-  const { setUser, loggedIn, setLoggedIn } = useContext(AuthContext);
+import { AuthContext } from "../../contexts/AuthContext";
+import { ProfileSmall } from "../ProfileSmall/ProfileSmall";
+import "./NavBar.css";
+
+export default function NavBar({ inBottom, setShowCreatePostModal }) {
+  const { user, setUser, loggedIn, setLoggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const getActiveStyle = ({ isActive }) =>
     isActive ? { fontWeight: "bold" } : {};
@@ -55,13 +57,49 @@ export default function NavBar({ inBottom }) {
             <i className="fa-regular fa-bookmark navlink-icon"></i>
             <span className="navlink-text">Bookmarks</span>
           </NavLink>
-          <NavLink className="navlink" style={getActiveStyle} to="/profile/1">
+          <NavLink
+            className="navlink"
+            style={getActiveStyle}
+            to={`/profile/${user.username}`}
+          >
             <i className="fa-regular fa-user navlink-icon"></i>
             <span className="navlink-text">Profile</span>
           </NavLink>
-          {!inBottom && <button>Tweet</button>}
+          {!inBottom && (
+            <button
+              className="btn-tweet "
+              onClick={() => setShowCreatePostModal(true)}
+            >
+              <span className="above-1200">Tweet</span>
+              <span className="below-1200">
+                <sup>+</sup>
+                <i className="fa-solid fa-feather"></i>
+              </span>
+            </button>
+          )}
+          <div className="navbar-profile hover-light-black-bg">
+            <div className="above-1200 flex">
+              <ProfileSmall
+                avatar={user.avatar}
+                name={user.name}
+                username={user.username}
+              />
+              <i className="fa-solid fa-ellipsis navbar-profile-ellipse"></i>
+            </div>
+
+            <div className="below-1200">
+              <img
+                className="user-avatar "
+                src={user.avatar}
+                alt="user-image"
+                height="40px"
+                width="40px"
+              />
+            </div>
+          </div>
         </>
       )}
+
       {loggedIn ? (
         <button onClick={handleBtnLogout}>Logout</button>
       ) : (

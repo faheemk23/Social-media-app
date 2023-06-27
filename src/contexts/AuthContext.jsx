@@ -1,6 +1,5 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { DataContext } from "./DataContext";
 import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -18,7 +17,7 @@ export function AuthProvider({ children }) {
         );
         if (userInDatabase) {
           setLoggedIn(true);
-          setUser(currentUser);
+          setUser(() => currentUser);
         }
       } catch (e) {
         console.error(e.message);

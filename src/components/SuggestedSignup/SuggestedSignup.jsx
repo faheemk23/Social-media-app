@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import "./SuggestedSignup.css";
 
 export default function SuggestedSignup() {
@@ -8,14 +9,14 @@ export default function SuggestedSignup() {
       <p className="suggested-signup-text">
         Sign up now to get your own personalized timeline!
       </p>
-      <Link className="btn btn-create-account" to="/signup">
+      <Link className="btn-create-account" to="/signup">
         <i className="fa-solid fa-user-plus"></i> Create account
       </Link>
       <p className="suggested-signup-text">
         By signing up, you agree to the{" "}
-        <Link className="suggested-signup-link">Terms of service</Link> and{" "}
-        <Link className="suggested-signup-link">Privacy Policy</Link>, including{" "}
-        <Link className="suggested-signup-link">Cookie use</Link>.
+        <Link className="link">Terms of service</Link> and{" "}
+        <Link className="link">Privacy Policy</Link>, including{" "}
+        <Link className="link">Cookie use</Link>.
       </p>
     </section>
   );

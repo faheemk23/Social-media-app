@@ -1,8 +1,9 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./LoginCard.css";
-import { loginHandler } from "../../../utilities/authUtilities";
 import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { AuthContext } from "../../../contexts/AuthContext";
+import { loginHandler } from "../../../utilities/authUtilities";
+import "./LoginCard.css";
 
 export function LoginCard() {
   const [userDetail, setUserDetail] = useState({

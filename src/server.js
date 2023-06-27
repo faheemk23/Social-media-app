@@ -1,30 +1,31 @@
-import { Server, Model, RestSerializer } from "miragejs";
-import { posts } from "./backend/db/posts";
-import { users } from "./backend/db/users";
+import { Model, RestSerializer, Server } from "miragejs";
+
 import {
   loginHandler,
   signupHandler,
 } from "./backend/controllers/AuthController";
 import {
   createPostHandler,
+  deletePostHandler,
+  dislikePostHandler,
+  editPostHandler,
+  getAllUserPostsHandler,
   getAllpostsHandler,
   getPostHandler,
-  deletePostHandler,
-  editPostHandler,
   likePostHandler,
-  dislikePostHandler,
-  getAllUserPostsHandler,
 } from "./backend/controllers/PostController";
 import {
+  bookmarkPostHandler,
+  editUserHandler,
   followUserHandler,
   getAllUsersHandler,
-  getUserHandler,
   getBookmarkPostsHandler,
-  bookmarkPostHandler,
+  getUserHandler,
   removePostFromBookmarkHandler,
   unfollowUserHandler,
-  editUserHandler,
 } from "./backend/controllers/UserController";
+import { posts } from "./backend/db/posts";
+import { users } from "./backend/db/users";
 
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -70,7 +71,7 @@ export function makeServer({ environment = "development" } = {}) {
 
       // user routes (public)
       this.get("/users", getAllUsersHandler.bind(this));
-      this.get("/users/:userId", getUserHandler.bind(this));
+      this.get("/users/:username", getUserHandler.bind(this));
 
       // user routes (private)
       this.post("users/edit", editUserHandler.bind(this));
@@ -85,6 +86,7 @@ export function makeServer({ environment = "development" } = {}) {
         "/users/unfollow/:followUserId/",
         unfollowUserHandler.bind(this)
       );
+      this.passthrough("https://api.cloudinary.com/v1_1/dlzwbrjjs/**");
     },
   });
 }

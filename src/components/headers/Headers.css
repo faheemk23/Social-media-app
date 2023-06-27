@@ -1,10 +1,11 @@
 .header-container {
   min-height: 100px;
   width: 100%;
-  opacity: 0.96;
+  /* opacity: 1; */
   position: sticky;
   top: 0;
-  background-color: white;
+  /* background-color: white; */
+  background-color: rgba(255, 255, 255, 0.97);
   z-index: 10;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
@@ -13,4 +14,15 @@
   font-size: 1.3rem;
   font-weight: 900;
   padding: 1rem;
+}
+
+.line-under-active-filter {
+  background-color: var(--primary-color);
+  line-height: 15;
+  min-height: 4px;
+  border-radius: 1rem;
+  /* border: solid; */
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }

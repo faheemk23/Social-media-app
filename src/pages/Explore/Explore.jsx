@@ -1,8 +1,9 @@
 import { useContext } from "react";
+
+import { PostCard } from "../../components/cards/PostCard/PostCard";
+import { ExploreHeader } from "../../components/headers/ExploreHeader";
 import { DataContext } from "../../contexts/DataContext";
 import "./Explore.css";
-import PostCard from "../../components/cards/PostCard/PostCard";
-import ExploreHeader from "../../components/headers/ExploreHeader";
 
 export function Explore() {
   const { dataState } = useContext(DataContext);

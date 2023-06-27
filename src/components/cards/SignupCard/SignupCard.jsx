@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-import "./SignupCard.css";
 import { Link, useNavigate } from "react-router-dom";
-import { signupHandler } from "../../../utilities/authUtilities";
-import { AuthContext } from "../../../contexts/AuthContext";
 
-export default function SignupCard() {
+import { AuthContext } from "../../../contexts/AuthContext";
+import { signupHandler } from "../../../utilities/authUtilities";
+import "./SignupCard.css";
+
+export function SignupCard() {
   const [userDetail, setUserDetail] = useState({
     name: "",
     username: "",
@@ -13,7 +14,7 @@ export default function SignupCard() {
     confirmPassword: "",
   });
 
-  const { setLoggedIn } = useContext(AuthContext);
+  const { setUser, setLoggedIn } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ export default function SignupCard() {
 
   const handleBtnSignup = () => {
     if (valiateDetails(userDetail, setErrorMessage)) {
-      signupHandler(userDetail, navigate, setLoggedIn);
+      signupHandler(userDetail, navigate, setLoggedIn, setUser);
     }
   };
 
