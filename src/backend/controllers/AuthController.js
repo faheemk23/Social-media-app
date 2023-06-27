@@ -1,5 +1,5 @@
-import { v4 as uuid } from "uuid";
 import { Response } from "miragejs";
+import { v4 as uuid } from "uuid";
 import { formatDate } from "../utils/authUtils";
 const sign = require("jwt-encode");
 
@@ -38,7 +38,10 @@ export const signupHandler = function (schema, request) {
       password,
       ...rest,
       avatar:
-        "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687130294/604107_hagbnz.jpg",
+        "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687240659/604107_hagbnz.jpg",
+      cover:
+        "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1687206197/default_zv9ivw.jpg",
+      website: "https://faheemk.netlify.app/",
       followers: [],
       following: [],
       bookmarks: [],

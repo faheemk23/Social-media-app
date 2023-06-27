@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
+
 import { dataReducer } from "../reducers/dataReducer";
-import { getAllUsers } from "../utilities/userUtilities";
-import { getAllPosts } from "../utilities/postsUtilities";
-import { AuthContext } from "./AuthContext";
 import { getAllBookmarks } from "../utilities/bookmarkUtilities";
+import { getAllPosts } from "../utilities/postsUtilities";
+import { getAllUsers } from "../utilities/userUtilities";
+import { AuthContext } from "./AuthContext";
 
 export const DataContext = createContext();
 

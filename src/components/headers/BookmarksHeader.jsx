@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
-import "./Headers.css";
 import { AuthContext } from "../../contexts/AuthContext";
 
-export default function BookmarksHeader() {
+import "./Headers.css";
+
+export function BookmarksHeader() {
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
 
   const { user } = useContext(AuthContext);

@@ -1,6 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+
 import "./PostImages.css";
-import { Link, useNavigate } from "react-router-dom";
 
 export default function PostImages({ images }) {
   const navigate = useNavigate();
