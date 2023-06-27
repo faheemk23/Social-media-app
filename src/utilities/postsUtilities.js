@@ -13,6 +13,26 @@ export async function getAllPosts(dataDispatch) {
   }
 }
 
+export async function getPost(postId, setPost, setLoading) {
+  try {
+    const res = await axios.get(`/api/posts/${postId}`);
+    setPost(res.data.post);
+  } catch (e) {
+    console.error(e.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
+export async function getUserPosts(username, setUserPosts) {
+  try {
+    const res = await axios.get(`/api/posts/user/${username}`);
+    setUserPosts(res.data.posts);
+  } catch (e) {
+    console.error(e.message);
+  }
+}
+
 export async function deletePost(postId, dataDispatch) {
   const encodedToken = localStorage.getItem("token");
   try {
