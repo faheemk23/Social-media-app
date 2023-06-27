@@ -15,3 +15,14 @@
   font-weight: 900;
   padding: 1rem;
 }
+
+.line-under-active-filter {
+  background-color: var(--primary-color);
+  line-height: 15;
+  min-height: 4px;
+  border-radius: 1rem;
+  /* border: solid; */
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
