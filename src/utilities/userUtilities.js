@@ -10,6 +10,17 @@ export async function getAllUsers(dataDispatch) {
   }
 }
 
+export async function getUser(username, setUser, setLoading) {
+  try {
+    const res = await axios.get(`/api/users/${username}`);
+    setUser(res.data.user);
+  } catch (e) {
+    console.error(e.message);
+  } finally {
+    setLoading(false);
+  }
+}
+
 export async function followUser(userId, dataDispatch) {
   const encodedToken = localStorage.getItem("token");
 
@@ -22,6 +33,7 @@ export async function followUser(userId, dataDispatch) {
     const { user, followUser } = res.data;
 
     toast.success(`Followed @${followUser.username}`);
+
     dataDispatch({ type: "update-user", payload: followUser });
 
     dataDispatch({ type: "update-user", payload: user });
@@ -47,5 +59,21 @@ export async function unfollowUser(userId, dataDispatch) {
     dataDispatch({ type: "update-user", payload: user });
   } catch (e) {
     console.error(e.message);
+  }
+}
+
+export async function editProfileHandler(userData, setUser, dataDispatch) {
+  const encodedToken = localStorage.getItem("token");
+  try {
+    console.log("yes");
+    const res = await axios.post(
+      `/api/users/edit`,
+      { userData },
+      { headers: { authorization: encodedToken } }
+    );
+    setUser(res.data.user);
+    dataDispatch({ type: "update-user", payload: res.data.user });
+  } catch (e) {
+    console.log(e.message);
   }
 }
