@@ -1,0 +1,9 @@
+.profile-small-username {
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: 0.1rem;
+}
+
+.flex {
+  display: flex;
+  gap: 0.5rem;
+}
