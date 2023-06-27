@@ -1,20 +1,20 @@
 import { useContext, useReducer, useState } from "react";
-import "./PostInput.css";
-import PostImages from "../PostImages/PostImages";
+import { toast } from "react-hot-toast";
+
 import { AuthContext } from "../../contexts/AuthContext";
-import GifsModal from "../GifsModal/GifsModal";
+import { DataContext } from "../../contexts/DataContext";
+import { postInputReducer } from "../../reducers/postInputReducer";
 import {
   createPost,
   uploadImage,
   uploadVideo,
 } from "../../utilities/postsUtilities";
-import { toast } from "react-hot-toast";
-import { DataContext } from "../../contexts/DataContext";
-import { postInputReducer } from "../../reducers/postInputReducer";
+import { GifsModal } from "../modals/GifsModal/GifsModal";
+import "./PostInput.css";
 
 const initialState = { text: "", images: [], video: null };
 
-export default function PostInput() {
+export default function PostInput({ modal, setShowCreatePostModal }) {
   const [postInputState, postInputDispatch] = useReducer(
     postInputReducer,
     initialState
@@ -62,6 +62,9 @@ export default function PostInput() {
     const textDiv = document.getElementById("user-input-text");
     textDiv.innerText = "";
     postInputDispatch({ type: "clear-all" });
+
+    modal && setShowCreatePostModal(false);
+
     toast.success("Tweeted");
     e.preventDefault();
 
@@ -102,6 +105,14 @@ export default function PostInput() {
 
   return (
     <form className="post-input-container" onSubmit={handleBtnTweet}>
+      {modal && (
+        <span
+          onClick={() => setShowCreatePostModal(false)}
+          className="btn-modal-close pointer"
+        >
+          ✖
+        </span>
+      )}
       <div>
         <img
           src={avatar}
@@ -131,7 +142,9 @@ export default function PostInput() {
             })
           }
           id="user-input-text"
-          className="post-input-text"
+          className={
+            modal ? "post-input-text post-input-text-modal" : "post-input-text"
+          }
           style={{ whiteSpace: "pre-line" }}
           contentEditable="true"
           placeholder="What is happening?!"
@@ -155,30 +168,6 @@ export default function PostInput() {
                 />
               </div>
             ))}
-
-          {/* <div
-            style={{
-              width: "100%",
-              height: "0",
-              paddingBottom: "100%",
-              position: "relative",
-            }}
-          >
-            <iframe
-              src="https://giphy.com/embed/WGxq9olv4QbBDTH6se"
-              width="100%"
-              height="100%"
-              style={{ position: "absolute" }}
-              frameBorder="0"
-              class="giphy-embed"
-              allowFullScreen
-            ></iframe>
-          </div>
-          <p>
-            <a href="https://giphy.com/gifs/officialWRC-rally-wrc-2023-WGxq9olv4QbBDTH6se">
-              via GIPHY
-            </a>
-          </p> */}
         </div>
         {video && (
           <div className="relative video-container">
@@ -250,7 +239,10 @@ export default function PostInput() {
           <button
             type="submit"
             disabled={
-              !video && images.length === 0 && text.length < 2 ? true : false
+              (!video && images.length === 0 && text.length < 1) ||
+              text === "\n"
+                ? true
+                : false
             }
             className="post-input-btn-tweet pointer"
           >
