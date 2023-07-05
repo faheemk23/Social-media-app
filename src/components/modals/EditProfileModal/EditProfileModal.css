@@ -2,15 +2,16 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  height: 600px;
+  /* height: 600px; */
   width: 600px;
   overflow-y: scroll;
   position: relative;
+  padding: 1rem 0.1rem;
+  border-radius: 1rem;
 }
 
 .label-container {
   position: relative;
-  /* opacity: 0.5; */
   width: fit-content;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .cover-container > img {
-  opacity: 0.6;
+  opacity: 0.4;
   object-fit: cover;
 }
 
@@ -43,9 +44,53 @@
 .edit-profile-info {
   display: flex;
   flex-direction: column;
+  gap: 0.2rem;
   margin-top: 4rem;
+  padding: 0 1rem;
 }
 
 .cover-container {
   width: 100%;
+}
+
+.edit-profile-close-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.edit-profile-heading {
+  font-size: x-large;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 3rem;
+  position: relative;
+  top: -5px;
+}
+
+.edit-profile-btn-select-avatar {
+  width: 100px;
+  position: absolute;
+  right: 10px;
+  top: 260px;
+  font-size: medium;
+}
+
+.edit-profile-btn-save {
+  font-size: medium;
+  position: relative;
+  top: -10px;
+  margin-right: 0.5rem;
+}
+
+.edit-profile-input {
+  font-size: medium;
+  padding: 0.4rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.4rem;
+}
+
+.edit-profile-label {
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.6);
 }
