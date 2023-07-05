@@ -100,7 +100,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
               <img
                 className="user-avatar "
                 src={user.avatar}
-                alt="user-image"
+                alt="user"
                 height="40px"
                 width="40px"
               />
