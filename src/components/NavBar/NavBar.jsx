@@ -1,22 +1,26 @@
-import { useContext } from "react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../contexts/AuthContext";
+import ProfilePopup from "../ProfilePopup/ProfilePopup";
 import { ProfileSmall } from "../ProfileSmall/ProfileSmall";
 import "./NavBar.css";
 
 export default function NavBar({ inBottom, setShowCreatePostModal }) {
-  const { user, setUser, loggedIn, setLoggedIn } = useContext(AuthContext);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
+  const { user, loggedIn } = useContext(AuthContext);
+
+  const location = useLocation();
+
   const navigate = useNavigate();
+
   const getActiveStyle = ({ isActive }) =>
     isActive ? { fontWeight: "bold" } : {};
 
-  const handleBtnLogout = () => {
-    setLoggedIn(false);
-    setUser({});
-    localStorage.clear();
-    navigate("/explore");
-  };
+  useEffect(() => {
+    setShowProfilePopup(false);
+  }, [location]);
+
   return (
     <nav className={inBottom ? "nav nav-bottom" : "nav nav-left"}>
       {!inBottom && (
@@ -40,7 +44,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
           <span className="navlink-text">Home</span>
         </NavLink>
       )}
-      <NavLink className="navlink" style={getActiveStyle} to="/explore">
+      <NavLink className="navlink" style={getActiveStyle} to="/">
         <i className="fa-solid fa-magnifying-glass navlink-icon"></i>
         <span className="navlink-text">Explore</span>
       </NavLink>
@@ -77,7 +81,12 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
               </span>
             </button>
           )}
-          <div className="navbar-profile hover-light-black-bg">
+          {showProfilePopup && <ProfilePopup />}
+
+          <div
+            className="navbar-profile hover-light-black-bg pointer"
+            onClick={() => setShowProfilePopup((prev) => !prev)}
+          >
             <div className="above-1200 flex">
               <ProfileSmall
                 avatar={user.avatar}
@@ -98,12 +107,6 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
             </div>
           </div>
         </>
-      )}
-
-      {loggedIn ? (
-        <button onClick={handleBtnLogout}>Logout</button>
-      ) : (
-        <Link to="/login">login</Link>
       )}
     </nav>
   );
