@@ -20,6 +20,7 @@ import {
   Explore,
   Home,
   Login,
+  Logout,
   Post,
   Profile,
   Signup,
@@ -49,15 +50,16 @@ function App() {
           <NavBar setShowCreatePostModal={setShowCreatePostModal} />
         </section>
         <section className="middle">
+          {showCreatePostModal && (
+            <CreatePostModal setShowCreatePostModal={setShowCreatePostModal} />
+          )}
           <Routes>
             {/* <Route path="/" element={<Landing />} /> */}
-            <Route
-              path="/home"
-              element={<Home showCreatePostModal={showCreatePostModal} />}
-            />
+            <Route path="/home" element={<Home />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
-            <Route path="/explore" element={<Explore />} />
+            <Route path="/" element={<Explore />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
             <Route path="/post/:postId" element={<Post />} />
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
@@ -81,9 +83,6 @@ function App() {
         </section>
       </section>
       {!loggedIn && <BottomAuthBar />}
-      {showCreatePostModal && (
-        <CreatePostModal setShowCreatePostModal={setShowCreatePostModal} />
-      )}
     </div>
   );
 }
