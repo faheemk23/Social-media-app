@@ -1,0 +1,27 @@
+.logout-modal {
+  width: 320px;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.logout-modal-h2 {
+  margin-bottom: 0;
+}
+
+.logout-modal-text {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.btn-logout-modal {
+  padding: 0.7rem;
+  border-radius: 1.5rem;
+}
