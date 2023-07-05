@@ -1,6 +1,6 @@
 import { Response } from "miragejs";
-import { formatDate, requiresAuth } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
+import { formatDate, requiresAuth } from "../utils/authUtils";
 
 /**
  * All the routes related to post are present here.
@@ -125,15 +125,18 @@ export const editPostHandler = function (schema, request) {
     const postId = request.params.postId;
     const { postData } = JSON.parse(request.requestBody);
     let post = schema.posts.findBy({ _id: postId }).attrs;
-    if (post.username !== user.username) {
-      return new Response(
-        400,
-        {},
-        {
-          errors: ["Cannot edit a Post doesn't belong to the logged in User."],
-        }
-      );
-    }
+
+    // making edit post public for comments
+
+    // if (post.username !== user.username) {
+    //   return new Response(
+    //     400,
+    //     {},
+    //     {
+    //       errors: ["Cannot edit a Post doesn't belong to the logged in User."],
+    //     }
+    //   );
+    // }
     post = { ...post, ...postData };
     this.db.posts.update({ _id: postId }, post);
     return new Response(201, {}, { posts: this.db.posts });
