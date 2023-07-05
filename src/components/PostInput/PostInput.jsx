@@ -1,54 +1,47 @@
-import { useContext, useReducer, useState } from "react";
-import { toast } from "react-hot-toast";
+import { useContext, useEffect, useReducer, useState } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { DataContext } from "../../contexts/DataContext";
 import { postInputReducer } from "../../reducers/postInputReducer";
 import {
-  createPost,
-  uploadImage,
-  uploadVideo,
+  handleBtnTweet,
+  handlePostInputImageInput,
+  handlePostInputVideoInput,
 } from "../../utilities/postsUtilities";
+
 import { GifsModal } from "../modals/GifsModal/GifsModal";
 import "./PostInput.css";
 
-const initialState = { text: "", images: [], video: null };
+export default function PostInput({
+  modal,
+  setShowCreatePostModal,
+  post,
+  inEditPost,
+  inReply,
+  comments,
+}) {
+  const initialState = inEditPost
+    ? {
+        text: post.content,
+        images: post.images ?? [],
+        video: post.video,
+      }
+    : { text: "", images: [], video: null };
 
-export default function PostInput({ modal, setShowCreatePostModal }) {
   const [postInputState, postInputDispatch] = useReducer(
     postInputReducer,
     initialState
   );
 
   const [showGifsModal, setshowGifsModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { user } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
 
-  const avatar = user.avatar;
+  const avatar = user?.avatar;
 
-  const { text, images, video } = postInputState;
-
-  const handleImageFileInput = (e) => {
-    if (images.length === 2) {
-      toast.error("Max 2 images allowed!");
-      return;
-    } else {
-      if (e.target.files[0].size > 1000000) {
-        toast.error("Image size should be less than 1MB");
-      } else {
-        postInputDispatch({ type: "add-image", payload: e.target.files[0] });
-      }
-    }
-  };
-
-  const handleVideoFileInput = (e) => {
-    if (e.target.files[0].size > 7000000) {
-      toast.error("Video size should be less than 7MB");
-    } else {
-      postInputDispatch({ type: "add-video", payload: e.target.files[0] });
-    }
-  };
+  const { text, images, video } = { ...postInputState };
 
   const handleBtnRemoveImage = (imageToRemove) => {
     postInputDispatch({ type: "remove-image", payload: imageToRemove });
@@ -56,55 +49,44 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
 
   const isEmpty = () => images.length === 0 && text.length < 1 && !video;
 
-  const handleBtnTweet = async (e) => {
-    // clear content
-
-    const textDiv = document.getElementById("user-input-text");
-    textDiv.innerText = "";
-    postInputDispatch({ type: "clear-all" });
-
-    modal && setShowCreatePostModal(false);
-
-    toast.success("Tweeted");
-    e.preventDefault();
-
-    // uploading assets and updating posts
-
-    let imgArr = [];
-    let videoUrl = "";
-    if (images.length === 1) {
-      try {
-        const res = await uploadImage(images[0]);
-        imgArr.push(res.secure_url);
-        createPost(user, text, imgArr, videoUrl, dataDispatch);
-      } catch (e) {
-        console.error(e.message);
-      }
-    } else if (images.length === 2) {
-      try {
-        const resA = await uploadImage(images[0]);
-        imgArr.push(resA.secure_url);
-        const resB = await uploadImage(images[1]);
-        imgArr.push(resB.secure_url);
-        createPost(user, text, imgArr, videoUrl, dataDispatch);
-      } catch (e) {
-        console.error(e.message);
-      }
-    } else if (video) {
-      try {
-        const res = await uploadVideo(video);
-        videoUrl = res.secure_url;
-        createPost(user, text, imgArr, videoUrl, dataDispatch);
-      } catch (e) {
-        console.error(e.message);
-      }
-    } else {
-      createPost(user, text, imgArr, videoUrl, dataDispatch);
+  useEffect(() => {
+    const textDiv = document.querySelector(".post-input-text-modal");
+    if (textDiv) {
+      textDiv.innerText = text;
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (text.length > 380) {
+      setErrorMessage("Max 380 characters allowed!");
+    } else {
+      setErrorMessage("");
+    }
+  }, [text]);
 
   return (
-    <form className="post-input-container" onSubmit={handleBtnTweet}>
+    <form
+      className={
+        inEditPost ? "post-input-container edit-post" : "post-input-container"
+      }
+      onSubmit={(e) =>
+        handleBtnTweet(
+          e,
+          postInputDispatch,
+          modal,
+          inEditPost,
+          inReply,
+          comments,
+          setShowCreatePostModal,
+          images,
+          video,
+          user,
+          text,
+          dataDispatch,
+          post?._id
+        )
+      }
+    >
       {modal && (
         <span
           onClick={() => setShowCreatePostModal(false)}
@@ -116,7 +98,7 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
       <div>
         <img
           src={avatar}
-          alt="user-image"
+          alt="user"
           className="user-avatar"
           height="45px"
           width="45px"
@@ -133,7 +115,7 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
             Everyone <i className="fa-solid fa-chevron-down"></i>
           </div>
         )}
-
+        {errorMessage && <span className="pink">{errorMessage}</span>}
         <div
           onInput={(e) =>
             postInputDispatch({
@@ -147,21 +129,31 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
           }
           style={{ whiteSpace: "pre-line" }}
           contentEditable="true"
-          placeholder="What is happening?!"
+          placeholder={inReply ? "Tweet your reply!" : "What is happening?!"}
         ></div>
         <div className="post-input-images-container">
           {images.length > 0 &&
             images.map((image) => (
-              <div className={`relative post-input-image-${images.length}`}>
+              <div
+                className={`relative post-input-image-${images.length}`}
+                key={image}
+              >
                 <button
                   className="image-btn-remove"
-                  onClick={() => handleBtnRemoveImage(image)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleBtnRemoveImage(image);
+                  }}
                 >
                   ✖
                 </button>
                 <img
-                  className="object-fit-cover"
-                  src={URL.createObjectURL(image)}
+                  className="object-fit-contain"
+                  src={
+                    typeof image === "string"
+                      ? image
+                      : URL.createObjectURL(image)
+                  }
                   alt="post"
                   height={"100%"}
                   width={"100%"}
@@ -172,14 +164,19 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
         {video && (
           <div className="relative video-container">
             <button
-              className="image-btn-remove"
-              onClick={() => postInputDispatch({ type: "remove-video" })}
+              className="image-btn-remove pointer"
+              onClick={(e) => {
+                e.stopPropagation();
+                postInputDispatch({ type: "remove-video" });
+              }}
             >
               ✖
             </button>
             <video
               className="post-input-video"
-              src={URL.createObjectURL(video)}
+              src={
+                typeof video === "string" ? video : URL.createObjectURL(video)
+              }
               controls
               autoPlay
               height={"100%"}
@@ -187,7 +184,7 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
             />
           </div>
         )}
-        {!isEmpty() && (
+        {!isEmpty() && !inReply && (
           <div className="post-input-reply-info">
             <i className="fa-solid fa-earth-americas"></i> Everyone can reply
           </div>
@@ -207,7 +204,9 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
             type="file"
             name="file-image"
             id="file-image"
-            onChange={handleImageFileInput}
+            onChange={(e) =>
+              handlePostInputImageInput(e, images, postInputDispatch)
+            }
           />
           <label
             disable={video || images.length > 0 ? "true" : ""}
@@ -222,7 +221,7 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
             type="file"
             name="file-video"
             id="file-video"
-            onChange={handleVideoFileInput}
+            onChange={(e) => handlePostInputVideoInput(e, postInputDispatch)}
           />
           <span
             className="gif-icon pointer"
@@ -236,17 +235,19 @@ export default function PostInput({ modal, setShowCreatePostModal }) {
             GIF
           </span>
           <i className="fa-regular fa-face-smile pointer"></i>
+
           <button
             type="submit"
             disabled={
               (!video && images.length === 0 && text.length < 1) ||
-              text === "\n"
+              text === "\n" ||
+              text.length > 380
                 ? true
                 : false
             }
             className="post-input-btn-tweet pointer"
           >
-            Tweet
+            {inReply ? "Reply" : inEditPost ? "Save" : "Tweet"}
           </button>
         </div>
       </div>
