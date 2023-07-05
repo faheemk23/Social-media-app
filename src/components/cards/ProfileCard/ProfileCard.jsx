@@ -9,9 +9,11 @@ import EditProfileModal from "../../modals/EditProfileModal/EditProfileModal";
 import { PostCard } from "../PostCard/PostCard";
 import "./ProfileCard.css";
 
-export function ProfileCard({ user, userPosts }) {
-  const { user: currentUser } = useContext(AuthContext);
+export function ProfileCard({ user, userPosts, likedPosts }) {
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
+  const [showPosts, setShowPosts] = useState("tweets");
+
+  const { user: currentUser } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
   const {
     _id,
@@ -38,6 +40,8 @@ export function ProfileCard({ user, userPosts }) {
     ? website
     : `https://${website}`;
 
+  const postToShow = showPosts === "tweets" ? userPosts : likedPosts;
+
   return (
     <div className="relative">
       <img src={cover} alt="cover" height="200px" width="100%" />
@@ -49,7 +53,7 @@ export function ProfileCard({ user, userPosts }) {
         width="140px"
       />
 
-      <div className="relative profile-info">
+      <div className="relative profile-text">
         {username === currentUser.username ? (
           <button
             className="btn btn-secondary top-right"
@@ -72,44 +76,71 @@ export function ProfileCard({ user, userPosts }) {
             Follow
           </button>
         )}
-        <h3>{name}</h3>
-        <h3>@{username}</h3>
-        <p>{bio}</p>
-        <div>
+        <div className="profile-card-name">{name}</div>
+        <div className="profile-card-username">@{username}</div>
+        <p className="profile-card-bio">{bio}</p>
+        <div className="profile-card-info">
           {location && (
-            <>
-              <i className="fa-solid fa-location-dot"></i>
-              {location}{" "}
-            </>
+            <div>
+              <i className="fa-solid fa-location-dot"></i> {location}{" "}
+            </div>
           )}
-          <i className="fa-solid fa-link"></i>{" "}
-          <Link className="link" to={websiteLink} target="_blank">
-            {website}
-          </Link>{" "}
-          <i className="fa-solid fa-calendar-days"></i>
-          Joined {formattedDate}
+          <div>
+            <i className="fa-solid fa-link"></i>{" "}
+            <Link className="link" to={websiteLink} target="_blank">
+              {website}
+            </Link>{" "}
+          </div>
+          <div>
+            <i className="fa-solid fa-calendar-days"></i> Joined {formattedDate}
+          </div>
         </div>
-        <p>
-          <span>{following?.length}</span> Following{" "}
-          <span>{followers?.length}</span> Followers
-        </p>
+
+        <div className="profile-card-follow-info">
+          <div>
+            <span className="profile-card-follow-info-number">
+              {following?.length}
+            </span>{" "}
+            Following{" "}
+          </div>
+          <div>
+            <span className="profile-card-follow-info-number">
+              {followers?.length}
+            </span>{" "}
+            Followers
+          </div>
+        </div>
       </div>
       <div>
         <div className="filters">
-          <div className="filter-item-container">
+          <div
+            onClick={() => setShowPosts("tweets")}
+            className="filter-item-container"
+          >
             <div className="filter-item">
               <span>Tweets</span>
-              <div className="line-under-active-filter"></div>
+              <div
+                className={
+                  showPosts === "tweets" ? "line-under-active-filter" : ""
+                }
+              ></div>
             </div>
           </div>
-          <div className="filter-item-container">
+          <div
+            onClick={() => setShowPosts("likes")}
+            className="filter-item-container"
+          >
             <div className="filter-item">
               <span>Likes</span>
-              <div className="line-under-active-filter"></div>
+              <div
+                className={
+                  showPosts === "likes" ? "line-under-active-filter" : ""
+                }
+              ></div>
             </div>
           </div>
         </div>
-        {userPosts.map((post) => (
+        {postToShow.map((post) => (
           <PostCard id={post._id} post={post} />
         ))}
       </div>

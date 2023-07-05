@@ -1,10 +1,10 @@
-import { LoginCard } from "../../components/cards/LoginCard/LoginCard";
+import { LoginModal } from "../../components/modals/LoginModal/LoginModal";
 import "./Login.css";
 
 export function Login() {
   return (
     <div>
-      <LoginCard />
+      <LoginModal />
     </div>
   );
 }

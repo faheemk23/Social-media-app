@@ -6,7 +6,7 @@ import PostInput from "../../components/PostInput/PostInput";
 import { HomeHeader } from "../../components/headers/HomeHeader";
 import "./Home.css";
 
-export function Home({ showCreatePostModal }) {
+export function Home() {
   const [filter, setFilter] = useState("");
   const { dataState } = useContext(DataContext);
 
@@ -47,10 +47,15 @@ export function Home({ showCreatePostModal }) {
   return (
     <section>
       <HomeHeader filter={filter} setFilter={setFilter} />
-      {!showCreatePostModal && <PostInput />}
-      {filteredPosts?.map((post) => (
-        <PostCard key={post._id} post={post} />
-      ))}
+      <div className="flex-column-reverse">
+        <div>
+          {filteredPosts?.map((post) => (
+            <PostCard key={post._id} post={post} />
+          ))}
+        </div>
+
+        <PostInput />
+      </div>
     </section>
   );
 }

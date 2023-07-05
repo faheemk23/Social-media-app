@@ -12,6 +12,40 @@
   right: 20px;
 }
 
-.profile-info {
-  padding: 65px 20px 20px;
+.profile-text {
+  padding: 65px 20px 5px;
+}
+
+.profile-card-name {
+  font-size: x-large;
+  font-weight: bolder;
+  margin-top: 1rem;
+}
+
+.profile-card-follow-info {
+  display: flex;
+  gap: 2rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 300;
+  margin: 1rem 0;
+}
+
+.profile-card-username {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.profile-card-bio {
+  font-weight: 300;
+}
+
+.profile-card-info {
+  display: flex;
+  color: rgba(0, 0, 0, 0.6);
+  gap: 0.8rem;
+  font-weight: 300;
+}
+
+.profile-card-follow-info-number {
+  font-weight: bolder;
+  color: black;
 }

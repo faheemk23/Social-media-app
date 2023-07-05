@@ -21,9 +21,7 @@ export const posts = [
       dislikedBy: [],
     },
     comments: [],
-    images: [
-      "https://res.cloudinary.com/dlzwbrjjs/image/upload/v1686952183/images/alo28ohmbvtnonwkzr0n.jpg",
-    ],
+    images: [],
     video:
       "https://res.cloudinary.com/dlzwbrjjs/video/upload/v1686958432/videos/sgumlgm6tgkiiesiqlq0.mp4",
     username: "faheemk237",

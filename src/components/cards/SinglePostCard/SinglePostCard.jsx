@@ -1,35 +1,30 @@
-import dayjs from "dayjs";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { AuthContext } from "../../../contexts/AuthContext";
 import { DataContext } from "../../../contexts/DataContext";
-import {
-  addToBookmark,
-  removeFromBookmark,
-} from "../../../utilities/bookmarkUtilities";
-import {
-  deletePost,
-  dislikePost,
-  likePost,
-} from "../../../utilities/postsUtilities";
-import { followUser, unfollowUser } from "../../../utilities/userUtilities";
+import { getSinglePostTimeStamp } from "../../../utilities/miscUtilities";
+import PostEllipsis from "../../PostEllipsis/PostEllipsis";
+import PostIcons from "../../PostIcons/PostIcons";
 import PostImages from "../../PostImages/PostImages";
+import PostInput from "../../PostInput/PostInput";
 import { ProfileSmall } from "../../ProfileSmall/ProfileSmall";
+import { PostVideo } from "../../WhoToFollow/PostVideo/PostVideo";
+import { PostHeader } from "../../headers/PostHeader";
+import { CreatePostModal } from "../../modals/CreatePostModal/CreatePostModal";
+import { PostCard } from "../PostCard/PostCard";
 import "./SinglePostCard.css";
 
 export function SinglePostCard({ post }) {
-  const [showEllipsisContent, setShowEllipsisContent] = useState(false);
-
-  const { dataState, dataDispatch } = useContext(DataContext);
-  const { user } = useContext(AuthContext);
+  const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+  const {
+    dataState: { users },
+  } = useContext(DataContext);
 
   const navigate = useNavigate();
 
   const {
     _id,
     content,
-    name,
     username,
     likes,
     createdAt,
@@ -39,188 +34,85 @@ export function SinglePostCard({ post }) {
     links,
   } = post;
 
-  const { bookmarks } = dataState;
-
-  const { users } = dataState;
-
-  const { likeCount, likedBy } = likes ?? {};
-
-  const isLiked = () =>
-    likedBy.some(({ username }) => username === user.username);
-
-  const isBookmarked = (postId) => bookmarks.some((_id) => _id === postId);
-
   const postUser = users.find(
     ({ username: currUser }) => currUser === username
   );
 
-  const currentUser = JSON.parse(localStorage.getItem("userData"));
-
   const { avatar } = postUser ?? {};
-
-  const getTimeStamp = () => {
-    const currentTime = dayjs();
-    const difference = currentTime.diff(createdAt, "hours");
-    return difference >= 24
-      ? dayjs(createdAt).format("D MMM")
-      : dayjs(createdAt).fromNow();
-  };
-
-  const hideEllipsisContentToggle = (e) => {
-    e.stopPropagation();
-    setShowEllipsisContent(true);
-  };
-  const isFollowed = () =>
-    postUser.followers.some(
-      ({ username }) => username === currentUser.username
-    );
-
-  const navigateToProfile = (e) => {
-    e.stopPropagation();
-    navigate(`/profile/${username}`);
-  };
 
   const contentLines = content.split("\n");
 
-  useEffect(() => {
-    const handleOutsideClick = () => {
-      setShowEllipsisContent(false);
-    };
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
-  }, []);
-
   return (
-    <article className="single-post-card ">
-      <div
-        className="pointer"
-        key={_id}
-        onClick={() => navigate(`/profile/${username}`)}
-      >
-        <ProfileSmall
-          avatar={avatar}
-          name={postUser.name}
-          username={username}
-        />
-      </div>
-
-      <section className="post-text">
-        <div className="post-content">
-          {contentLines.map((line, index) => (
-            <div key={index} className={line === "" ? "empty-line" : ""}>
-              {line}
-            </div>
-          ))}
-        </div>
-        {links &&
-          Object?.entries(links)?.map(([label, link]) => (
-            <div>
-              {label} -
-              <Link className="link" to={link}>
-                {link}
-              </Link>
-            </div>
-          ))}
-        {!video && <PostImages images={images} />}
-        {video && (
-          <div className="relative ">
-            <video
-              className="post-video"
-              src={video}
-              controls
-              autoPlay
-              height={"100%"}
-              width={"100%"}
+    <>
+      <article className="single-post-card ">
+        <PostHeader />
+        <div className="relative">
+          <div
+            className="pointer"
+            key={_id}
+            onClick={() => navigate(`/profile/${username}`)}
+          >
+            <ProfileSmall
+              avatar={avatar}
+              name={postUser?.name}
+              username={username}
             />
           </div>
-        )}
-        <div className="post-icons">
-          {isLiked() ? (
-            <div
-              className="pink"
-              onClick={() => dislikePost(_id, dataDispatch)}
-            >
-              <i className="fa-solid fa-heart "></i>
-              <span className="post-icon-text ">{likeCount}</span>
-            </div>
-          ) : (
-            <div
-              className="hover-pink"
-              onClick={() => likePost(_id, dataDispatch)}
-            >
-              <i className="fa-regular fa-heart "></i>
-              <span className="post-icon-text">{likeCount}</span>
-            </div>
-          )}
 
-          <div>
-            <i className="fa-regular fa-comment"></i>
-            <span className="post-icon-text">{comments.length}</span>
-          </div>
-
-          {isBookmarked(_id) ? (
-            <div onClick={() => removeFromBookmark(_id, dataDispatch)}>
-              <i className="fa-solid fa-bookmark primary-color"></i>
-            </div>
-          ) : (
-            <div onClick={() => addToBookmark(_id, dataDispatch)}>
-              <i className="fa-regular fa-bookmark hover-primary-color"></i>
-            </div>
-          )}
-        </div>
-        <div
-          className="post-ellipsis-container pointer"
-          onClick={hideEllipsisContentToggle}
-        >
-          {!showEllipsisContent && <i className="fa-solid fa-ellipsis"></i>}
-          {showEllipsisContent && (
-            <div className="post-ellipsis-content">
-              {currentUser ? (
-                <>
-                  {currentUser.username === username ? (
-                    <div>
-                      <div>
-                        {" "}
-                        <i className="fa-regular fa-pen-to-square"></i> Edit
-                      </div>
-                      <div
-                        onMouseDown={() => {
-                          deletePost(_id, dataDispatch);
-                          setTimeout(() => {
-                            navigate(-1);
-                          }, 400);
-                        }}
-                      >
-                        <i className="fa-solid fa-trash"></i> Delete
-                      </div>
-                    </div>
-                  ) : isFollowed() ? (
-                    <div
-                      onMouseDown={() =>
-                        unfollowUser(postUser._id, dataDispatch)
-                      }
-                    >
-                      <i className="fa-solid fa-user-minus"></i> Unfollow{" "}
-                      <span>@{postUser.username}</span>
-                    </div>
-                  ) : (
-                    <div
-                      onMouseDown={() => followUser(postUser._id, dataDispatch)}
-                    >
-                      <i className="fa-solid fa-user-plus"></i> Follow{" "}
-                      <span>@{postUser.username}</span>
-                    </div>
-                  )}
-                </>
-              ) : (
-                <div onMouseDown={() => navigate("/login")}>
-                  Login for more options
+          <section className="post-detail-text">
+            <div className="post-content">
+              {contentLines.map((line, index) => (
+                <div key={index} className={line === "" ? "empty-line" : ""}>
+                  {line}
                 </div>
-              )}
+              ))}
             </div>
-          )}
+            {links &&
+              Object?.entries(links)?.map(([label, link]) => (
+                <div>
+                  {label} -
+                  <Link className="link" to={link}>
+                    {link}
+                  </Link>
+                </div>
+              ))}
+
+            {!video && <PostImages images={images} />}
+
+            {video && <PostVideo video={video} />}
+
+            <div className="single-post-timestamp">
+              {" "}
+              {getSinglePostTimeStamp(createdAt)}
+            </div>
+
+            <PostIcons
+              _id={_id}
+              likes={likes}
+              comments={comments}
+              inSinglePost
+            />
+
+            <PostEllipsis
+              _id={_id}
+              username={username}
+              setShowCreatePostModal={setShowCreatePostModal}
+              inSinglePost
+            />
+          </section>
         </div>
-      </section>
-    </article>
+        <PostInput post={post} inReply comments={comments} />
+        {comments.map((post) => (
+          <PostCard key={post._id} post={post} inReply />
+        ))}
+      </article>
+      {showCreatePostModal && (
+        <CreatePostModal
+          setShowCreatePostModal={setShowCreatePostModal}
+          post={post}
+          inEditPost
+        />
+      )}
+    </>
   );
 }

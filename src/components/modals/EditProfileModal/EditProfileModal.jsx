@@ -90,17 +90,22 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
 
   return (
     <div className="modal-container">
-      <div className="edit-profile-modal">
+      <div className="edit-profile-modal relative">
         <span
-          className="pointer"
+          className="pointer edit-profile-close-icon close-icon"
           onClick={() => setShowEditProfileModal(false)}
         >
           {" "}
-          ✖
+          <i class="fa-solid fa-arrow-left"></i>
         </span>
-        <div>
-          <span>Edit profle</span>
-          <button onClick={() => handleBtnSave()}>Save</button>
+        <div className="flex">
+          <span className="edit-profile-heading">Edit profile</span>
+          <button
+            className="btn btn-primary edit-profile-btn-save"
+            onClick={() => handleBtnSave()}
+          >
+            Save
+          </button>
         </div>
         <label className="label-container cover-container" htmlFor="cover">
           <i className="fa-solid fa-camera-retro camera-icon"></i>
@@ -125,7 +130,7 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
                   : URL.createObjectURL(newAvatar)
                 : avatar
             }
-            alt="user-image"
+            alt="user"
             className="user-avatar"
             height="120px"
             width="120px"
@@ -150,7 +155,12 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
         />
         <div className="edit-profile-info">
           {errorMessage && <p>{errorMessage}</p>}
-          <button onClick={() => setShowAvatars(true)}>Select an avatar</button>
+          <button
+            className="btn btn-secondary edit-profile-btn-select-avatar"
+            onClick={() => setShowAvatars(true)}
+          >
+            Select an avatar
+          </button>
           {showAvatars && (
             <ChooseAvatar
               setShowAvatars={setShowAvatars}
@@ -158,29 +168,41 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
             />
           )}
 
-          <label htmlFor="name">Name</label>
+          <label className="edit-profile-label" htmlFor="name">
+            Name
+          </label>
           <input
+            className="edit-profile-input"
             defaultValue={name}
             type="text"
             id="name"
             onChange={editProfileFieldChangeHandler}
           />
-          <label htmlFor="bio">Bio</label>
+          <label className="edit-profile-label" htmlFor="bio">
+            Bio
+          </label>
           <input
+            className="edit-profile-input"
             defaultValue={bio}
             type="text"
             id="bio"
             onChange={editProfileFieldChangeHandler}
           />
-          <label htmlFor="location">Location</label>
+          <label className="edit-profile-label" htmlFor="location">
+            Location
+          </label>
           <input
+            className="edit-profile-input"
             defaultValue={location}
             type="text"
             id="location"
             onChange={editProfileFieldChangeHandler}
           />
-          <label htmlFor="website">Website</label>
+          <label className="edit-profile-label" htmlFor="website">
+            Website
+          </label>
           <input
+            className="edit-profile-input"
             defaultValue={website}
             type="text"
             id="website"

@@ -1,10 +1,10 @@
-import { SignupCard } from "../../components/cards/SignupCard/SignupCard";
+import { SignupModal } from "../../components/modals/SignupModal/SignupModal";
 import "./Signup.css";
 
 export function Signup() {
   return (
     <article>
-      <SignupCard />
+      <SignupModal />
     </article>
   );
 }

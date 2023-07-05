@@ -1,21 +1,19 @@
-import { useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import "./PostImages.css";
 
 export default function PostImages({ images }) {
-  const navigate = useNavigate();
-
   return (
     <div className="post-images-container ">
       {images.map((img) => (
-        <div className="image-container">
+        <div className={`relative post-image-${images.length}`} key={img}>
           <img
-            className="post-image"
+            className="post-image object-fit-contain"
             key={uuid()}
             src={img}
             alt="post"
             width={"100%"}
+            height={"100%"}
           />
         </div>
       ))}

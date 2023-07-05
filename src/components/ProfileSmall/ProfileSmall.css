@@ -7,3 +7,12 @@
   display: flex;
   gap: 0.5rem;
 }
+
+.guest-user {
+  gap: 2rem;
+  padding: 0.2rem;
+}
+
+.guest-user:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}

@@ -1,5 +1,29 @@
 .choose-avatar-container {
   background-color: white;
-  height: 250px;
-  width: 420px;
+  height: 260px;
+  width: 460px;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.choose-avatar-close-icon {
+  position: absolute;
+  top: 2px;
+  left: 10px;
+}
+
+.choose-avatar-heading {
+  font-size: x-large;
+  margin-bottom: 0.7rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.choose-avatar {
+  margin: 0.4rem;
+}
+
+.choose-avatar:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
