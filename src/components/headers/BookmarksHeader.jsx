@@ -9,10 +9,15 @@ export function BookmarksHeader() {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="header-container">
-      <div className="header-heading">Bookmarks</div>
-      <div>@{user?.username}</div>
-      {!showEllipsisContent && <i className="fa-solid fa-ellipsis"></i>}
+    <div className="header-container small-header relative header-border-bottom">
+      <div className="header-heading">
+        Bookmarks
+        <div className="bookmarks-header-username">@{user?.username}</div>
+      </div>
+
+      {!showEllipsisContent && (
+        <i className="fa-solid fa-ellipsis bookmarks-header-ellipse"></i>
+      )}
     </div>
   );
 }

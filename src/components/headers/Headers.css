@@ -26,3 +26,49 @@
   width: 100%;
   bottom: 0;
 }
+
+.small-header {
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: none;
+}
+
+.small-header > h3 {
+  margin: 0.5rem;
+}
+
+.small-header .icon {
+  padding: 0.5rem;
+  border-radius: 50%;
+}
+
+.small-header .icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.profile-header-name {
+  font-size: larger;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+.profile-header-tweets-number {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: small;
+}
+
+.bookmarks-header-username {
+  font-size: small;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.bookmarks-header-ellipse {
+  position: absolute;
+  right: 30px;
+}
+
+.header-border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
