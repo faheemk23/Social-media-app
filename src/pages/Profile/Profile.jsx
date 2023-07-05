@@ -22,6 +22,17 @@ export function Profile() {
 
   const { username } = useParams();
 
+  const getLikedPosts = () => {
+    const likedPosts = posts.filter(({ likes: { likedBy } }) =>
+      likedBy.some(({ username }) => username === user.username)
+    );
+    return likedPosts;
+  };
+
+  const likedPosts = getLikedPosts();
+
+  console.log(posts);
+
   useEffect(() => {
     setLoading(true);
     getUser(username, setCurrentUser, setLoading);
@@ -41,7 +52,11 @@ export function Profile() {
             name={currentUser.name}
             numberOfPosts={userPosts.length}
           />
-          <ProfileCard user={currentUser} userPosts={userPosts} />
+          <ProfileCard
+            user={currentUser}
+            userPosts={userPosts}
+            likedPosts={likedPosts}
+          />
         </>
       )}
     </div>
