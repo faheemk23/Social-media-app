@@ -1,0 +1,45 @@
+.profile-popup {
+  position: absolute;
+  padding: 1rem 0;
+  bottom: 35px;
+  left: 10px;
+  /* right: 0; */
+  border-radius: 1rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  width: 280px;
+  /* height: 120px; */
+  /* font-size: large; */
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-popup-item {
+  height: 50%;
+  width: 100%;
+  padding: 0.5rem 1rem;
+}
+
+.profile-popup-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.top-border-light-black {
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+@media screen and (min-width: 1320px) {
+  .profile-popup {
+    left: 80px;
+    bottom: 45px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile-popup {
+    right: 10px;
+    left: auto;
+    bottom: 55px;
+  }
+}
