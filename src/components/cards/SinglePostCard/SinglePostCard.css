@@ -4,3 +4,15 @@
   /* display: flex; */
   padding: 0.7rem;
 }
+
+.post-detail-text {
+  margin-left: 0.5rem;
+  width: 100%;
+}
+
+.single-post-timestamp {
+  color: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+  margin: 1rem 0;
+}
