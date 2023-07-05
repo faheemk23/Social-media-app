@@ -1,12 +1,43 @@
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../../contexts/AuthContext";
+import { loginHandler } from "../../utilities/authUtilities";
 import "./ProfileSmall.css";
 
-export function ProfileSmall({ avatar, name, username }) {
+export function ProfileSmall({
+  avatar,
+  name,
+  username,
+  password,
+  setUserDetail,
+  setShowGuestUsers,
+  inGuestUsers,
+}) {
+  const { setUser, setLoggedIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleBtnGuestLogin = (username, password) => {
+    const guestUser = { username, password };
+    setShowGuestUsers(false);
+    setUserDetail(guestUser);
+    loginHandler(guestUser, setUser, navigate, setLoggedIn);
+  };
+
   return (
-    <div className="flex">
+    <div
+      onClick={() => {
+        if (inGuestUsers) {
+          handleBtnGuestLogin(username, password);
+        }
+      }}
+      className={inGuestUsers ? "flex guest-user pointer" : "flex"}
+    >
       <img
         className="user-avatar"
         src={avatar}
-        alt="user-image"
+        alt="user"
         height="40px"
         width="40px"
       />
