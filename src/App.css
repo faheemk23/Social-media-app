@@ -29,7 +29,16 @@
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.2);
-  z-index: 10;
+  z-index: 20;
+}
+
+.bg-opaque {
+  background-color: #999999;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 /* .links {
@@ -60,6 +69,7 @@
   /* background-color: red; */
   /* width: 200px; */
   height: 600px;
+  z-index: 1;
 }
 
 .middle {
@@ -170,6 +180,15 @@
   display: none;
 }
 
+.close-icon {
+  padding: 0.5rem;
+  border-radius: 50%;
+  font-size: larger;
+}
+
+.close-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
 @media screen and (max-width: 1200px) {
   .app-container {
     grid-template-columns: 0.3fr 2.2fr 1.2fr;
