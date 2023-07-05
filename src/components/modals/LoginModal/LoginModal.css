@@ -1,0 +1,38 @@
+.login-modal {
+  background-color: white;
+  padding: 1rem 8rem 4rem 8rem;
+  display: flex;
+  flex-direction: column;
+  font-size: large;
+  border-radius: 1rem;
+  gap: 0.8rem;
+}
+
+.login-modal-close-icon {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  font-size: larger;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.login-modal-close-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.login-modal-heading {
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
+.login-modal-input {
+  font-size: large;
+  padding: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.login-modal-suggestion {
+  font-size: medium;
+  color: rgba(0, 0, 0, 0.5);
+}
