@@ -1,0 +1,17 @@
+.guest-login-users {
+  position: absolute;
+  background-color: white;
+  top: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  /* padding: 1rem 3rem; */
+  width: 260px;
+  padding: 2rem 0rem 1rem 0;
+  border-radius: 1rem;
+}
+
+.guest-login-users-close-icon {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+}
