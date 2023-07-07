@@ -29,13 +29,19 @@ export function SuggestAuth({ setShowSuggestAuth }) {
         </div>
         <button
           className="btn btn-primary btn-suggest-auth "
-          onClick={() => navigate("/login")}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/login");
+          }}
         >
           Log in
         </button>
         <button
           className="btn btn-suggest-auth btn-suggest-auth-signup"
-          onClick={() => navigate("/signup")}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/signup");
+          }}
         >
           Signup
         </button>
