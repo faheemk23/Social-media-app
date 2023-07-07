@@ -328,7 +328,6 @@ export async function uploadImage(image) {
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
   formData.append("folder", "sapphire");
-  console.log("add preset");
 
   return fetch(CLOUDINARY_URL, {
     method: "POST",
@@ -348,7 +347,6 @@ export async function uploadVideo(video) {
 
   formData.append("file", file);
   formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-  console.log("add preset");
 
   return fetch(CLOUDINARY_URL, {
     method: "POST",

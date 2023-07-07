@@ -10,7 +10,7 @@ import { PostVideo } from "../../PostVideo/PostVideo";
 import { CreatePostModal } from "../../modals/CreatePostModal/CreatePostModal";
 import "./PostCard.css";
 
-export function PostCard({ post, inReply }) {
+export function PostCard({ post, inReply, inBookmark }) {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
 
   const {
@@ -91,11 +91,13 @@ export function PostCard({ post, inReply }) {
             <PostIcons _id={_id} likes={likes} comments={comments} />
           )}
 
-          <PostEllipsis
-            _id={_id}
-            username={username}
-            setShowCreatePostModal={setShowCreatePostModal}
-          />
+          {!inBookmark && !inReply && (
+            <PostEllipsis
+              _id={_id}
+              username={username}
+              setShowCreatePostModal={setShowCreatePostModal}
+            />
+          )}
         </section>
       </article>
       {showCreatePostModal && (
