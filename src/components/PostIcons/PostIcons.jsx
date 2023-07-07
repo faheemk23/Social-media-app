@@ -75,7 +75,7 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
         </div>
       )}
       <div>
-        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+        <i className="fa-solid fa-arrow-up-from-bracket"></i>
       </div>
     </div>
   );

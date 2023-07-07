@@ -71,7 +71,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
           </NavLink>
           {!inBottom && (
             <button
-              className="btn-tweet "
+              className="btn-tweet pointer"
               onClick={() => setShowCreatePostModal(true)}
             >
               <span className="above-1200">Tweet</span>
