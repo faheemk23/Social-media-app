@@ -34,11 +34,6 @@ export const users = [
     ],
     following: [
       {
-        _id: "44c9-b02d-37f2383f-8b8a-bshghsgds",
-        username: "nietzsche",
-        name: "Friedrich Nietzsche",
-      },
-      {
         _id: "054c1f2b-dcf8-439b-86e7-820d4ac416fc",
         username: "feynman",
         name: "Richard Feynman",
@@ -101,13 +96,7 @@ export const users = [
     name: "Friedrich Nietzsche",
     username: "nietzsche",
     password: "friedrich",
-    followers: [
-      {
-        _id: "37f2383f-8b8a-44c9-b02d-982ce37aa",
-        username: "faheemk237",
-        name: "Faheem Khan",
-      },
-    ],
+    followers: [],
     following: [
       {
         _id: "054c1f2b-dcf8-439b-86e7-820d4ac416fc",
