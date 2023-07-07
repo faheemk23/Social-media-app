@@ -15,7 +15,7 @@ export default function GuestLoginUsers({ setUserDetail, setShowGuestUsers }) {
         className="fa-solid fa-xmark guest-login-users-close-icon pointer"
         onClick={() => setShowGuestUsers(false)}
       ></i>
-      {users.slice(0, 6).map(({ avatar, name, username, password }) => (
+      {users.map(({ avatar, name, username, password }) => (
         <ProfileSmall
           avatar={avatar}
           name={name}

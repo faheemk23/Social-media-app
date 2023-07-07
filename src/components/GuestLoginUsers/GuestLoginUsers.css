@@ -1,4 +1,5 @@
 .guest-login-users {
+  height: 300px;
   position: absolute;
   background-color: white;
   top: 0px;
@@ -8,6 +9,7 @@
   width: 260px;
   padding: 2rem 0rem 1rem 0;
   border-radius: 1rem;
+  overflow-y: scroll;
 }
 
 .guest-login-users-close-icon {
