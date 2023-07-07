@@ -15,9 +15,11 @@ export function Bookmarks({}) {
   return (
     <div>
       <BookmarksHeader />
-      {dataState.bookmarks.map((postId) => (
-        <PostCard key={postId} post={getBookmarkPost(postId)} inBookmark />
-      ))}
+      <div className="bookmarks-posts">
+        {dataState.bookmarks.map((postId) => (
+          <PostCard key={postId} post={getBookmarkPost(postId)} inBookmark />
+        ))}
+      </div>
     </div>
   );
 }
