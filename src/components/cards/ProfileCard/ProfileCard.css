@@ -49,3 +49,11 @@
   font-weight: bolder;
   color: black;
 }
+
+.profile-cover {
+  object-fit: cover;
+}
+
+.profile-posts {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
