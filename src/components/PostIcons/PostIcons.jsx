@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import { DataContext } from "../../contexts/DataContext";
 import {
@@ -6,14 +6,17 @@ import {
   removeFromBookmark,
 } from "../../utilities/bookmarkUtilities";
 import { dislikePost, likePost } from "../../utilities/postsUtilities";
+import { SuggestAuth } from "../modals/SuggestAuth/SuggestAuth";
 import "./PostIcons.css";
 
 export default function PostIcons({ _id, likes, comments, inSinglePost }) {
+  const [showSuggestAuth, setShowSuggestAuth] = useState(false);
+
   const {
     dataDispatch,
     dataState: { bookmarks },
   } = useContext(DataContext);
-  const { user } = useContext(AuthContext);
+  const { user, loggedIn } = useContext(AuthContext);
 
   const { likeCount, likedBy } = likes ?? {};
 
@@ -31,6 +34,10 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
           className="pink"
           onClick={(e) => {
             e.stopPropagation();
+            if (!loggedIn) {
+              setShowSuggestAuth(true);
+              return;
+            }
             dislikePost(_id, dataDispatch);
           }}
         >
@@ -42,6 +49,10 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
           className="hover-pink"
           onClick={(e) => {
             e.stopPropagation();
+            if (!loggedIn) {
+              setShowSuggestAuth(true);
+              return;
+            }
             likePost(_id, dataDispatch);
           }}
         >
@@ -59,6 +70,10 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
         <div
           onClick={(e) => {
             e.stopPropagation();
+            if (!loggedIn) {
+              setShowSuggestAuth(true);
+              return;
+            }
             removeFromBookmark(_id, dataDispatch);
           }}
         >
@@ -68,6 +83,10 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
         <div
           onClick={(e) => {
             e.stopPropagation();
+            if (!loggedIn) {
+              setShowSuggestAuth(true);
+              return;
+            }
             addToBookmark(_id, dataDispatch);
           }}
         >
@@ -77,6 +96,9 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
       <div>
         <i className="fa-solid fa-arrow-up-from-bracket"></i>
       </div>
+      {showSuggestAuth && (
+        <SuggestAuth setShowSuggestAuth={setShowSuggestAuth} />
+      )}
     </div>
   );
 }

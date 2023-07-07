@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { AuthContext } from "../../../contexts/AuthContext";
 import { DataContext } from "../../../contexts/DataContext";
 import { getSinglePostTimeStamp } from "../../../utilities/miscUtilities";
 import PostEllipsis from "../../PostEllipsis/PostEllipsis";
@@ -16,6 +17,7 @@ import "./SinglePostCard.css";
 
 export function SinglePostCard({ post }) {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+  const { loggedIn } = useContext(AuthContext);
   const {
     dataState: { users },
   } = useContext(DataContext);
@@ -101,7 +103,7 @@ export function SinglePostCard({ post }) {
             />
           </section>
         </div>
-        <PostInput post={post} inReply comments={comments} />
+        {loggedIn && <PostInput post={post} inReply comments={comments} />}
         {comments.map((post) => (
           <PostCard key={post._id} post={post} inReply />
         ))}
