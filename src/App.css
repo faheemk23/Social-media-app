@@ -189,6 +189,12 @@
 .close-icon:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
 @media screen and (max-width: 1200px) {
   .app-container {
     grid-template-columns: 0.3fr 2.2fr 1.2fr;
