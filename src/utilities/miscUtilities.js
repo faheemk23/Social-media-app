@@ -2,6 +2,11 @@ import dayjs from "dayjs";
 
 export const getTimeStamp = (createdAt) => {
   const currentTime = dayjs();
+  const currentYear = currentTime.format("YYYY");
+  const createdYear = dayjs(createdAt).format("YYYY");
+  if (currentYear !== createdYear) {
+    return `${dayjs(createdAt).format("MMM, YYYY")}`;
+  }
   const difference = currentTime.diff(createdAt, "hours");
   return difference >= 24
     ? dayjs(createdAt).format("D MMM")
