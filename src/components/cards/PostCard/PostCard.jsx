@@ -6,7 +6,7 @@ import { getTimeStamp } from "../../../utilities/miscUtilities";
 import PostEllipsis from "../../PostEllipsis/PostEllipsis";
 import PostIcons from "../../PostIcons/PostIcons";
 import PostImages from "../../PostImages/PostImages";
-import { PostVideo } from "../../WhoToFollow/PostVideo/PostVideo";
+import { PostVideo } from "../../PostVideo/PostVideo";
 import { CreatePostModal } from "../../modals/CreatePostModal/CreatePostModal";
 import "./PostCard.css";
 
@@ -75,7 +75,7 @@ export function PostCard({ post, inReply }) {
           </div>
           {links &&
             Object?.entries(links)?.map(([label, link]) => (
-              <div>
+              <div key={link}>
                 {label} -{" "}
                 <Link className="link" to={link}>
                   {link}
