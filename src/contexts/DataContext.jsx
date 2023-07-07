@@ -18,7 +18,6 @@ export function DataProvider({ children }) {
   const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
-    console.log("data");
     getAllPosts(dataDispatch);
     getAllUsers(dataDispatch);
     if (loggedIn) {

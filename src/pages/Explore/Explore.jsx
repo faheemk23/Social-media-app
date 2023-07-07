@@ -8,10 +8,16 @@ import "./Explore.css";
 export function Explore() {
   const { dataState } = useContext(DataContext);
 
+  const latestPosts = [...dataState.posts].sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateB - dateA;
+  });
+
   return (
     <div>
       <ExploreHeader />
-      {dataState.posts.map((post) => (
+      {latestPosts.map((post) => (
         <PostCard key={post._id} post={post} />
       ))}
     </div>

@@ -44,7 +44,13 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
 
   return (
     <div className="relative">
-      <img src={cover} alt="cover" height="200px" width="100%" />
+      <img
+        className="profile-cover"
+        src={cover}
+        alt="cover"
+        height="200px"
+        width="100%"
+      />
       <img
         src={avatar}
         alt="user-image"
@@ -85,12 +91,14 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
               <i className="fa-solid fa-location-dot"></i> {location}{" "}
             </div>
           )}
-          <div>
-            <i className="fa-solid fa-link"></i>{" "}
-            <Link className="link" to={websiteLink} target="_blank">
-              {website}
-            </Link>{" "}
-          </div>
+          {website && (
+            <div>
+              <i className="fa-solid fa-link"></i>{" "}
+              <Link className="link" to={websiteLink} target="_blank">
+                {website}
+              </Link>{" "}
+            </div>
+          )}
           <div>
             <i className="fa-solid fa-calendar-days"></i> Joined {formattedDate}
           </div>
@@ -140,9 +148,11 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
             </div>
           </div>
         </div>
-        {postToShow.map((post) => (
-          <PostCard id={post._id} post={post} />
-        ))}
+        <div className="profile-posts">
+          {postToShow.map((post) => (
+            <PostCard id={post._id} post={post} />
+          ))}
+        </div>
       </div>
       {showEditProfileModal && (
         <EditProfileModal

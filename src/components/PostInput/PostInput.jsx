@@ -9,6 +9,7 @@ import {
   handlePostInputVideoInput,
 } from "../../utilities/postsUtilities";
 
+import { toast } from "react-hot-toast";
 import { GifsModal } from "../modals/GifsModal/GifsModal";
 import "./PostInput.css";
 
@@ -229,12 +230,16 @@ export default function PostInput({
             onClick={() => {
               !video &&
                 images.length === 0 &&
-                setshowGifsModal((prev) => !prev);
+                // setshowGifsModal((prev) => !prev);
+                toast.error("Feature coming soon!");
             }}
           >
             GIF
           </span>
-          <i className="fa-regular fa-face-smile pointer"></i>
+          <i
+            onClick={() => toast.error("Feature coming soon!")}
+            className="fa-regular fa-face-smile pointer"
+          ></i>
 
           <button
             type="submit"
