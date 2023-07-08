@@ -16,6 +16,7 @@ export function SignupModal() {
   });
   const [errorMessage, setErrorMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     dataState: { users },
@@ -132,11 +133,21 @@ export function SignupModal() {
             onChange={signupFieldChangeHandler}
           />
         </div>
-        <div className="flex-column">
+        <div className="flex-column relative">
+          <span
+            className="show-password-icon pointer"
+            onClick={() => setShowConfirmPassword((prev) => !prev)}
+          >
+            {showConfirmPassword ? (
+              <i class="fa-regular fa-eye"></i>
+            ) : (
+              <i class="fa-regular fa-eye-slash"></i>
+            )}
+          </span>
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
             className="signup-modal-input"
-            type="password"
+            type={showConfirmPassword ? "text" : "password"}
             id="confirmPassword"
             onChange={signupFieldChangeHandler}
           />

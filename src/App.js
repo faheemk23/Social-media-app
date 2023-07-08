@@ -24,6 +24,7 @@ import {
   Post,
   Profile,
   Signup,
+  Verified,
 } from "./pages/Pages";
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
             <Route path="/post/:postId" element={<Post />} />
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/verified" element={<Verified />} />
           </Routes>
 
           {loggedIn && (

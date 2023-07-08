@@ -21,6 +21,8 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
     setShowProfilePopup(false);
   }, [location]);
 
+  console.log({ user });
+
   return (
     <nav className={inBottom ? "nav nav-bottom" : "nav nav-left"}>
       {!inBottom && (
@@ -61,6 +63,10 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
             <i className="fa-regular fa-bookmark navlink-icon"></i>
             <span className="navlink-text">Bookmarks</span>
           </NavLink>
+          <NavLink className="navlink" style={getActiveStyle} to="/verified">
+            <i className="fa-regular fa-circle-check navlink-icon"></i>
+            <span className="navlink-text">Verified</span>
+          </NavLink>
           <NavLink
             className="navlink"
             style={getActiveStyle}
@@ -92,6 +98,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                 avatar={user.avatar}
                 name={user.name}
                 username={user.username}
+                isVerified={user.isVerified}
               />
               <i className="fa-solid fa-ellipsis navbar-profile-ellipse"></i>
             </div>

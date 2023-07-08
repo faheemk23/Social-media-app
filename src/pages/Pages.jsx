@@ -7,6 +7,7 @@ import { Logout } from "./Logout/Logout";
 import { Post } from "./Post/Post";
 import { Profile } from "./Profile/Profile";
 import { Signup } from "./Signup/Signup";
+import { Verified } from "./Verified/Verified";
 
 export {
   Bookmarks,
@@ -18,4 +19,5 @@ export {
   Post,
   Profile,
   Signup,
+  Verified,
 };

@@ -20,6 +20,9 @@
   font-size: x-large;
   font-weight: bolder;
   margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
 }
 
 .profile-card-follow-info {

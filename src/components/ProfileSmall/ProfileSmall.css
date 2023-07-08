@@ -20,3 +20,9 @@
 .black {
   color: black;
 }
+
+.profile-small-name {
+  display: flex;
+  align-items: center;
+  gap: 0.1rem;
+}

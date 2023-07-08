@@ -10,6 +10,7 @@ export function ProfileSmall({
   name,
   username,
   password,
+  isVerified,
   setUserDetail,
   setShowGuestUsers,
   inGuestUsers,
@@ -48,7 +49,17 @@ export function ProfileSmall({
         width={inSearch ? "60px" : "40px"}
       />
       <div>
-        <div className="bolder black">{name}</div>
+        <div className="profile-small-name bolder black">
+          {name}{" "}
+          {isVerified && (
+            <img
+              src="https://ik.imagekit.io/faheem/Social-media/verify.png?updatedAt=1688800693531"
+              alt="verified"
+              height="15px"
+              width="15px"
+            />
+          )}
+        </div>
         <div className="profile-small-username">@{username}</div>
       </div>
     </div>

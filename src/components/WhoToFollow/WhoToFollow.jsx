@@ -52,14 +52,19 @@ export default function WhoToFollow() {
     <div className="who-to-follow">
       <h1 className="who-to-follow-heading">Who to follow </h1>
       {whoToFollow.map((user) => {
-        const { _id, avatar, name, username } = user;
+        const { _id, avatar, name, username, isVerified } = user;
         return (
           <div
             className="who-to-follow-item pointer"
             key={_id}
             onClick={() => navigate(`/profile/${username}`)}
           >
-            <ProfileSmall avatar={avatar} name={name} username={username} />
+            <ProfileSmall
+              avatar={avatar}
+              name={name}
+              username={username}
+              isVerified={isVerified}
+            />
 
             {isFollowed(username) ? (
               <button

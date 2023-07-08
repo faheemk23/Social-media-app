@@ -54,7 +54,7 @@ export const users = [
     createdAt: "2023-07-07T02:32:28+05:30",
     updatedAt: "2023-07-07T02:54:49+05:30",
     bookmarks: [],
-    id: "1",
+    isVerified: true,
   },
   {
     _id: "ce5ba45e-e8ea-4d62-9edc-61b7aac659e4",
@@ -89,7 +89,7 @@ export const users = [
     createdAt: "2010-11-13 19:18",
     updatedAt: "2023-07-07T02:50:06+05:30",
     bookmarks: [],
-    id: "2",
+    isVerified: false,
   },
   {
     _id: "44c9-b02d-37f2383f-8b8a-bshghsgds",
@@ -124,7 +124,7 @@ export const users = [
     createdAt: "2015-12-13 19:18",
     updatedAt: "2023-07-07T02:49:42+05:30",
     bookmarks: [],
-    id: "3",
+    isVerified: false,
   },
   {
     _id: "054c1f2b-dcf8-439b-86e7-820d4ac416fc",
@@ -185,7 +185,7 @@ export const users = [
     createdAt: "2021-02-13 19:18",
     updatedAt: "2023-07-07T02:54:59+05:30",
     bookmarks: [],
-    id: "4",
+    isVerified: false,
   },
   {
     _id: "054c1f2b-dcf8-44ui44-5555-820d4afc",
@@ -236,7 +236,7 @@ export const users = [
     createdAt: "2009-06-13 19:18",
     updatedAt: "2023-07-07T02:55:14+05:30",
     bookmarks: [],
-    id: "5",
+    isVerified: true,
   },
   {
     _id: "58sfd1dfd8f-dcf8-44ui44-5555-820d4afc",
@@ -282,7 +282,7 @@ export const users = [
     createdAt: "2009-06-13 19:18",
     updatedAt: "2023-07-07T03:00:14+05:30",
     bookmarks: [],
-    id: "6",
+    isVerified: true,
   },
   {
     _id: "478kiout-dcf8-541bghv-sfd777-820d4afc",
@@ -317,7 +317,7 @@ export const users = [
     createdAt: "2009-03-13 19:18",
     updatedAt: "2023-07-07T02:49:47+05:30",
     bookmarks: [],
-    id: "7",
+    isVerified: false,
   },
   {
     _id: "58s74jhdfd8f-dcf8-44ui44-sfd-828jhyuafc",
@@ -336,6 +336,6 @@ export const users = [
     createdAt: "2023-07-07T02:32:28+05:30",
     updatedAt: "2023-07-07T02:32:28+05:30",
     bookmarks: [],
-    id: "8",
+    isVerified: false,
   },
 ];
