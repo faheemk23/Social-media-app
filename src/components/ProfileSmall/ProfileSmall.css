@@ -16,3 +16,7 @@
 .guest-user:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
+
+.black {
+  color: black;
+}

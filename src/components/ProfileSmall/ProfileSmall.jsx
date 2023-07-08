@@ -13,6 +13,8 @@ export function ProfileSmall({
   setUserDetail,
   setShowGuestUsers,
   inGuestUsers,
+  inSearch,
+  setSearchInput,
 }) {
   const { setUser, setLoggedIn } = useContext(AuthContext);
 
@@ -31,6 +33,10 @@ export function ProfileSmall({
         if (inGuestUsers) {
           handleBtnGuestLogin(username, password);
         }
+        if (inSearch) {
+          navigate(`/profile/${username}`);
+          setSearchInput("");
+        }
       }}
       className={inGuestUsers ? "flex guest-user pointer" : "flex"}
     >
@@ -38,11 +44,11 @@ export function ProfileSmall({
         className="user-avatar"
         src={avatar}
         alt="user"
-        height="40px"
-        width="40px"
+        height={inSearch ? "60px" : "40px"}
+        width={inSearch ? "60px" : "40px"}
       />
       <div>
-        <div className="bolder">{name}</div>
+        <div className="bolder black">{name}</div>
         <div className="profile-small-username">@{username}</div>
       </div>
     </div>
