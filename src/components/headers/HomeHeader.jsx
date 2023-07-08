@@ -2,11 +2,11 @@ import "./Headers.css";
 
 export function HomeHeader({ filter, setFilter }) {
   return (
-    <div className="header-container">
+    <div className="header-container ">
       <div className="header-heading">Home</div>
       <div className="filters">
         <div
-          className="filter-item-container"
+          className="filter-item-container pointer"
           onClick={() => setFilter("trending")}
         >
           <div className="filter-item">
@@ -17,7 +17,7 @@ export function HomeHeader({ filter, setFilter }) {
           </div>
         </div>
         <div
-          className="filter-item-container"
+          className="filter-item-container pointer"
           onClick={() => setFilter("latest")}
         >
           <div className="filter-item">
