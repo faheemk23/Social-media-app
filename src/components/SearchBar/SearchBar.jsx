@@ -51,6 +51,7 @@ export function SearchBar() {
                     username={user.username}
                     inSearch
                     setSearchInput={setSearchInput}
+                    isVerified={user.isVerified}
                   />
                 </div>
               ))}
