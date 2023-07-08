@@ -1,0 +1,64 @@
+.verified-modal {
+  width: 570px;
+  background-color: white;
+  padding: 2rem 4rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.choose-verification-container {
+  display: flex;
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.choose-verification-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 50%;
+  padding: 1rem;
+  gap: 0.2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.choose-verification-light-text {
+  font-weight: 200;
+  font-size: 0.9rem;
+}
+
+.choose-verification-bold {
+  font-weight: 900;
+  font-size: 1.1rem;
+}
+
+.btn-subscribe-verified {
+  padding: 1rem;
+  border-radius: 2rem;
+}
+
+.smaller {
+  font-size: smaller;
+}
+
+.outline-primary {
+  outline: 2px solid var(--primary-color);
+}
+
+.verified-heading {
+  margin-top: 2.2rem;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.verified-text {
+  color: rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.5rem;
+  font-weight: 200;
+}

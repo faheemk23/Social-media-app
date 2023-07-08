@@ -40,7 +40,7 @@ export function SinglePostCard({ post }) {
     ({ username: currUser }) => currUser === username
   );
 
-  const { avatar } = postUser ?? {};
+  const { avatar, isVerified } = postUser ?? {};
 
   const contentLines = content.split("\n");
 
@@ -58,6 +58,7 @@ export function SinglePostCard({ post }) {
               avatar={avatar}
               name={postUser?.name}
               username={username}
+              isVerified={isVerified}
             />
           </div>
 

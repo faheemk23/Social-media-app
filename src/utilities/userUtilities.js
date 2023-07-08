@@ -65,7 +65,6 @@ export async function unfollowUser(userId, dataDispatch) {
 export async function editProfileHandler(userData, setUser, dataDispatch) {
   const encodedToken = localStorage.getItem("token");
   try {
-    console.log("yes");
     const res = await axios.post(
       `/api/users/edit`,
       { userData },

@@ -12,12 +12,12 @@ export function AuthProvider({ children }) {
     const initialLoginHandler = async () => {
       try {
         const res = await axios.get(`/api/users`);
-        const userInDatabase = res.data.users.some(
+        const userInDatabase = res.data.users.find(
           ({ username }) => username === currentUser.username
         );
         if (userInDatabase) {
           setLoggedIn(true);
-          setUser(() => currentUser);
+          setUser(() => userInDatabase);
         }
       } catch (e) {
         console.error(e.message);

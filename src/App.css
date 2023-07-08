@@ -195,6 +195,12 @@
   justify-content: center;
 }
 
+.show-password-icon {
+  position: absolute;
+  right: 5px;
+  bottom: 6px;
+}
+
 @media screen and (max-width: 1200px) {
   .app-container {
     grid-template-columns: 0.3fr 2.2fr 1.2fr;

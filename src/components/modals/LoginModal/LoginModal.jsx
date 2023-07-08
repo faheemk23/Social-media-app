@@ -13,7 +13,7 @@ export function LoginModal() {
   });
 
   const [showGuestUsers, setShowGuestUsers] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const { setUser, setLoggedIn } = useContext(AuthContext);
@@ -75,11 +75,21 @@ export function LoginModal() {
           />
         </div>
 
-        <div className="flex-column">
+        <div className="flex-column relative">
+          <span
+            className="show-password-icon pointer"
+            onClick={() => setShowPassword((prev) => !prev)}
+          >
+            {showPassword ? (
+              <i class="fa-regular fa-eye"></i>
+            ) : (
+              <i class="fa-regular fa-eye-slash"></i>
+            )}
+          </span>
           <label htmlFor="password">Password: </label>
           <input
             className="login-modal-input"
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             value={userDetail.password}
             onChange={loginFieldChangeHandler}

@@ -35,7 +35,7 @@ export function PostCard({ post, inReply, inBookmark }) {
     ({ username: currUser }) => currUser === username
   );
 
-  const { avatar } = postUser ?? {};
+  const { avatar, isVerified } = postUser ?? {};
 
   const navigateToProfile = (e) => {
     e.stopPropagation();
@@ -59,13 +59,24 @@ export function PostCard({ post, inReply, inBookmark }) {
           onClick={navigateToProfile}
         />
         <section className="post-text">
-          <span className="post-name pointer" onClick={navigateToProfile}>
-            {postUser?.name}
-          </span>
-          <span className="post-username pointer" onClick={navigateToProfile}>
-            @{username}
-          </span>
-          <span className="post-timestamp"> · {getTimeStamp(createdAt)}</span>
+          <div className="flex">
+            {" "}
+            <span className="post-name pointer" onClick={navigateToProfile}>
+              {postUser?.name}
+              {isVerified && (
+                <img
+                  src="https://ik.imagekit.io/faheem/Social-media/verify.png?updatedAt=1688800693531"
+                  height="15px"
+                  width="15px"
+                />
+              )}
+            </span>
+            <span className="post-username pointer" onClick={navigateToProfile}>
+              @{username}
+            </span>
+            <span className="post-timestamp"> · {getTimeStamp(createdAt)}</span>
+          </div>
+
           <div className="post-content">
             {contentLines.map((line, index) => (
               <div key={index} className={line === "" ? "empty-line" : ""}>

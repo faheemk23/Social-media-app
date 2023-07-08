@@ -27,6 +27,7 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
     location,
     website,
     createdAt,
+    isVerified,
   } = user;
 
   const isFollowed = () =>
@@ -82,7 +83,17 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
             Follow
           </button>
         )}
-        <div className="profile-card-name">{name}</div>
+        <div className="profile-card-name">
+          {name}
+          {isVerified && (
+            <img
+              src="https://ik.imagekit.io/faheem/Social-media/verify.png?updatedAt=1688800693531"
+              alt="verifed"
+              height="20px"
+              width="20px"
+            />
+          )}
+        </div>
         <div className="profile-card-username">@{username}</div>
         <p className="profile-card-bio">{bio}</p>
         <div className="profile-card-info">

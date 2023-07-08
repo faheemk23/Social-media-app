@@ -29,7 +29,9 @@
 
 .post-name {
   font-weight: bold;
-  margin-right: 0.5rem;
+  display: flex;
+  gap: 0.1rem;
+  align-items: center;
 }
 
 .post-username {
