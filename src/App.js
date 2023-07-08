@@ -10,7 +10,7 @@ import "./App.css";
 import BottomAuthBar from "./components/BottomAuthBar/BottomAuthBar";
 import NavBar from "./components/NavBar/NavBar";
 import { ScrollToTop } from "./components/ScrollToTop";
-import SearchBar from "./components/SearchBar/SearchBar";
+import { SearchBar } from "./components/SearchBar/SearchBar";
 import SuggestedSignup from "./components/SuggestedSignup/SuggestedSignup";
 import WhoToFollow from "./components/WhoToFollow/WhoToFollow";
 import { CreatePostModal } from "./components/modals//CreatePostModal/CreatePostModal";
