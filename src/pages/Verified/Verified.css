@@ -39,6 +39,7 @@
 }
 
 .btn-subscribe-verified {
+  font-weight: 600;
   padding: 1rem;
   border-radius: 2rem;
 }
@@ -61,4 +62,21 @@
   color: rgba(0, 0, 0, 0.5);
   margin-bottom: 1.5rem;
   font-weight: 200;
+}
+
+.black-verified-modal {
+  background-color: black;
+}
+
+.black-choose-verification-item {
+  background-color: #1b2023;
+}
+
+.black-btn-subscribe-verified {
+  background-color: white;
+  color: black;
+}
+
+.black-verified-text {
+  color: white;
 }

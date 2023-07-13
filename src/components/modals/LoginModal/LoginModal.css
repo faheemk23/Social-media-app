@@ -36,3 +36,22 @@
   font-size: medium;
   color: rgba(0, 0, 0, 0.5);
 }
+
+/* div.bg-black {
+  background-color: black;
+} */
+
+.black-login-modal-input {
+  background-color: black;
+  color: white;
+  border: 1px solid rgba(221, 204, 204, 0.65);
+}
+
+.black-btn-guest-login:hover {
+  background-color: white;
+  color: black;
+}
+
+.black-login-modal-light-black {
+  color: rgba(221, 204, 204, 0.65);
+}

@@ -24,14 +24,14 @@ export function Profile() {
 
   const getLikedPosts = () => {
     const likedPosts = posts.filter(({ likes: { likedBy } }) =>
-      likedBy.some(({ username }) => username === user.username)
+      likedBy.some(
+        ({ username: usernameToCheck }) => usernameToCheck === username
+      )
     );
     return likedPosts;
   };
 
   const likedPosts = getLikedPosts();
-
-  console.log(posts);
 
   useEffect(() => {
     setLoading(true);

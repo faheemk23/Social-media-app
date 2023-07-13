@@ -17,7 +17,7 @@ import "./SinglePostCard.css";
 
 export function SinglePostCard({ post }) {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, mode } = useContext(AuthContext);
   const {
     dataState: { users },
   } = useContext(DataContext);
@@ -34,7 +34,9 @@ export function SinglePostCard({ post }) {
     images,
     video,
     links,
-  } = post;
+  } = post ?? {};
+
+  console.log({ post });
 
   const postUser = users.find(
     ({ username: currUser }) => currUser === username
@@ -42,13 +44,19 @@ export function SinglePostCard({ post }) {
 
   const { avatar, isVerified } = postUser ?? {};
 
-  const contentLines = content.split("\n");
+  const contentLines = content?.split("\n");
 
   return (
     <>
-      <article className="single-post-card ">
+      <article
+        className={
+          mode === "dark"
+            ? "single-post-card black-single-post-card"
+            : "single-post-card "
+        }
+      >
         <PostHeader />
-        <div className="relative">
+        <div className="single-post-content relative">
           <div
             className="pointer"
             key={_id}
@@ -64,7 +72,7 @@ export function SinglePostCard({ post }) {
 
           <section className="post-detail-text">
             <div className="post-content">
-              {contentLines.map((line, index) => (
+              {contentLines?.map((line, index) => (
                 <div key={index} className={line === "" ? "empty-line" : ""}>
                   {line}
                 </div>
@@ -84,7 +92,13 @@ export function SinglePostCard({ post }) {
 
             {video && <PostVideo video={video} />}
 
-            <div className="single-post-timestamp">
+            <div
+              className={
+                mode === "dark"
+                  ? "single-post-timestamp black-single-post-timestamp "
+                  : "single-post-timestamp"
+              }
+            >
               {" "}
               {getSinglePostTimeStamp(createdAt)}
             </div>
@@ -105,7 +119,7 @@ export function SinglePostCard({ post }) {
           </section>
         </div>
         {loggedIn && <PostInput post={post} inReply comments={comments} />}
-        {comments.map((post) => (
+        {comments?.map((post) => (
           <PostCard key={post._id} post={post} inReply />
         ))}
       </article>

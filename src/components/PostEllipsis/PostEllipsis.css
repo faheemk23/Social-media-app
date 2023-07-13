@@ -37,3 +37,13 @@
 .post-ellipsis-item:hover {
   background-color: rgba(0, 0, 0, 0.02);
 }
+
+.black-post-ellipsis-content {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 15px rgba(201, 192, 192, 0.211);
+}
+
+.black-post-ellipsis-item:hover {
+  background-color: rgba(139, 136, 136, 0.144);
+}

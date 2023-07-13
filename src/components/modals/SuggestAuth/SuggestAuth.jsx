@@ -1,10 +1,19 @@
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthContext";
 import "./SuggestAuth.css";
 
 export function SuggestAuth({ setShowSuggestAuth }) {
+  const { mode } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
-    <div className="modal-container">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container"
+          : "modal-container "
+      }
+    >
       <div className="suggest-auth relative">
         <i
           className="fa-solid fa-xmark login-modal-close-icon pointer"

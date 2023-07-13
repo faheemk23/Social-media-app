@@ -45,3 +45,17 @@
 .empty-line {
   min-height: 10px;
 }
+
+.black-post {
+  background-color: black;
+  color: white;
+  border-top: 1px solid rgba(207, 194, 194, 0.368);
+}
+
+.black-post:hover {
+  background-color: rgba(65, 62, 62, 0.164);
+}
+
+.light-black {
+  color: rgba(221, 204, 204, 0.65);
+}

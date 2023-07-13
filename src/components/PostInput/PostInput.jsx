@@ -37,7 +37,7 @@ export default function PostInput({
   const [showGifsModal, setshowGifsModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { user } = useContext(AuthContext);
+  const { user, mode } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
 
   const avatar = user?.avatar;
@@ -68,7 +68,13 @@ export default function PostInput({
   return (
     <form
       className={
-        inEditPost ? "post-input-container edit-post" : "post-input-container"
+        inEditPost
+          ? mode === "dark"
+            ? "post-input-container edit-post black-post-input-container"
+            : "post-input-container edit-post "
+          : mode === "dark"
+          ? "post-input-container black-post-input-container"
+          : "post-input-container "
       }
       onSubmit={(e) =>
         handleBtnTweet(
@@ -91,7 +97,11 @@ export default function PostInput({
       {modal && (
         <span
           onClick={() => setShowCreatePostModal(false)}
-          className="btn-modal-close pointer"
+          className={
+            mode === "dark"
+              ? "btn-modal-close pointer black-btn-modal-close"
+              : "btn-modal-close pointer"
+          }
         >
           ✖
         </span>
@@ -126,7 +136,13 @@ export default function PostInput({
           }
           id="user-input-text"
           className={
-            modal ? "post-input-text post-input-text-modal" : "post-input-text"
+            modal
+              ? mode === "dark"
+                ? "post-input-text post-input-text-modal black-post-input-text"
+                : "post-input-text post-input-text-modal "
+              : mode === "dark"
+              ? "post-input-text black-post-input-text"
+              : "post-input-text "
           }
           style={{ whiteSpace: "pre-line" }}
           contentEditable="true"
@@ -191,7 +207,13 @@ export default function PostInput({
           </div>
         )}
 
-        <div className="post-input-icons ">
+        <div
+          className={
+            mode === "dark"
+              ? "post-input-icons black-post-input-icons"
+              : "post-input-icons "
+          }
+        >
           <label
             className="pointer"
             disable={video || images.length > 1 ? "true" : ""}

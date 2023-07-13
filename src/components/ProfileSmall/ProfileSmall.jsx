@@ -17,7 +17,7 @@ export function ProfileSmall({
   inSearch,
   setSearchInput,
 }) {
-  const { setUser, setLoggedIn } = useContext(AuthContext);
+  const { setUser, setLoggedIn, mode } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -39,7 +39,13 @@ export function ProfileSmall({
           setSearchInput("");
         }
       }}
-      className={inGuestUsers ? "flex guest-user pointer" : "flex"}
+      className={
+        inGuestUsers
+          ? mode === "dark"
+            ? "flex guest-user pointer black-hover"
+            : "flex guest-user pointer"
+          : "flex"
+      }
     >
       <img
         className="user-avatar"
@@ -49,7 +55,7 @@ export function ProfileSmall({
         width={inSearch ? "60px" : "40px"}
       />
       <div>
-        <div className="profile-small-name bolder black">
+        <div className="profile-small-name bolder">
           {name}{" "}
           {isVerified && (
             <img
@@ -60,7 +66,9 @@ export function ProfileSmall({
             />
           )}
         </div>
-        <div className="profile-small-username">@{username}</div>
+        <div className="profile-small-username black-profile-small-username">
+          @{username}
+        </div>
       </div>
     </div>
   );

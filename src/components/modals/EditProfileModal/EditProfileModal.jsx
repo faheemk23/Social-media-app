@@ -23,7 +23,7 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [showAvatars, setShowAvatars] = useState(false);
 
-  const { setUser } = useContext(AuthContext);
+  const { setUser, mode } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
 
   const editProfileFieldChangeHandler = (e) => {
@@ -89,8 +89,14 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
   };
 
   return (
-    <div className="modal-container">
-      <div className="edit-profile-modal relative">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container"
+          : "modal-container "
+      }
+    >
+      <div className="edit-profile-modal relative black-edit-profile-modal">
         <span
           className="pointer edit-profile-close-icon close-icon"
           onClick={() => setShowEditProfileModal(false)}
@@ -101,7 +107,11 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
         <div className="flex">
           <span className="edit-profile-heading">Edit profile</span>
           <button
-            className="btn btn-primary edit-profile-btn-save"
+            className={
+              mode === "dark"
+                ? "btn btn-primary edit-profile-btn-save black-edit-profile-btn"
+                : "btn btn-primary edit-profile-btn-save"
+            }
             onClick={() => handleBtnSave()}
           >
             Save
@@ -156,7 +166,11 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
         <div className="edit-profile-info">
           {errorMessage && <p>{errorMessage}</p>}
           <button
-            className="btn btn-secondary edit-profile-btn-select-avatar"
+            className={
+              mode === "dark"
+                ? "btn btn-secondary edit-profile-btn-select-avatar black-edit-profile-btn"
+                : "btn btn-secondary edit-profile-btn-select-avatar"
+            }
             onClick={() => setShowAvatars(true)}
           >
             Select an avatar
@@ -168,41 +182,85 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
             />
           )}
 
-          <label className="edit-profile-label" htmlFor="name">
+          <label
+            className={
+              mode === "dark"
+                ? "edit-profile-label black-edit-profile-label"
+                : "edit-profile-label "
+            }
+            htmlFor="name"
+          >
             Name
           </label>
           <input
-            className="edit-profile-input"
+            className={
+              mode === "dark"
+                ? "edit-profile-input black-edit-profile-input"
+                : "edit-profile-input"
+            }
             defaultValue={name}
             type="text"
             id="name"
             onChange={editProfileFieldChangeHandler}
           />
-          <label className="edit-profile-label" htmlFor="bio">
+          <label
+            className={
+              mode === "dark"
+                ? "edit-profile-label black-edit-profile-label"
+                : "edit-profile-label"
+            }
+            htmlFor="bio"
+          >
             Bio
           </label>
           <input
-            className="edit-profile-input"
+            className={
+              mode === "dark"
+                ? "edit-profile-input black-edit-profile-input"
+                : "edit-profile-input"
+            }
             defaultValue={bio}
             type="text"
             id="bio"
             onChange={editProfileFieldChangeHandler}
           />
-          <label className="edit-profile-label" htmlFor="location">
+          <label
+            className={
+              mode === "dark"
+                ? "edit-profile-label black-edit-profile-label"
+                : "edit-profile-label"
+            }
+            htmlFor="location"
+          >
             Location
           </label>
           <input
-            className="edit-profile-input"
+            className={
+              mode === "dark"
+                ? "edit-profile-input black-edit-profile-input"
+                : "edit-profile-input"
+            }
             defaultValue={location}
             type="text"
             id="location"
             onChange={editProfileFieldChangeHandler}
           />
-          <label className="edit-profile-label" htmlFor="website">
+          <label
+            className={
+              mode === "dark"
+                ? "edit-profile-label black-edit-profile-label"
+                : "edit-profile-label"
+            }
+            htmlFor="website"
+          >
             Website
           </label>
           <input
-            className="edit-profile-input"
+            className={
+              mode === "dark"
+                ? "edit-profile-input black-edit-profile-input"
+                : "edit-profile-input"
+            }
             defaultValue={website}
             type="text"
             id="website"

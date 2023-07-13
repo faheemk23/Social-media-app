@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { AuthContext } from "../../../contexts/AuthContext";
 import { DataContext } from "../../../contexts/DataContext";
 import { getTimeStamp } from "../../../utilities/miscUtilities";
 import PostEllipsis from "../../PostEllipsis/PostEllipsis";
@@ -16,6 +17,8 @@ export function PostCard({ post, inReply, inBookmark }) {
   const {
     dataState: { users },
   } = useContext(DataContext);
+
+  const { mode } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -47,7 +50,11 @@ export function PostCard({ post, inReply, inBookmark }) {
   return (
     <>
       <article
-        className="post-card pointer"
+        className={
+          mode === "dark"
+            ? "post-card pointer black-post"
+            : "post-card pointer "
+        }
         onClick={() => navigate(`/post/${_id}`)}
       >
         <img
@@ -71,10 +78,24 @@ export function PostCard({ post, inReply, inBookmark }) {
                 />
               )}
             </span>
-            <span className="post-username pointer" onClick={navigateToProfile}>
+            <span
+              className={
+                mode === "dark" ? "post-username light-black" : "post-username"
+              }
+              onClick={navigateToProfile}
+            >
               @{username}
             </span>
-            <span className="post-timestamp"> · {getTimeStamp(createdAt)}</span>
+            <span
+              className={
+                mode === "dark"
+                  ? "post-timestamp light-black"
+                  : "post-timestamp"
+              }
+            >
+              {" "}
+              · {getTimeStamp(createdAt)}
+            </span>
           </div>
 
           <div className="post-content">

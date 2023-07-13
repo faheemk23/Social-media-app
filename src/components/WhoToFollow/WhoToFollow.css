@@ -42,3 +42,18 @@
   background-color: black;
   color: white;
 }
+
+.black-who-to-follow {
+  background-color: #16181c;
+  color: white;
+}
+
+.black-btn-who-to-follow {
+  background-color: white;
+  color: black;
+}
+
+.black-btn-following {
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.381);
+}
