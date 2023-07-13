@@ -16,7 +16,7 @@ export function LoginModal() {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { setUser, setLoggedIn } = useContext(AuthContext);
+  const { setUser, setLoggedIn, mode } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -45,8 +45,20 @@ export function LoginModal() {
   };
 
   return (
-    <div className="modal-container ">
-      <div className="login-modal relative">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container "
+          : "modal-container "
+      }
+    >
+      <div
+        className={
+          mode === "dark"
+            ? "login-modal relative bg-black"
+            : "login-modal relative"
+        }
+      >
         <i
           className="fa-solid fa-xmark login-modal-close-icon pointer"
           onClick={() => navigate("/")}
@@ -55,7 +67,11 @@ export function LoginModal() {
           {" "}
           <img
             className="nav-logo"
-            src="https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            src={
+              mode === "dark"
+                ? "https://ik.imagekit.io/faheem/Social-media/dark-logo.png?updatedAt=1688983665780"
+                : "https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            }
             alt="app-logo"
             width="40px"
             height="32px"
@@ -65,9 +81,13 @@ export function LoginModal() {
         {errorMessage && <p className="pink">{errorMessage}</p>}
 
         <div className="flex-column">
-          <label htmlFor="username">Username: </label>
+          <label htmlFor="username">Username </label>
           <input
-            className="login-modal-input"
+            className={
+              mode === "dark"
+                ? "login-modal-input black-login-modal-input"
+                : "login-modal-input"
+            }
             type="text"
             id="username"
             value={userDetail.username}
@@ -86,9 +106,13 @@ export function LoginModal() {
               <i class="fa-regular fa-eye-slash"></i>
             )}
           </span>
-          <label htmlFor="password">Password: </label>
+          <label htmlFor="password">Password </label>
           <input
-            className="login-modal-input"
+            className={
+              mode === "dark"
+                ? "login-modal-input black-login-modal-input"
+                : "login-modal-input"
+            }
             type={showPassword ? "text" : "password"}
             id="password"
             value={userDetail.password}
@@ -96,7 +120,12 @@ export function LoginModal() {
           />
         </div>
 
-        <button className="btn btn-primary" onClick={handleBtnLogin}>
+        <button
+          className={
+            mode === "dark" ? "btn btn-primary bg-primary" : "btn btn-primary"
+          }
+          onClick={handleBtnLogin}
+        >
           Login
         </button>
         {showGuestUsers && (
@@ -106,12 +135,22 @@ export function LoginModal() {
           />
         )}
         <button
-          className="btn btn-secondary"
+          className={
+            mode === "dark"
+              ? "btn btn-secondary black-btn-guest-login"
+              : "btn btn-secondary"
+          }
           onClick={() => setShowGuestUsers(true)}
         >
           Guest Login
         </button>
-        <div className="login-modal-suggestion">
+        <div
+          className={
+            mode === "dark"
+              ? "login-modal-suggestion black-login-modal-light-black"
+              : "login-modal-suggestion"
+          }
+        >
           Don't have a account?{" "}
           <Link className="link" to="/signup">
             Signup

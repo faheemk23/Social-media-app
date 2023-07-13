@@ -18,7 +18,6 @@ export function Post() {
   const { postId } = useParams();
 
   useEffect(() => {
-    setLoading(true);
     getPost(postId, setPost, setLoading);
   }, [posts]);
 

@@ -21,7 +21,7 @@ export function SignupModal() {
   const {
     dataState: { users },
   } = useContext(DataContext);
-  const { setUser, setLoggedIn } = useContext(AuthContext);
+  const { setUser, setLoggedIn, mode } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const signupFieldChangeHandler = (e) => {
@@ -62,8 +62,20 @@ export function SignupModal() {
   };
 
   return (
-    <div className="modal-container">
-      <article className="signup-modal relative">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container"
+          : "modal-container "
+      }
+    >
+      <article
+        className={
+          mode === "dark"
+            ? "signup-modal relative bg-black"
+            : "signup-modal relative"
+        }
+      >
         <i
           className="fa-solid fa-xmark login-modal-close-icon pointer"
           onClick={() => navigate("/")}
@@ -72,7 +84,11 @@ export function SignupModal() {
           {" "}
           <img
             className="nav-logo"
-            src="https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            src={
+              mode === "dark"
+                ? "https://ik.imagekit.io/faheem/Social-media/dark-logo.png?updatedAt=1688983665780"
+                : "https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            }
             alt="app-logo"
             width="40px"
             height="32px"
@@ -85,7 +101,11 @@ export function SignupModal() {
         <div className="flex-column">
           <label htmlFor="name">Full Name: </label>
           <input
-            className="signup-modal-input"
+            className={
+              mode === "dark"
+                ? "signup-modal-input black-signup-modal-input"
+                : "signup-modal-input"
+            }
             type="text"
             id="name"
             onChange={signupFieldChangeHandler}
@@ -97,7 +117,11 @@ export function SignupModal() {
           <label htmlFor="username">Username:</label>
           {/* check if already present */}
           <input
-            className="signup-modal-input"
+            className={
+              mode === "dark"
+                ? "signup-modal-input black-signup-modal-input"
+                : "signup-modal-input"
+            }
             type="text"
             id="username"
             onChange={signupFieldChangeHandler}
@@ -107,7 +131,11 @@ export function SignupModal() {
           {" "}
           <label htmlFor="email">Email Address: </label>
           <input
-            className="signup-modal-input"
+            className={
+              mode === "dark"
+                ? "signup-modal-input black-signup-modal-input"
+                : "signup-modal-input"
+            }
             type="text"
             id="email"
             onChange={signupFieldChangeHandler}
@@ -127,7 +155,11 @@ export function SignupModal() {
           </span>
           <label htmlFor="password">Password:</label>
           <input
-            className="signup-modal-input"
+            className={
+              mode === "dark"
+                ? "signup-modal-input black-signup-modal-input"
+                : "signup-modal-input"
+            }
             type={showPassword ? "text" : "password"}
             id="password"
             onChange={signupFieldChangeHandler}
@@ -146,17 +178,32 @@ export function SignupModal() {
           </span>
           <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
-            className="signup-modal-input"
+            className={
+              mode === "dark"
+                ? "signup-modal-input black-signup-modal-input"
+                : "signup-modal-input"
+            }
             type={showConfirmPassword ? "text" : "password"}
             id="confirmPassword"
             onChange={signupFieldChangeHandler}
           />
         </div>
 
-        <button className="btn btn-primary" onClick={handleBtnSignup}>
+        <button
+          className={
+            mode === "dark" ? "btn btn-primary bg-primary" : "btn btn-primary"
+          }
+          onClick={handleBtnSignup}
+        >
           Create Account
         </button>
-        <div className="login-modal-suggestion">
+        <div
+          className={
+            mode === "dark"
+              ? "login-modal-suggestion light-black"
+              : "login-modal-suggestion"
+          }
+        >
           Have an account already?{" "}
           <Link className="link" to="/login">
             Log in

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import { DataContext } from "../../contexts/DataContext";
 import { ProfileSmall } from "../ProfileSmall/ProfileSmall";
 import "./SearchBar.css";
@@ -8,6 +9,8 @@ export function SearchBar() {
   const {
     dataState: { users },
   } = useContext(DataContext);
+
+  const { mode } = useContext(AuthContext);
 
   const isMatch = (string, search) => {
     const wordsInString = string.split(" ");
@@ -26,25 +29,46 @@ export function SearchBar() {
 
   const filteredUsers = handleSearch(users, searchInput);
 
-  console.log({ users: filteredUsers });
   return (
-    <div className="search-bar-container relative">
+    <div
+      className={
+        mode === "dark"
+          ? "search-bar-container relative bg-light-black light-black"
+          : "search-bar-container relative"
+      }
+    >
       <i className="fa-solid fa-magnifying-glass search-bar-icon"></i>
       <input
         type="search"
-        className="search-bar"
+        className={
+          mode === "dark"
+            ? "search-bar bg-light-black light-black"
+            : "search-bar"
+        }
         placeholder="Search Twitter"
         value={searchInput}
         onChange={(e) => setSearchInput(e.target.value)}
       />
       {searchInput !== "" && (
-        <div className="search-result">
+        <div
+          className={
+            mode === "dark"
+              ? "search-result black-search-result"
+              : "search-result"
+          }
+        >
           {filteredUsers.length === 0 ? (
             <div className="padding-1rem">Sorry no users match! 🥺</div>
           ) : (
             <>
               {filteredUsers.map((user) => (
-                <div className="search-result-item pointer">
+                <div
+                  className={
+                    mode === "dark"
+                      ? "search-result-item pointer black-search-result-item"
+                      : "search-result-item pointer"
+                  }
+                >
                   <ProfileSmall
                     avatar={user.avatar}
                     name={user.name}

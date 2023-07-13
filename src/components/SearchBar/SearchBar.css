@@ -41,6 +41,7 @@
   border-radius: 0.5rem;
   padding: 1rem 0;
   gap: 0.5rem;
+  color: black;
 }
 
 .search-result > .search-result-item {
@@ -53,4 +54,18 @@
 
 .search-result > div {
   padding: 1rem;
+}
+
+.bg-light-black {
+  background-color: #16181c;
+}
+
+.black-search-result {
+  background-color: black;
+  color: white;
+  box-shadow: 0 0 15px rgba(201, 192, 192, 0.211);
+}
+
+.search-result > .black-search-result-item:hover {
+  background-color: #16181c;
 }

@@ -68,7 +68,7 @@
   /* position: fixed; */
   /* background-color: red; */
   /* width: 200px; */
-  height: 600px;
+  height: 100vh;
   z-index: 1;
 }
 
@@ -89,7 +89,7 @@
   /* position: fixed; */
   /* background-color: green; */
   /* width: 200px; */
-  height: 600px;
+  height: 100vh;
 }
 
 .bottom {
@@ -199,6 +199,52 @@
   position: absolute;
   right: 5px;
   bottom: 6px;
+}
+
+.black-left {
+  background-color: black;
+  color: white;
+}
+
+.black-middle {
+  background-color: black;
+  color: white;
+  border-left: 1px solid rgba(221, 204, 204, 0.65);
+  border-right: 1px solid rgba(221, 204, 204, 0.65);
+}
+
+.black-right {
+  background-color: black;
+  color: white;
+}
+
+.mode-toggle {
+  position: fixed;
+  top: 0;
+}
+
+.black-modal-container {
+  background-color: #242d34a0;
+}
+
+.light-black {
+  color: rgba(221, 204, 204, 0.65) !important;
+}
+
+.bg-black {
+  background-color: black !important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.black-box-shadow {
+  box-shadow: 0 0 15px rgba(201, 192, 192, 0.211) !important;
+}
+
+.black-hover:hover {
+  background-color: #16181c !important;
 }
 
 @media screen and (max-width: 1200px) {

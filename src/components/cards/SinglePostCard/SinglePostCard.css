@@ -2,7 +2,7 @@
   /* border: solid; */
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   /* display: flex; */
-  padding: 0.7rem;
+  /* padding: 0.7rem; */
 }
 
 .post-detail-text {
@@ -10,9 +10,23 @@
   width: 100%;
 }
 
+.single-post-content {
+  padding: 0.7rem;
+}
+
 .single-post-timestamp {
   color: rgba(0, 0, 0, 0.5);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.5rem;
   margin: 1rem 0;
+}
+
+.black-single-post-card {
+  background-color: black;
+  color: white;
+}
+
+.black-single-post-timestamp {
+  color: rgba(221, 204, 204, 0.65);
+  border-bottom: 1px solid rgba(221, 204, 204, 0.65);
 }

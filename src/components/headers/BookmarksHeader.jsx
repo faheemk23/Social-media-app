@@ -6,10 +6,16 @@ import "./Headers.css";
 export function BookmarksHeader() {
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, mode } = useContext(AuthContext);
 
   return (
-    <div className="header-container small-header relative header-border-bottom">
+    <div
+      className={
+        mode === "dark"
+          ? "header-container small-header relative black-header-container"
+          : "header-container small-header relative "
+      }
+    >
       <div className="header-heading">
         Bookmarks
         <div className="bookmarks-header-username">@{user?.username}</div>

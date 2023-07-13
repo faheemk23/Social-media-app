@@ -10,7 +10,7 @@ import "./Verified.css";
 export function Verified() {
   const [subscription, setSubscription] = useState("individual");
   const { dataDispatch } = useContext(DataContext);
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, mode } = useContext(AuthContext);
 
   const verified = user?.isVerified;
   const navigate = useNavigate();
@@ -27,8 +27,20 @@ export function Verified() {
     navigate(-1);
   };
   return (
-    <div className="modal-container">
-      <div className="verified-modal relative">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container"
+          : "modal-container"
+      }
+    >
+      <div
+        className={
+          mode === "dark"
+            ? "verified-modal relative black-verified-modal"
+            : "verified-modal relative"
+        }
+      >
         <i
           className="fa-solid fa-xmark login-modal-close-icon pointer"
           onClick={(e) => {
@@ -40,7 +52,11 @@ export function Verified() {
           {" "}
           <img
             className="nav-logo"
-            src="https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            src={
+              mode === "dark"
+                ? "https://ik.imagekit.io/faheem/Social-media/dark-logo.png?updatedAt=1688983665780"
+                : "https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            }
             alt="app-logo"
             width="40px"
             height="32px"
@@ -49,7 +65,13 @@ export function Verified() {
         <div className="verified-heading">
           {verified ? "You are already subscribed!" : "Who are you?"}
         </div>
-        <div className="verified-text">
+        <div
+          className={
+            mode === "dark"
+              ? "verified-text black-verified-text"
+              : "verified-text"
+          }
+        >
           {verified
             ? "You can unsubscribe below:"
             : "Choose the right Verified subscription for you:"}
@@ -59,7 +81,11 @@ export function Verified() {
             <div
               className={
                 subscription === "individual"
-                  ? "choose-verification-item outline-primary"
+                  ? mode === "dark"
+                    ? "choose-verification-item outline-primary black-choose-verification-item"
+                    : "choose-verification-item outline-primary"
+                  : mode === "dark"
+                  ? "choose-verification-item black-choose-verification-item"
                   : "choose-verification-item"
               }
               onClick={() => setSubscription("individual")}
@@ -73,7 +99,11 @@ export function Verified() {
             <div
               className={
                 subscription === "organization"
-                  ? "choose-verification-item outline-primary"
+                  ? mode === "dark"
+                    ? "choose-verification-item outline-primary black-choose-verification-item "
+                    : "choose-verification-item outline-primary"
+                  : mode === "dark"
+                  ? "choose-verification-item black-choose-verification-item"
                   : "choose-verification-item"
               }
               onClick={() => setSubscription("organization")}
@@ -92,7 +122,11 @@ export function Verified() {
         )}
         {verified ? (
           <button
-            className="btn btn-primary btn-subscribe-verified "
+            className={
+              mode === "dark"
+                ? "btn btn-primary btn-subscribe-verified black-btn-subscribe-verified"
+                : "btn btn-primary btn-subscribe-verified "
+            }
             onClick={(e) => {
               e.stopPropagation();
               handleBtnUnsubscribe();
@@ -102,7 +136,11 @@ export function Verified() {
           </button>
         ) : (
           <button
-            className="btn btn-primary btn-subscribe-verified "
+            className={
+              mode === "dark"
+                ? "btn btn-primary btn-subscribe-verified black-btn-subscribe-verified"
+                : "btn btn-primary btn-subscribe-verified "
+            }
             onClick={(e) => {
               e.stopPropagation();
               handleBtnSubscribe();

@@ -9,7 +9,7 @@ import "./WhoToFollow.css";
 
 export default function WhoToFollow() {
   const [whoToFollow, setWhoToFollow] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user, mode } = useContext(AuthContext);
   const { dataState, dataDispatch } = useContext(DataContext);
 
   const location = useLocation();
@@ -49,7 +49,11 @@ export default function WhoToFollow() {
   }
 
   return (
-    <div className="who-to-follow">
+    <div
+      className={
+        mode === "dark" ? "who-to-follow black-who-to-follow" : "who-to-follow"
+      }
+    >
       <h1 className="who-to-follow-heading">Who to follow </h1>
       {whoToFollow.map((user) => {
         const { _id, avatar, name, username, isVerified } = user;
@@ -68,7 +72,11 @@ export default function WhoToFollow() {
 
             {isFollowed(username) ? (
               <button
-                className="btn-who-to-follow btn-following pointer"
+                className={
+                  mode === "dark"
+                    ? "btn-who-to-follow btn-following pointer black-btn-following"
+                    : "btn-who-to-follow btn-following pointer"
+                }
                 onClick={(e) => {
                   e.stopPropagation();
                   unfollowUser(_id, dataDispatch);
@@ -78,7 +86,11 @@ export default function WhoToFollow() {
               </button>
             ) : (
               <button
-                className="btn-who-to-follow pointer"
+                className={
+                  mode === "dark"
+                    ? "btn-who-to-follow black-btn-who-to-follow pointer"
+                    : "btn-who-to-follow pointer"
+                }
                 onClick={(e) => {
                   e.stopPropagation();
                   followUser(_id, dataDispatch);

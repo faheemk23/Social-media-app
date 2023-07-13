@@ -16,7 +16,7 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
     dataDispatch,
     dataState: { bookmarks },
   } = useContext(DataContext);
-  const { user, loggedIn } = useContext(AuthContext);
+  const { user, loggedIn, mode } = useContext(AuthContext);
 
   const { likeCount, likedBy } = likes ?? {};
 
@@ -27,11 +27,19 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
 
   return (
     <div
-      className={inSinglePost ? "post-icons single-post-icons" : "post-icons"}
+      className={
+        inSinglePost
+          ? mode === "dark"
+            ? "post-icons single-post-icons black-single-post-icons"
+            : "post-icons single-post-icons"
+          : mode === "dark"
+          ? "post-icons black-icons"
+          : "post-icons"
+      }
     >
       {isLiked() ? (
         <div
-          className="pink"
+          className="pink post-icon"
           onClick={(e) => {
             e.stopPropagation();
             if (!loggedIn) {
@@ -41,12 +49,12 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
             dislikePost(_id, dataDispatch);
           }}
         >
-          <i className="fa-solid fa-heart "></i>
+          <i className="fa-solid fa-heart"></i>
           <span className="post-icon-text ">{likeCount}</span>
         </div>
       ) : (
         <div
-          className="hover-pink"
+          className="hover-pink post-icon"
           onClick={(e) => {
             e.stopPropagation();
             if (!loggedIn) {
@@ -61,13 +69,14 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
         </div>
       )}
 
-      <div>
+      <div className="post-icon">
         <i className="fa-regular fa-comment"></i>
         <span className="post-icon-text">{comments.length}</span>
       </div>
 
       {isBookmarked(_id) ? (
         <div
+          className="post-icon"
           onClick={(e) => {
             e.stopPropagation();
             if (!loggedIn) {
@@ -81,6 +90,7 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
         </div>
       ) : (
         <div
+          className="post-icon"
           onClick={(e) => {
             e.stopPropagation();
             if (!loggedIn) {
@@ -93,7 +103,7 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
           <i className="fa-regular fa-bookmark hover-primary-color"></i>
         </div>
       )}
-      <div>
+      <div className="post-icon">
         <i className="fa-solid fa-arrow-up-from-bracket"></i>
       </div>
       {showSuggestAuth && (

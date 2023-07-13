@@ -13,7 +13,7 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
   const [showEditProfileModal, setShowEditProfileModal] = useState(false);
   const [showPosts, setShowPosts] = useState("tweets");
 
-  const { user: currentUser } = useContext(AuthContext);
+  const { user: currentUser, mode } = useContext(AuthContext);
   const { dataDispatch } = useContext(DataContext);
   const {
     _id,
@@ -44,7 +44,7 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
   const postToShow = showPosts === "tweets" ? userPosts : likedPosts;
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <img
         className="profile-cover"
         src={cover}
@@ -63,7 +63,11 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
       <div className="relative profile-text">
         {username === currentUser.username ? (
           <button
-            className="btn btn-secondary top-right"
+            className={
+              mode === "dark"
+                ? "btn btn-secondary top-right black-btn-edit-profile"
+                : "btn btn-secondary top-right"
+            }
             onClick={() => setShowEditProfileModal(true)}
           >
             Edit Profile
@@ -94,9 +98,23 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
             />
           )}
         </div>
-        <div className="profile-card-username">@{username}</div>
+        <div
+          className={
+            mode === "dark"
+              ? "profile-card-username black-profile-light-black"
+              : "profile-card-username"
+          }
+        >
+          @{username}
+        </div>
         <p className="profile-card-bio">{bio}</p>
-        <div className="profile-card-info">
+        <div
+          className={
+            mode === "dark"
+              ? "profile-card-info black-profile-light-black"
+              : "profile-card-info"
+          }
+        >
           {location && (
             <div>
               <i className="fa-solid fa-location-dot"></i> {location}{" "}
@@ -115,15 +133,33 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
           </div>
         </div>
 
-        <div className="profile-card-follow-info">
+        <div
+          className={
+            mode === "dark"
+              ? "profile-card-follow-info black-profile-light-black"
+              : "profile-card-follow-info"
+          }
+        >
           <div>
-            <span className="profile-card-follow-info-number">
+            <span
+              className={
+                mode === "dark"
+                  ? "profile-card-follow-info-number black-profile-card-follow-info-number"
+                  : "profile-card-follow-info-number "
+              }
+            >
               {following?.length}
             </span>{" "}
             Following{" "}
           </div>
           <div>
-            <span className="profile-card-follow-info-number">
+            <span
+              className={
+                mode === "dark"
+                  ? "profile-card-follow-info-number black-profile-card-follow-info-number"
+                  : "profile-card-follow-info-number "
+              }
+            >
               {followers?.length}
             </span>{" "}
             Followers
@@ -134,7 +170,11 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
         <div className="filters">
           <div
             onClick={() => setShowPosts("tweets")}
-            className="filter-item-container"
+            className={
+              mode === "dark"
+                ? "filter-item-container pointer black-hover"
+                : "filter-item-container pointer"
+            }
           >
             <div className="filter-item">
               <span>Tweets</span>
@@ -147,7 +187,11 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
           </div>
           <div
             onClick={() => setShowPosts("likes")}
-            className="filter-item-container"
+            className={
+              mode === "dark"
+                ? "filter-item-container pointer black-hover"
+                : "filter-item-container pointer"
+            }
           >
             <div className="filter-item">
               <span>Likes</span>

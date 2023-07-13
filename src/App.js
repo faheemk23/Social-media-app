@@ -29,12 +29,13 @@ import {
 
 function App() {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, mode, setMode } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
     dayjs.extend(relative);
     // navigate("/explore");
   }, []);
+
   return (
     <div className="App">
       <ScrollToTop />
@@ -47,10 +48,10 @@ function App() {
         }}
       />
       <section className="app-container">
-        <section className="left">
+        <section className={mode === "dark" ? "left black-left" : "left "}>
           <NavBar setShowCreatePostModal={setShowCreatePostModal} />
         </section>
-        <section className="middle">
+        <section className={mode === "dark" ? "middle black-middle" : "middle"}>
           {showCreatePostModal && (
             <CreatePostModal setShowCreatePostModal={setShowCreatePostModal} />
           )}
@@ -73,7 +74,7 @@ function App() {
             </section>
           )}
         </section>
-        <section className="right">
+        <section className={mode === "dark" ? "right black-right" : "right"}>
           {loggedIn ? (
             <>
               <SearchBar />

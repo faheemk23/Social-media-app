@@ -1,14 +1,7 @@
 .nav {
   display: flex;
   flex-direction: column;
-  /* padding: 0.5rem 1rem; */
-  /* gap: 1.5rem; */
 }
-
-/* .nav-logo {
-  margin: 0.1rem 1rem;
-  border-radius: 1rem;
-} */
 
 .navlink {
   max-width: fit-content;
@@ -33,7 +26,6 @@
   text-decoration: none;
   padding: 1rem 0;
   padding-left: 1rem;
-  /* margin: 0.5rem 1.2rem; */
   border-radius: 1rem;
 }
 
@@ -57,6 +49,7 @@ div.logo:hover {
 .navlink-icon {
   font-size: x-large;
 }
+
 .navlink-text {
   font-size: larger;
   margin: 0 1.2rem;
@@ -69,7 +62,6 @@ div.logo:hover {
   background-color: var(--primary-color);
   border: none;
   margin-top: 1rem;
-  /* margin-bottom: 10rem; */
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 8px 28px;
 }
@@ -92,6 +84,56 @@ div.logo:hover {
 .navbar-profile-ellipse {
   align-self: center;
   margin-left: auto;
+}
+
+.black-nav {
+  background-color: black;
+  color: white;
+}
+
+.black-navlink-icon {
+  color: white;
+}
+
+.black-navlink-text {
+  color: white;
+}
+
+.nav-mode-toggle {
+  position: fixed;
+  border-radius: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid;
+  font-size: 1.2rem;
+  color: #a0aec0;
+  padding: 0.5rem;
+  bottom: 50px;
+  right: 50px;
+}
+
+.nav-mode-toggle:hover {
+  background-color: rgba(83, 143, 232, 0.134);
+}
+
+.black-nav-mode-toggle:hover {
+  background-color: black;
+}
+
+.nav-mode-toggle > i {
+  color: #a0aec0;
+  font-size: 1.5rem;
+}
+
+.nav-mode-toggle > i:hover {
+  background-color: none;
+}
+
+div.dark-logo:hover {
+  background-color: black;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1200px) {

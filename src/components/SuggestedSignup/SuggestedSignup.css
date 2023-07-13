@@ -21,7 +21,7 @@
   color: rgba(0, 0, 0, 0.6);
 }
 
-.btn-create-account {
+.create-account-btn {
   margin: 0.5rem;
   background-color: white;
   text-decoration: none;
@@ -35,6 +35,10 @@
   font-weight: 600;
 }
 
-.btn-create-account:hover {
+.create-account-btn:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.black-create-account-btn:hover {
+  background-color: white;
 }

@@ -16,7 +16,7 @@ export default function PostEllipsis({
     dataDispatch,
     dataState: { users },
   } = useContext(DataContext);
-  const { user } = useContext(AuthContext);
+  const { user, mode } = useContext(AuthContext);
   const [showEllipsisContent, setShowEllipsisContent] = useState(false);
 
   const navigate = useNavigate();
@@ -56,13 +56,23 @@ export default function PostEllipsis({
     >
       {!showEllipsisContent && <i className="fa-solid fa-ellipsis"></i>}
       {showEllipsisContent && (
-        <div className="post-ellipsis-content">
+        <div
+          className={
+            mode === "dark"
+              ? "post-ellipsis-content black-post-ellipsis-content"
+              : "post-ellipsis-content"
+          }
+        >
           {currentUser ? (
             <>
               {currentUser.username === username ? (
                 <div className="post-ellipsis-items">
                   <div
-                    className="post-ellipsis-item"
+                    className={
+                      mode === "dark"
+                        ? "post-ellipsis-item black-post-ellipsis-item"
+                        : "post-ellipsis-item"
+                    }
                     onClick={(e) => {
                       e.stopPropagation();
                       setShowCreatePostModal(true);
@@ -73,7 +83,11 @@ export default function PostEllipsis({
                     <span>Edit</span>
                   </div>
                   <div
-                    className="post-ellipsis-item"
+                    className={
+                      mode === "dark"
+                        ? "post-ellipsis-item black-post-ellipsis-item"
+                        : "post-ellipsis-item"
+                    }
                     onMouseDown={handleBtnDelete}
                   >
                     <i className="fa-solid fa-trash"></i> <span>Delete</span>
@@ -82,7 +96,11 @@ export default function PostEllipsis({
               ) : isFollowed() ? (
                 <div className="post-ellipsis-items">
                   <div
-                    className="post-ellipsis-item"
+                    className={
+                      mode === "dark"
+                        ? "post-ellipsis-item black-post-ellipsis-item"
+                        : "post-ellipsis-item"
+                    }
                     onMouseDown={() => unfollowUser(postUser._id, dataDispatch)}
                   >
                     <i className="fa-solid fa-user-minus"></i>
@@ -92,7 +110,11 @@ export default function PostEllipsis({
               ) : (
                 <div className="post-ellipsis-items">
                   <div
-                    className="post-ellipsis-item"
+                    className={
+                      mode === "dark"
+                        ? "post-ellipsis-item black-post-ellipsis-item"
+                        : "post-ellipsis-item"
+                    }
                     onMouseDown={() => followUser(postUser._id, dataDispatch)}
                   >
                     <i className="fa-solid fa-user-plus"></i>

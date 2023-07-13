@@ -94,3 +94,27 @@
   font-size: 0.95rem;
   color: rgba(0, 0, 0, 0.6);
 }
+
+.black-edit-profile-modal {
+  background-color: black;
+}
+
+.black-edit-profile-label {
+  color: rgba(221, 204, 204, 0.65);
+}
+
+.black-edit-profile-input {
+  background-color: black;
+  color: white;
+  border: 1px solid rgba(221, 204, 204, 0.65);
+}
+
+.black-edit-profile-btn {
+  background-color: rgba(255, 255, 255, 0.945);
+  color: black;
+}
+
+.black-edit-profile-btn:hover {
+  background-color: rgba(255, 255, 255, 0.945);
+  color: black;
+}

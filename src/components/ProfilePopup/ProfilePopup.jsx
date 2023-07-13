@@ -5,14 +5,22 @@ import { AuthContext } from "../../contexts/AuthContext";
 import "./ProfilePopup.css";
 
 export default function ProfilePopup() {
-  const { user } = useContext(AuthContext);
+  const { user, mode } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   return (
-    <div className="profile-popup">
+    <div
+      className={
+        mode === "dark" ? "profile-popup black-profile-popup" : "profile-popup"
+      }
+    >
       <div
-        className="profile-popup-item pointer top-border-light-black"
+        className={
+          mode === "dark"
+            ? " profile-popup-item pointer black-top-border-light-black"
+            : "profile-popup-item pointer top-border-light-black"
+        }
         onClick={() => navigate("/login")}
       >
         Add an existing account

@@ -1,5 +1,5 @@
 .profile-small-username {
-  color: rgba(0, 0, 0, 0.6);
+  color: black;
   margin-top: 0.1rem;
 }
 
@@ -10,19 +10,19 @@
 
 .guest-user {
   gap: 2rem;
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
 }
 
 .guest-user:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-.black {
-  color: black;
-}
-
 .profile-small-name {
   display: flex;
   align-items: center;
   gap: 0.1rem;
+}
+
+.black-profile-small-username {
+  color: #6a6f74;
 }

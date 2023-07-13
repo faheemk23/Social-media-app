@@ -1,10 +1,25 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 import { defaultAvatars } from "../../../staticData";
 import "./ChooseAvatar.css";
 
 export function ChooseAvatar({ setShowAvatars, setNewAvatar }) {
+  const { mode } = useContext(AuthContext);
   return (
-    <div className="modal-container">
-      <div className="choose-avatar-container relative">
+    <div
+      className={
+        mode === "dark"
+          ? "modal-container black-modal-container"
+          : "modal-container "
+      }
+    >
+      <div
+        className={
+          mode === "dark"
+            ? "choose-avatar-container relative black-choose-avatar-container"
+            : "choose-avatar-container relative"
+        }
+      >
         <span
           className="pointer choose-avatar-close-icon close-icon"
           onClick={() => setShowAvatars(false)}
@@ -13,6 +28,7 @@ export function ChooseAvatar({ setShowAvatars, setNewAvatar }) {
           ✖
         </span>{" "}
         <div className="choose-avatar-heading ">Choose an avatar </div>
+        <hr />
         {defaultAvatars.map((avatar) => (
           <img
             key={avatar}

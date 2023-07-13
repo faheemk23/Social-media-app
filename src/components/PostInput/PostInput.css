@@ -16,6 +16,7 @@
   position: absolute;
   right: 20px;
   top: 10px;
+  /* color: white; */
 }
 
 .post-input-content {
@@ -167,6 +168,22 @@ button:disabled {
 }
 button:disabled:hover {
   cursor: not-allowed;
+}
+
+.black-post-input-container {
+  background-color: black;
+}
+
+.black-post-input-text[contentEditable="true"]:empty:not(:focus)::before {
+  color: rgba(221, 204, 204, 0.65);
+}
+
+.black-post-input-icons {
+  border-top: 1px solid rgba(221, 204, 204, 0.65);
+}
+
+.black-btn-modal-close {
+  color: white;
 }
 
 @media screen and (max-width: 500px) {

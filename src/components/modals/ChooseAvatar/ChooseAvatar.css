@@ -1,10 +1,11 @@
 .choose-avatar-container {
   background-color: white;
-  height: 260px;
+  height: 300px;
   width: 460px;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem;
   border-radius: 1rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  overflow: scroll;
 }
 
 .choose-avatar-close-icon {
@@ -17,7 +18,6 @@
   font-size: x-large;
   margin-bottom: 0.7rem;
   text-align: center;
-  color: var(--primary-color);
 }
 
 .choose-avatar {
@@ -26,4 +26,8 @@
 
 .choose-avatar:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.black-choose-avatar-container {
+  background-color: black;
 }
