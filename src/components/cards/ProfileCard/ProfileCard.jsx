@@ -74,14 +74,22 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
           </button>
         ) : isFollowed() ? (
           <button
-            className="btn btn-secondary top-right"
+            className={
+              mode === "dark"
+                ? "btn btn-secondary top-right black-btn-edit-profile"
+                : "btn btn-secondary top-right"
+            }
             onClick={() => unfollowUser(_id, dataDispatch)}
           >
             Following
           </button>
         ) : (
           <button
-            className="btn btn-primary top-right"
+            className={
+              mode === "dark"
+                ? "btn btn-primary top-right black-btn-follow"
+                : "btn btn-primary top-right"
+            }
             onClick={() => followUser(_id, dataDispatch)}
           >
             Follow

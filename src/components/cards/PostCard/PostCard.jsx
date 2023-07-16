@@ -13,6 +13,7 @@ import "./PostCard.css";
 
 export function PostCard({ post, inReply, inBookmark }) {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
+  const { user } = useContext(AuthContext);
 
   const {
     dataState: { users },
@@ -55,7 +56,9 @@ export function PostCard({ post, inReply, inBookmark }) {
             ? "post-card pointer black-post"
             : "post-card pointer "
         }
-        onClick={() => navigate(`/post/${_id}`)}
+        onClick={() => {
+          !inReply && navigate(`/post/${_id}`);
+        }}
       >
         <img
           src={avatar}
@@ -123,7 +126,7 @@ export function PostCard({ post, inReply, inBookmark }) {
             <PostIcons _id={_id} likes={likes} comments={comments} />
           )}
 
-          {!inBookmark && !inReply && (
+          {!inBookmark && !(inReply && user.username === username) && (
             <PostEllipsis
               _id={_id}
               username={username}

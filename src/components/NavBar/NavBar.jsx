@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthContext";
 import ProfilePopup from "../ProfilePopup/ProfilePopup";
 import { ProfileSmall } from "../ProfileSmall/ProfileSmall";
@@ -100,28 +101,52 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
       </NavLink>
 
       {!loggedIn && (
-        <NavLink
-          className={mode === "dark" ? "navlink black-hover" : "navlink"}
-          style={getActiveStyle}
-          to="#"
-        >
-          <i
+        <>
+          <NavLink
+            className={mode === "dark" ? "navlink black-hover" : "navlink"}
+            style={getActiveStyle}
+            to="/login"
+            onClick={() => toast.success("Custom settings coming soon!")}
+          >
+            <i
+              className={
+                mode === "dark"
+                  ? "fa-solid fa-gear navlink-icon black-navlink-icon"
+                  : "fa-solid fa-gear navlink-icon"
+              }
+            ></i>
+            <span
+              className={
+                mode === "dark"
+                  ? "navlink-text black-navlink-text"
+                  : "navlink-text"
+              }
+            >
+              Settings
+            </span>
+          </NavLink>
+          <NavLink
             className={
               mode === "dark"
-                ? "fa-solid fa-gear navlink-icon black-navlink-icon"
-                : "fa-solid fa-gear navlink-icon"
+                ? "navlink nav-mode-toggle black-nav-mode-toggle"
+                : "navlink nav-mode-toggle"
             }
-          ></i>
-          <span
-            className={
-              mode === "dark"
-                ? "navlink-text black-navlink-text"
-                : "navlink-text"
+            onClick={() =>
+              setMode((prev) => (prev === "dark" ? "light" : "dark"))
             }
           >
-            Settings
-          </span>
-        </NavLink>
+            <i
+              className={
+                mode === "dark"
+                  ? "fa-solid fa-sun navlink-icon black-navlink-icon"
+                  : "fa-solid fa-moon navlink-icon "
+              }
+            ></i>
+            <span className="above-1200">
+              {mode === "dark" ? "Light" : "Dark"}
+            </span>
+          </NavLink>
+        </>
       )}
       {loggedIn && (
         <>

@@ -39,10 +39,10 @@
   border-top: 1px solid rgba(221, 204, 204, 0.479);
 }
 
-@media screen and (min-width: 1320px) {
+@media screen and (min-width: 1200px) {
   .profile-popup {
-    left: 100px;
-    bottom: 120px;
+    left: 70px;
+    bottom: 130px;
   }
 }
 

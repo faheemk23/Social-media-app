@@ -124,7 +124,14 @@ export default function PostEllipsis({
               )}
             </>
           ) : (
-            <div onMouseDown={() => navigate("/login")}>
+            <div
+              className={
+                mode === "dark"
+                  ? "post-ellipsis-item black-post-ellipsis-item"
+                  : "post-ellipsis-item"
+              }
+              onMouseDown={() => navigate("/login")}
+            >
               Login for more options
             </div>
           )}
