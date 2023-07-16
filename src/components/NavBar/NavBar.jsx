@@ -106,7 +106,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
             className={mode === "dark" ? "navlink black-hover" : "navlink"}
             style={getActiveStyle}
             to="/login"
-            onClick={() => toast.success("Custom settings coming soon!")}
+            onClick={() => toast.error("Custom settings coming soon!")}
           >
             <i
               className={
