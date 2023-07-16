@@ -96,7 +96,13 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
           : "modal-container "
       }
     >
-      <div className="edit-profile-modal relative black-edit-profile-modal">
+      <div
+        className={
+          mode === "dark"
+            ? "edit-profile-modal relative black-edit-profile-modal"
+            : "edit-profile-modal relative"
+        }
+      >
         <span
           className="pointer edit-profile-close-icon close-icon"
           onClick={() => setShowEditProfileModal(false)}
