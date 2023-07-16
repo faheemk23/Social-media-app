@@ -33,23 +33,6 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
           : "nav nav-left"
       }
     >
-      <NavLink
-        className={
-          mode === "dark"
-            ? "navlink nav-mode-toggle black-nav-mode-toggle"
-            : "navlink nav-mode-toggle"
-        }
-        onClick={() => setMode((prev) => (prev === "dark" ? "light" : "dark"))}
-      >
-        <i
-          className={
-            mode === "dark"
-              ? "fa-solid fa-sun navlink-icon black-navlink-icon"
-              : "fa-solid fa-moon navlink-icon "
-          }
-        ></i>
-        <span>{mode === "dark" ? "Light" : "Dark"}</span>
-      </NavLink>
       {!inBottom && (
         <div
           className={
@@ -164,28 +147,30 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
               Bookmarks
             </span>
           </NavLink>
-          <NavLink
-            className={mode === "dark" ? "navlink black-hover" : "navlink"}
-            style={getActiveStyle}
-            to="/verified"
-          >
-            <i
-              className={
-                mode === "dark"
-                  ? "fa-regular fa-circle-check navlink-icon black-navlink-icon"
-                  : "fa-regular fa-circle-check navlink-icon"
-              }
-            ></i>
-            <span
-              className={
-                mode === "dark"
-                  ? "navlink-text black-navlink-text"
-                  : "navlink-text"
-              }
+          {!inBottom && (
+            <NavLink
+              className={mode === "dark" ? "navlink black-hover" : "navlink"}
+              style={getActiveStyle}
+              to="/verified"
             >
-              Verified
-            </span>
-          </NavLink>
+              <i
+                className={
+                  mode === "dark"
+                    ? "fa-regular fa-circle-check navlink-icon black-navlink-icon"
+                    : "fa-regular fa-circle-check navlink-icon"
+                }
+              ></i>
+              <span
+                className={
+                  mode === "dark"
+                    ? "navlink-text black-navlink-text"
+                    : "navlink-text"
+                }
+              >
+                Verified
+              </span>
+            </NavLink>
+          )}
           <NavLink
             className={mode === "dark" ? "navlink black-hover" : "navlink"}
             style={getActiveStyle}
@@ -221,6 +206,28 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
               </span>
             </button>
           )}
+          <NavLink
+            className={
+              mode === "dark"
+                ? "navlink nav-mode-toggle black-nav-mode-toggle"
+                : "navlink nav-mode-toggle"
+            }
+            onClick={() =>
+              setMode((prev) => (prev === "dark" ? "light" : "dark"))
+            }
+          >
+            <i
+              className={
+                mode === "dark"
+                  ? "fa-solid fa-sun navlink-icon black-navlink-icon"
+                  : "fa-solid fa-moon navlink-icon "
+              }
+            ></i>
+            <span className="above-1200">
+              {mode === "dark" ? "Light" : "Dark"}
+            </span>
+          </NavLink>
+
           {showProfilePopup && <ProfilePopup />}
           <div
             className={

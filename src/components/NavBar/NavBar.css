@@ -16,7 +16,7 @@
 }
 
 .nav-bottom {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(207, 194, 194, 0.368);
   flex-direction: row;
   justify-content: space-around;
 }
@@ -100,18 +100,16 @@ div.logo:hover {
 }
 
 .nav-mode-toggle {
-  position: fixed;
   border-radius: none;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  border: 1px solid;
+  border: 2px solid;
   font-size: 1.2rem;
   color: #a0aec0;
   padding: 0.5rem;
-  bottom: 50px;
-  right: 50px;
+  margin-top: 3rem;
 }
 
 .nav-mode-toggle:hover {
@@ -172,6 +170,9 @@ div.dark-logo:hover {
     aspect-ratio: 1;
     padding: 0.5rem 0.3rem 0.3rem 0.5rem;
   }
+  .nav-mode-toggle {
+    padding: 0.8rem;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -180,5 +181,10 @@ div.dark-logo:hover {
   }
   .navbar-profile {
     margin-bottom: 0;
+  }
+  .nav-mode-toggle {
+    padding-top: 0.4rem;
+    margin: 0;
+    border: none;
   }
 }
