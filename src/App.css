@@ -201,6 +201,10 @@
   bottom: 6px;
 }
 
+.pages-padding-bottom {
+  padding-bottom: 72px;
+}
+
 .black-left {
   background-color: black;
   color: white;

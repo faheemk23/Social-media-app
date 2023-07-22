@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 import { DataContext } from "../../contexts/DataContext";
 import { ProfileSmall } from "../ProfileSmall/ProfileSmall";
@@ -11,6 +12,8 @@ export function SearchBar() {
   } = useContext(DataContext);
 
   const { mode } = useContext(AuthContext);
+
+  const location = useLocation();
 
   const isMatch = (string, search) => {
     const wordsInString = string.split(" ");
@@ -28,6 +31,10 @@ export function SearchBar() {
   };
 
   const filteredUsers = handleSearch(users, searchInput);
+
+  useEffect(() => {
+    setSearchInput("");
+  }, [location]);
 
   return (
     <div

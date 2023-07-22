@@ -1,12 +1,14 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-export async function getAllUsers(dataDispatch) {
+export async function getAllUsers(dataDispatch, setDataLoading) {
   try {
     const res = await axios.get(`/api/users`);
     dataDispatch({ type: "set-users", payload: res.data.users });
   } catch (e) {
     console.error(e.message);
+  } finally {
+    setDataLoading(false);
   }
 }
 

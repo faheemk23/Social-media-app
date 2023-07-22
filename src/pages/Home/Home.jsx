@@ -45,7 +45,7 @@ export function Home() {
   }
 
   return (
-    <section>
+    <section className="pages-padding-bottom">
       <HomeHeader filter={filter} setFilter={setFilter} />
       <div className="flex-column-reverse">
         <div>

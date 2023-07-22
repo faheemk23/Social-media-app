@@ -21,5 +21,9 @@ export function Post() {
     getPost(postId, setPost, setLoading);
   }, [posts]);
 
-  return <div>{loading ? <Loader /> : <SinglePostCard post={post} />}</div>;
+  return (
+    <div className="pages-padding-bottom">
+      {loading ? <Loader /> : <SinglePostCard post={post} />}
+    </div>
+  );
 }

@@ -5,7 +5,6 @@ export async function loginHandler(userDetail, setUser, navigate, setLoggedIn) {
   try {
     const res = await axios.post("/api/auth/login", userDetail);
     if (res.status === 200) {
-      console.log({ res });
       localStorage.setItem("token", res.data.encodedToken);
       const { username, name, avatar } = res.data.foundUser;
       localStorage.setItem(

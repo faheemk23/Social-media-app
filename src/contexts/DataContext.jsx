@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 
 import { dataReducer } from "../reducers/dataReducer";
 import { getAllBookmarks } from "../utilities/bookmarkUtilities";
@@ -14,19 +20,20 @@ export function DataProvider({ children }) {
     users: [],
     bookmarks: [],
   });
+  const [dataLoading, setDataLoading] = useState(true);
 
   const { loggedIn } = useContext(AuthContext);
 
   useEffect(() => {
     getAllPosts(dataDispatch);
-    getAllUsers(dataDispatch);
+    getAllUsers(dataDispatch, setDataLoading);
     if (loggedIn) {
       getAllBookmarks(dataDispatch);
     }
   }, [loggedIn]);
 
   return (
-    <DataContext.Provider value={{ dataState, dataDispatch }}>
+    <DataContext.Provider value={{ dataState, dataDispatch, dataLoading }}>
       {children}
     </DataContext.Provider>
   );

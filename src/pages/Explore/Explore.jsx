@@ -17,11 +17,7 @@ export function Explore() {
   });
 
   return (
-    <div
-      className={
-        loggedIn ? "explore-page " : "explore-page explore-padding-bottom"
-      }
-    >
+    <div className="pages-padding-bottom">
       <ExploreHeader />
       {latestPosts.map((post) => (
         <PostCard key={post._id} post={post} />

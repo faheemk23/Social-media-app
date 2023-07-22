@@ -43,7 +43,7 @@ export function Profile() {
   }, [username, posts]);
 
   return (
-    <div>
+    <div className="pages-padding-bottom">
       {loading ? (
         <Loader />
       ) : (
