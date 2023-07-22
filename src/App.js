@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import relative from "dayjs/plugin/relativeTime";
 import { useContext, useEffect, useState } from "react";
 import { Toaster } from "react-hot-toast";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // import { v4 as uuid } from "uuid";
 
@@ -14,7 +14,9 @@ import { SearchBar } from "./components/SearchBar/SearchBar";
 import SuggestedSignup from "./components/SuggestedSignup/SuggestedSignup";
 import WhoToFollow from "./components/WhoToFollow/WhoToFollow";
 import { CreatePostModal } from "./components/modals//CreatePostModal/CreatePostModal";
+import { Loader } from "./components/modals/Loader/Loader";
 import { AuthContext } from "./contexts/AuthContext";
+import { DataContext } from "./contexts/DataContext";
 import {
   Bookmarks,
   Explore,
@@ -29,11 +31,11 @@ import {
 
 function App() {
   const [showCreatePostModal, setShowCreatePostModal] = useState(false);
-  const { loggedIn, mode, setMode } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { loggedIn, mode, authLoading } = useContext(AuthContext);
+  const { dataLoading } = useContext(DataContext);
+
   useEffect(() => {
     dayjs.extend(relative);
-    // navigate("/explore");
   }, []);
 
   return (
@@ -47,6 +49,7 @@ function App() {
           right: "3rem",
         }}
       />
+      {(dataLoading || authLoading) && <Loader />}
       <section className="app-container">
         <section className={mode === "dark" ? "left black-left" : "left "}>
           <NavBar setShowCreatePostModal={setShowCreatePostModal} />
@@ -56,7 +59,6 @@ function App() {
             <CreatePostModal setShowCreatePostModal={setShowCreatePostModal} />
           )}
           <Routes>
-            {/* <Route path="/" element={<Landing />} /> */}
             <Route path="/home" element={<Home />} />
             <Route path="/bookmarks" element={<Bookmarks />} />
             <Route path="/" element={<Explore />} />
