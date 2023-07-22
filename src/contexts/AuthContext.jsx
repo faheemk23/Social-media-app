@@ -7,6 +7,9 @@ export function AuthProvider({ children }) {
   const [loggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [mode, setMode] = useState("light");
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // handling login when hard refresh
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("userData"));
@@ -22,16 +25,28 @@ export function AuthProvider({ children }) {
         }
       } catch (e) {
         console.error(e.message);
+      } finally {
+        setAuthLoading(false);
       }
     };
     if (currentUser) {
       initialLoginHandler();
+    } else {
+      setAuthLoading(false);
     }
   }, []);
 
   return (
     <AuthContext.Provider
-      value={{ user, setUser, loggedIn, setLoggedIn, mode, setMode }}
+      value={{
+        user,
+        setUser,
+        loggedIn,
+        setLoggedIn,
+        mode,
+        setMode,
+        authLoading,
+      }}
     >
       {children}
     </AuthContext.Provider>

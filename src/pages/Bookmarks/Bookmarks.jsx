@@ -13,7 +13,7 @@ export function Bookmarks({}) {
     dataState.posts.find(({ _id }) => _id === postId);
 
   return (
-    <div>
+    <div className="pages-padding-bottom">
       <BookmarksHeader />
       <div className="bookmarks-posts">
         {dataState.bookmarks.map((postId) => (
