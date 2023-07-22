@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { toast } from "react-hot-toast";
 import { AuthContext } from "../../contexts/AuthContext";
 import { DataContext } from "../../contexts/DataContext";
 import {
@@ -103,7 +104,16 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
           <i className="fa-regular fa-bookmark hover-primary-color"></i>
         </div>
       )}
-      <div className="post-icon">
+      <div
+        className="post-icon"
+        onClick={(e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(
+            `https://social-media-app-gilt.vercel.app/post/${_id}`
+          );
+          toast.success("Copied to clipboard!");
+        }}
+      >
         <i className="fa-solid fa-arrow-up-from-bracket"></i>
       </div>
       {showSuggestAuth && (
