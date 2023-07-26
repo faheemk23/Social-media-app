@@ -2,6 +2,18 @@
 
 [Link](https://social-media-app-gilt.vercel.app/) - A social media website where you can connect with your friends.
 
+## Preview
+
+- Desktop view
+  
+  - <img src="https://github.com/faheemk23/Social-media-app/assets/121616994/fed354d2-1029-4d79-9122-dce05029e28e" height="400px" width="900px"/> 
+    
+- Mobile view
+
+  - <img src="https://github.com/faheemk23/Social-media-app/assets/121616994/af2f27c6-6b03-4bef-9619-502c7a82d023" height="550px" width="400px"/> 
+
+
+
 ## How to install and run locally?
 
 ```
