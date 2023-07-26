@@ -1,6 +1,6 @@
-# BuzzBird
+# Social Media App
 
-[BuzzBird](https://social-media-app-gilt.vercel.app/) - A social media website where you can connect with your friends.
+[Link](https://social-media-app-gilt.vercel.app/) - A social media website where you can connect with your friends.
 
 ## How to install and run locally?
 
