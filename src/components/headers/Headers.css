@@ -33,27 +33,6 @@
   bottom: 0;
 }
 
-/* .small-header {
-  min-height: 20px;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  border-bottom: none;
-}
-
-.small-header > h3 {
-  margin: 0.5rem;
-}
-
-.small-header .icon {
-  padding: 0.5rem;
-  border-radius: 50%;
-}
-
-.small-header .icon:hover {
-  background-color: rgba(0, 0, 0, 0.1);
-} */
-
 .profile-header-name {
   font-size: larger;
   font-weight: bold;
@@ -93,7 +72,7 @@
 }
 
 .small-header {
-  min-height: 20px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   gap: 1rem;
