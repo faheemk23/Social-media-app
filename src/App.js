@@ -19,6 +19,7 @@ import { AuthContext } from "./contexts/AuthContext";
 import { DataContext } from "./contexts/DataContext";
 import {
   Bookmarks,
+  Error,
   Explore,
   Home,
   Login,
@@ -68,6 +69,7 @@ function App() {
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/verified" element={<Verified />} />
+            <Route path="*" element={<Error />} />
           </Routes>
 
           {loggedIn && (
