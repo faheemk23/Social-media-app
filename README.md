@@ -6,7 +6,8 @@
 
 - Desktop view
   
-  - <img src="https://github.com/faheemk23/Social-media-app/assets/121616994/fed354d2-1029-4d79-9122-dce05029e28e" height="400px" width="900px"/> 
+  - ![image](https://github.com/faheemk23/Social-media-app/assets/121616994/53061b53-1b18-4207-b1b3-40a68b2f0d1f)
+ 
     
 - Mobile view
 
