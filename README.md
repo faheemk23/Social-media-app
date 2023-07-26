@@ -4,12 +4,12 @@
 
 ## Preview
 
-- Desktop view
+- Desktop view (Light mode)
   
-  - ![image](https://github.com/faheemk23/Social-media-app/assets/121616994/53061b53-1b18-4207-b1b3-40a68b2f0d1f)
- 
+  - ![image](https://github.com/faheemk23/Social-media-app/assets/121616994/ec0b2c06-89e6-46d0-9ed3-a55ace866c16)
+
     
-- Mobile view
+- Mobile view (Dark mode)
 
   - <img src="https://github.com/faheemk23/Social-media-app/assets/121616994/af2f27c6-6b03-4bef-9619-502c7a82d023" height="550px" width="400px"/> 
 
