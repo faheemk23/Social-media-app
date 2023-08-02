@@ -40,7 +40,7 @@ export function LoginModal() {
 
   const handleBtnLogin = () => {
     if (valiateDetails(userDetail, setErrorMessage)) {
-      loginHandler(userDetail, setUser, navigate, setLoggedIn);
+      loginHandler(userDetail, setUser, navigate, setLoggedIn, setErrorMessage);
     }
   };
 
@@ -78,7 +78,7 @@ export function LoginModal() {
           />
         </div>
         <h1 className="login-modal-heading">Sign in to Twitter</h1>
-        {errorMessage && <p className="pink">{errorMessage}</p>}
+        {errorMessage && <p className="pink error-message">{errorMessage}</p>}
 
         <div className="flex-column">
           <label htmlFor="username">Username </label>
@@ -101,9 +101,9 @@ export function LoginModal() {
             onClick={() => setShowPassword((prev) => !prev)}
           >
             {showPassword ? (
-              <i class="fa-regular fa-eye"></i>
+              <i className="fa-regular fa-eye"></i>
             ) : (
-              <i class="fa-regular fa-eye-slash"></i>
+              <i className="fa-regular fa-eye-slash"></i>
             )}
           </span>
           <label htmlFor="password">Password </label>

@@ -148,9 +148,9 @@ export function SignupModal() {
             onClick={() => setShowPassword((prev) => !prev)}
           >
             {showPassword ? (
-              <i class="fa-regular fa-eye"></i>
+              <i className="fa-regular fa-eye"></i>
             ) : (
-              <i class="fa-regular fa-eye-slash"></i>
+              <i className="fa-regular fa-eye-slash"></i>
             )}
           </span>
           <label htmlFor="password">Password:</label>
@@ -171,9 +171,9 @@ export function SignupModal() {
             onClick={() => setShowConfirmPassword((prev) => !prev)}
           >
             {showConfirmPassword ? (
-              <i class="fa-regular fa-eye"></i>
+              <i className="fa-regular fa-eye"></i>
             ) : (
-              <i class="fa-regular fa-eye-slash"></i>
+              <i className="fa-regular fa-eye-slash"></i>
             )}
           </span>
           <label htmlFor="confirmPassword">Confirm Password:</label>

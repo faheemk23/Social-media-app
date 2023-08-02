@@ -6,6 +6,7 @@
   font-size: large;
   border-radius: 1rem;
   gap: 0.8rem;
+  max-width: 510px;
 }
 
 .login-modal-close-icon {
@@ -37,9 +38,9 @@
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* div.bg-black {
-  background-color: black;
-} */
+.error-message {
+  margin: 0;
+}
 
 .black-login-modal-input {
   background-color: black;

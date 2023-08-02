@@ -18,11 +18,19 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
   const getActiveStyle = ({ isActive }) =>
     isActive ? { fontWeight: "bold" } : {};
 
+  const handleToggleModes = (prev) => {
+    if (prev === "dark") {
+      localStorage.setItem("mode", "light");
+      return "light";
+    } else {
+      localStorage.setItem("mode", "dark");
+      return "dark";
+    }
+  };
+
   useEffect(() => {
     setShowProfilePopup(false);
   }, [location]);
-
-  console.log({ user });
 
   return (
     <nav
@@ -131,9 +139,7 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                 ? "navlink nav-mode-toggle black-nav-mode-toggle"
                 : "navlink nav-mode-toggle"
             }
-            onClick={() =>
-              setMode((prev) => (prev === "dark" ? "light" : "dark"))
-            }
+            onClick={() => setMode((prev) => handleToggleModes(prev))}
           >
             <i
               className={

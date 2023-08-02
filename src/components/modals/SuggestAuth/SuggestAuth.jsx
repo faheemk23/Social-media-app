@@ -14,7 +14,13 @@ export function SuggestAuth({ setShowSuggestAuth }) {
           : "modal-container "
       }
     >
-      <div className="suggest-auth relative">
+      <div
+        className={
+          mode === "dark"
+            ? "suggest-auth relative bg-black"
+            : "suggest-auth relative"
+        }
+      >
         <i
           className="fa-solid fa-xmark login-modal-close-icon pointer"
           onClick={(e) => {
@@ -26,14 +32,32 @@ export function SuggestAuth({ setShowSuggestAuth }) {
           {" "}
           <img
             className="nav-logo"
-            src="https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            src={
+              mode === "dark"
+                ? "https://ik.imagekit.io/faheem/Social-media/dark-logo.png?updatedAt=1688983665780"
+                : "https://ik.imagekit.io/faheem/Social-media/app-logo?updatedAt=1686601318657"
+            }
             alt="app-logo"
             width="40px"
             height="32px"
           />
         </div>
-        <div className="suggest-auth-heading">Don't miss what's happeninng</div>
-        <div className="suggest-auth-text">
+        <div
+          className={
+            mode === "dark"
+              ? "suggest-auth-heading white"
+              : "suggest-auth-heading"
+          }
+        >
+          Don't miss what's happeninng
+        </div>
+        <div
+          className={
+            mode === "dark"
+              ? "suggest-auth-text light-black"
+              : "suggest-auth-text "
+          }
+        >
           People on twitter are the first to know.
         </div>
         <button

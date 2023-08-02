@@ -9,7 +9,7 @@ export const users = [
     _id: "37f2383f-8b8a-44c9-b02d-982ce37aa",
     name: "Faheem Khan",
     username: "faheemk237",
-    password: "faheemKhan123",
+    password: "faheem",
     followers: [
       {
         _id: "ce5ba45e-e8ea-4d62-9edc-61b7aac659e4",
