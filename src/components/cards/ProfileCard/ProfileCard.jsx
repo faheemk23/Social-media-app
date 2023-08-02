@@ -54,7 +54,7 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
       />
       <img
         src={avatar}
-        alt="user-image"
+        alt="user"
         className="user-avatar profile-avatar"
         height="140px"
         width="140px"
