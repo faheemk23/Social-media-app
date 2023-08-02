@@ -6,7 +6,7 @@ import {
   addToBookmark,
   removeFromBookmark,
 } from "../../utilities/bookmarkUtilities";
-import { dislikePost, likePost } from "../../utilities/postsUtilities";
+import { UnlikePost, likePost } from "../../utilities/postsUtilities";
 import { SuggestAuth } from "../modals/SuggestAuth/SuggestAuth";
 import "./PostIcons.css";
 
@@ -47,7 +47,7 @@ export default function PostIcons({ _id, likes, comments, inSinglePost }) {
               setShowSuggestAuth(true);
               return;
             }
-            dislikePost(_id, dataDispatch);
+            UnlikePost(_id, dataDispatch);
           }}
         >
           <i className="fa-solid fa-heart"></i>

@@ -98,7 +98,7 @@ export async function likePost(postId, dataDispatch) {
   }
 }
 
-export async function dislikePost(postId, dataDispatch) {
+export async function UnlikePost(postId, dataDispatch) {
   const encodedToken = localStorage.getItem("token");
   try {
     const res = await axios.post(
@@ -109,7 +109,7 @@ export async function dislikePost(postId, dataDispatch) {
       }
     );
     dataDispatch({ type: "set-posts", payload: res.data.posts });
-    toast.success("Disliked!");
+    toast.success("Unliked!");
   } catch (e) {
     console.error(e.message);
   }
