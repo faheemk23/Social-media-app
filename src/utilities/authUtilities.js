@@ -1,7 +1,13 @@
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
-export async function loginHandler(userDetail, setUser, navigate, setLoggedIn) {
+export async function loginHandler(
+  userDetail,
+  setUser,
+  navigate,
+  setLoggedIn,
+  setErrorMessage
+) {
   try {
     const res = await axios.post("/api/auth/login", userDetail);
     if (res.status === 200) {
@@ -17,6 +23,11 @@ export async function loginHandler(userDetail, setUser, navigate, setLoggedIn) {
       toast.success("Logged in");
     }
   } catch (e) {
+    if (e.request.status === 404) {
+      setErrorMessage("User doesn't exist, please signup!");
+    } else if (e.request.status === 401) {
+      setErrorMessage("Username and password don't match");
+    }
     console.error(e);
   }
 }

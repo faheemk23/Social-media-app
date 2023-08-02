@@ -108,7 +108,7 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
           onClick={() => setShowEditProfileModal(false)}
         >
           {" "}
-          <i class="fa-solid fa-arrow-left"></i>
+          <i className="fa-solid fa-arrow-left"></i>
         </span>
         <div className="flex">
           <span className="edit-profile-heading">Edit profile</span>
@@ -123,7 +123,10 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
             Save
           </button>
         </div>
-        <label className="label-container cover-container" htmlFor="cover">
+        <label
+          className="label-container cover-container pointer"
+          htmlFor="cover"
+        >
           <i className="fa-solid fa-camera-retro camera-icon"></i>
           <img
             src={newCover ? URL.createObjectURL(newCover) : cover}
@@ -134,7 +137,7 @@ export default function EditProfileModal({ user, setShowEditProfileModal }) {
         </label>
 
         <label
-          className="label-container  edit-profile-avatar"
+          className="label-container  edit-profile-avatar pointer"
           htmlFor="avatar"
         >
           <i className="fa-solid fa-camera-retro camera-icon"></i>

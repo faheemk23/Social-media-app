@@ -36,8 +36,6 @@ export function SinglePostCard({ post }) {
     links,
   } = post ?? {};
 
-  console.log({ post });
-
   const postUser = users.find(
     ({ username: currUser }) => currUser === username
   );
@@ -80,7 +78,7 @@ export function SinglePostCard({ post }) {
             </div>
             {links &&
               Object?.entries(links)?.map(([label, link]) => (
-                <div>
+                <div key={label}>
                   {label} -
                   <Link className="link" to={link}>
                     {link}

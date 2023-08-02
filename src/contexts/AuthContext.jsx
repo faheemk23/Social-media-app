@@ -13,6 +13,8 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("userData"));
+    const mode = localStorage.getItem("mode");
+
     const initialLoginHandler = async () => {
       try {
         const res = await axios.get(`/api/users`);
@@ -33,6 +35,10 @@ export function AuthProvider({ children }) {
       initialLoginHandler();
     } else {
       setAuthLoading(false);
+    }
+
+    if (mode) {
+      setMode(mode);
     }
   }, []);
 

@@ -213,7 +213,7 @@ export function ProfileCard({ user, userPosts, likedPosts }) {
         </div>
         <div className="profile-posts">
           {postToShow.map((post) => (
-            <PostCard id={post._id} post={post} />
+            <PostCard key={post._id} post={post} />
           ))}
         </div>
       </div>
