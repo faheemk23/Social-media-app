@@ -21,6 +21,7 @@ export function AuthProvider({ children }) {
         const userInDatabase = res.data.users.find(
           ({ username }) => username === currentUser.username
         );
+        console.log({ userInDatabase });
         if (userInDatabase) {
           setLoggedIn(true);
           setUser(() => userInDatabase);

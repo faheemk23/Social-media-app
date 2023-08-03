@@ -11,6 +11,8 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
   const [showProfilePopup, setShowProfilePopup] = useState(false);
   const { user, loggedIn, mode, setMode } = useContext(AuthContext);
 
+  console.log({ user });
+
   const location = useLocation();
 
   const navigate = useNavigate();
