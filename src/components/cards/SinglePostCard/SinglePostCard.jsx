@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { DataContext } from "../../../contexts/DataContext";
 import { getSinglePostTimeStamp } from "../../../utilities/miscUtilities";
+import { sortByLatest } from "../../../utilities/postsUtilities";
 import PostEllipsis from "../../PostEllipsis/PostEllipsis";
 import PostIcons from "../../PostIcons/PostIcons";
 import PostImages from "../../PostImages/PostImages";
@@ -43,6 +44,8 @@ export function SinglePostCard({ post }) {
   const { avatar, isVerified } = postUser ?? {};
 
   const contentLines = content?.split("\n");
+
+  const latestComments = sortByLatest(comments);
 
   return (
     <>
@@ -117,7 +120,7 @@ export function SinglePostCard({ post }) {
           </section>
         </div>
         {loggedIn && <PostInput post={post} inReply comments={comments} />}
-        {comments?.map((post) => (
+        {latestComments?.map((post) => (
           <PostCard key={post._id} post={post} inReply />
         ))}
       </article>
