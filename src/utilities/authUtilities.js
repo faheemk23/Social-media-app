@@ -17,7 +17,7 @@ export async function loginHandler(
         "userData",
         JSON.stringify({ username, name, avatar })
       );
-      setUser({ username, name, avatar });
+      setUser(res.data.foundUser);
       navigate("/home");
       setLoggedIn(true);
       toast.success("Logged in");
@@ -47,7 +47,7 @@ export async function signupHandler(
         "userData",
         JSON.stringify({ username, name, avatar })
       );
-      setUser({ username, name, avatar });
+      setUser(res.data.foundUser);
       navigate("/home");
       setLoggedIn(true);
       toast.success("Logged in");
