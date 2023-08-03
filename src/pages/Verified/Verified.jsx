@@ -23,7 +23,7 @@ export function Verified() {
 
   const handleBtnUnsubscribe = () => {
     editProfileHandler({ isVerified: false }, setUser, dataDispatch);
-    toast("Unsubscribed!");
+    toast.success("Unsubscribed!");
     navigate(-1);
   };
   return (

@@ -139,7 +139,9 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                 ? "navlink nav-mode-toggle black-nav-mode-toggle"
                 : "navlink nav-mode-toggle"
             }
-            onClick={() => setMode((prev) => handleToggleModes(prev))}
+            onClick={() => {
+              setMode((prev) => handleToggleModes(prev));
+            }}
           >
             <i
               className={
@@ -243,9 +245,9 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                 ? "navlink nav-mode-toggle black-nav-mode-toggle"
                 : "navlink nav-mode-toggle"
             }
-            onClick={() =>
-              setMode((prev) => (prev === "dark" ? "light" : "dark"))
-            }
+            onClick={() => {
+              setMode((prev) => handleToggleModes(prev));
+            }}
           >
             <i
               className={

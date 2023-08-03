@@ -306,7 +306,6 @@ export const handleBtnTweet = async (
     if (inEditPost) {
       editPost(postId, text, imgArr, videoUrl, dataDispatch);
     } else if (inReply) {
-      console.log("ullu");
       addReply(postId, text, imgArr, videoUrl, comments, dataDispatch);
     } else {
       createPost(user, text, imgArr, videoUrl, dataDispatch);
@@ -357,28 +356,11 @@ export async function uploadVideo(video) {
     .catch((err) => console.error(err));
 }
 
-// export const keyValidation = (keyPressed) => {
-//   if (
-//     keyPressed.length === 1 &&
-//     keyPressed.charCodeAt(0) >= 32 &&
-//     keyPressed.charCodeAt(0) <= 127
-//   ) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
-
-// export const handleStringInputWithAddedNewLine = (prevString, keyPressed) => {
-//   if (keyPressed === "Enter") {
-//     return prevString.concat("\n");
-//   } else if (keyPressed === "Backspace") {
-//     return prevString.slice(0, -1);
-//   } else {
-//     if (!keyValidation(keyPressed)) {
-//       return prevString;
-//     } else {
-//       return prevString.concat(keyPressed);
-//     }
-//   }
-// };
+export const sortByLatest = (posts) => {
+  const sortedPosts = [...posts].sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateB - dateA;
+  });
+  return sortedPosts;
+};
