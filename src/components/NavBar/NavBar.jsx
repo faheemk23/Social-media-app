@@ -150,9 +150,6 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                   : "fa-solid fa-moon navlink-icon "
               }
             ></i>
-            {/* <span className="above-1200">
-              {mode === "dark" ? "Light" : "Dark"}
-            </span> */}
           </NavLink>
         </>
       )}
@@ -256,9 +253,6 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                   : "fa-solid fa-moon navlink-icon "
               }
             ></i>
-            {/* <span className="above-1200">
-              {mode === "dark" ? "Light" : "Dark"}
-            </span> */}
           </NavLink>
 
           {showProfilePopup && <ProfilePopup />}
