@@ -11,8 +11,6 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
   const [showProfilePopup, setShowProfilePopup] = useState(false);
   const { user, loggedIn, mode, setMode } = useContext(AuthContext);
 
-  console.log({ user });
-
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -152,9 +150,9 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                   : "fa-solid fa-moon navlink-icon "
               }
             ></i>
-            <span className="above-1200">
+            {/* <span className="above-1200">
               {mode === "dark" ? "Light" : "Dark"}
-            </span>
+            </span> */}
           </NavLink>
         </>
       )}
@@ -258,9 +256,9 @@ export default function NavBar({ inBottom, setShowCreatePostModal }) {
                   : "fa-solid fa-moon navlink-icon "
               }
             ></i>
-            <span className="above-1200">
+            {/* <span className="above-1200">
               {mode === "dark" ? "Light" : "Dark"}
-            </span>
+            </span> */}
           </NavLink>
 
           {showProfilePopup && <ProfilePopup />}

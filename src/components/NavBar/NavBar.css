@@ -100,7 +100,7 @@ div.logo:hover {
 }
 
 .nav-mode-toggle {
-  border-radius: none;
+  border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,6 +110,9 @@ div.logo:hover {
   color: #a0aec0;
   padding: 0.5rem;
   margin-top: 3rem;
+  padding: 0.8rem;
+  aspect-ratio: 1;
+  margin-left: 16px;
 }
 
 .nav-mode-toggle:hover {
@@ -172,6 +175,7 @@ div.dark-logo:hover {
   }
   .nav-mode-toggle {
     padding: 0.8rem;
+    margin-left: 0;
   }
 }
 
